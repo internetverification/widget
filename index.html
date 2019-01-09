@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script type="text/javascript" src="./dist/iv-widget.js"></script>
+  </head>
+  <style>
+    .form-group {
+        
+    }
+    .form-input {
+      background-color: blue;
+    }
+  </style>
+  <body>
+    <div id="container"></div>
+    <script>
+      createIvWidget("container", {
+        steps: [{ type: "information" }],
+        theme: {
+          input: {
+            input: {
+              class: "form-input",
+              style: "border: 2px solid #222"
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+<div [ivwTheme]="'input.group'">
+  <label [ivwTheme]="'input.label'" [for]="label">{{ label }}</label>
+  <input
+    [ivwTheme]="'input.input'"
+    type="text"
+    [name]="label"
+    [value]="value"
+    (keydown)="inputChanged($event)"
+  />
+</div>

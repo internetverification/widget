@@ -1,0 +1,15 @@
+<div [ngSwitch]="step?.type">
+  <div *ngSwitchCase="'picture'">
+    <ivw-picture
+      (previousStep)="previousStep.next($event)"
+      (nextStep)="nextStep.next($event)"
+    ></ivw-picture>
+  </div>
+  <div *ngSwitchCase="'information'">
+    <ivw-information
+      (previousStep)="previousStep.next($event)"
+      (nextStep)="nextStep.next($event)"
+    ></ivw-information>
+  </div>
+  <div *ngSwitchDefault>{{ "INVALID_STEP_TYPE" | translate }}</div>
+</div>
