@@ -1,16 +1,16 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InformationComponent } from "./information.component";
-import { Component } from "@angular/core";
-import { TranslateModule } from "@ngx-translate/core";
+import { InformationComponent } from './information.component';
+import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: "ivw-input",
-  template: "<p>ivw-input</p>"
+  selector: 'ivw-input',
+  template: '<p>ivw-input</p>'
 })
 class MockInputComponent {}
 
-describe("InformationComponent", () => {
+describe('InformationComponent', () => {
   let component: InformationComponent;
   let fixture: ComponentFixture<InformationComponent>;
 
@@ -27,7 +27,7 @@ describe("InformationComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

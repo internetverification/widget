@@ -1,10 +1,10 @@
-import { Component, Input, forwardRef } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { Component, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: "ivw-input",
-  templateUrl: "./input.component.html",
-  styleUrls: ["./input.component.scss"],
+  selector: 'ivw-input',
+  templateUrl: './input.component.html',
+  styleUrls: ['./input.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -21,12 +21,12 @@ export class InputComponent implements ControlValueAccessor {
   @Input()
   label: string;
 
-  private _value = "";
+  private _value = '';
 
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  @Input("value")
+  @Input('value')
   get value() {
     return this._value;
   }

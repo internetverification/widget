@@ -1,21 +1,21 @@
-import { TestBed } from "@angular/core/testing";
+import { TestBed } from '@angular/core/testing';
 
-import { ConfigService } from "./config.service";
-import { TranslateModule } from "@ngx-translate/core";
+import { ConfigService } from './config.service';
+import { TranslateModule } from '@ngx-translate/core';
 
-describe("ConfigService", () => {
+describe('ConfigService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [TranslateModule.forRoot()]
     })
   );
 
-  it("should be created", () => {
+  it('should be created', () => {
     const service: ConfigService = TestBed.get(ConfigService);
     expect(service).toBeTruthy();
   });
 
-  it("should emit config when addConfig", done => {
+  it('should emit config when addConfig', done => {
     const service: ConfigService = TestBed.get(ConfigService);
     const config: any = {};
 

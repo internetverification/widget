@@ -1,4 +1,4 @@
-import { Output, EventEmitter } from "@angular/core";
+import { Output, EventEmitter } from '@angular/core';
 
 export abstract class BaseStepComponent {
   @Output()
@@ -6,4 +6,7 @@ export abstract class BaseStepComponent {
 
   @Output()
   previousStep = new EventEmitter();
+
+  @Output()
+  submitStep = new EventEmitter();
 }

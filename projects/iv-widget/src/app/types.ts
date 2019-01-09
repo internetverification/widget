@@ -1,9 +1,9 @@
 export interface PictureStep {
-  type: "picture";
+  type: 'picture';
 }
 
 export interface InformationStep {
-  type: "information";
+  type: 'information';
 }
 
 export type Step = PictureStep | InformationStep;
