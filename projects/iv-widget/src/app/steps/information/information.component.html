@@ -1,5 +1,18 @@
-<h1>{{ "ENTER_YOUR_INFORMATION" | translate }}</h1>
-<form>
-  <div><ivw-input></ivw-input></div>
+<h1>{{ 'ENTER_YOUR_INFORMATION' | translate }}</h1>
+<form [formGroup]="formGroup">
+  <ivw-input
+    label="{{ 'EMAIL' | translate }}"
+    formControlName="email"
+  ></ivw-input>
+  <ivw-input
+    label="{{ 'FIRST_NAME' | translate }}"
+    formControlName="firstName"
+  ></ivw-input>
+  <ivw-input
+    label="{{ 'LAST_NAME' | translate }}"
+    formControlName="lastName"
+  ></ivw-input>
 </form>
-<ivw-button (click)="nextStep.next()">{{ "NEXT" | translate }}</ivw-button>
+<ivw-button [disabled]="formGroup.invalid" (click)="submit()">{{
+  'NEXT' | translate
+}}</ivw-button>

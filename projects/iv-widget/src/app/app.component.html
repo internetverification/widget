@@ -1,1 +1,6 @@
+<ivw-widget-steps-bar
+  [steps]="steps$ | async"
+  [currentIndex]="currentStepId$ | async"
+  (stepClicked)="navigate($event)"
+></ivw-widget-steps-bar>
 <router-outlet></router-outlet>

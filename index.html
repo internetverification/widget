@@ -1,27 +1,34 @@
 <html>
   <head>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
     <script type="text/javascript" src="./dist/iv-widget.js"></script>
+    <script type="text/javascript" src="./dist/bootstrapTheme.js"></script>
+    <script type="text/javascript" src="./dist/fr.js"></script>
+    <script type="text/javascript" src="./dist/en.js"></script>
   </head>
-  <style>
-    .form-group {
-        
-    }
-    .form-input {
-      background-color: blue;
-    }
-  </style>
   <body>
     <div id="container"></div>
     <script>
-      createIvWidget("container", {
-        steps: [{ type: "information" }],
-        theme: {
-          input: {
-            input: {
-              class: "form-input",
-              style: "border: 2px solid #222"
-            }
-          }
+      let done = false;
+      document.addEventListener('readystatechange', () => {
+        if (!done) {
+          done = true;
+          setTimeout(() => {
+            createIvWidget('container', {
+              idToken: '',
+              steps: [{ type: 'information' }, { type: 'picture' }],
+              lang: {
+                en: IvWidget.lang.en,
+                fr: IvWidget.lang.fr
+              },
+              theme: IvWidget.themes.bootstrap
+            });
+          }, 1000);
         }
       });
     </script>

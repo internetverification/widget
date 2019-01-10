@@ -1,2 +1,39 @@
-<p>picture works!</p>
-<ivw-button (click)="nextStep.next()">{{ "NEXT" | translate }}</ivw-button>
+<div
+  ivwResize
+  (ivwResizeChange)="resize.next($event)"
+  class="ivw-picture-step-container"
+>
+  <div class="ivw-picture-video-container">
+    <video
+      class="ivw-picture-video-container-video"
+      [ivwHidden]="state !== CAPTURE_STATE"
+      autoplay
+      #videoElement
+    ></video>
+    <canvas
+      class="ivw-picture-video-container-canvas"
+      [ivwHidden]="state !== PREVIEW_STATE"
+      #canvas
+    ></canvas>
+  </div>
+  <div class="ivw-picture-overlay">
+    <div class="ivw-buttons-bar ivw-top-buttons-bar"></div>
+    <div class="ivw-svg-overlay">
+      <ivw-svg-overlay
+        [ivwHidden]="state !== CAPTURE_STATE"
+        [type]="step?.config?.overlay_type"
+      ></ivw-svg-overlay>
+    </div>
+    <div class="ivw-buttons-bar ivw-bottom-buttons-bar">
+      <ivw-button *ngIf="state === PREVIEW_STATE" (click)="submit()">{{
+        'NEXT' | translate
+      }}</ivw-button>
+      <ivw-button *ngIf="state === CAPTURE_STATE" (click)="capture()">{{
+        'CAPTURE' | translate
+      }}</ivw-button>
+      <ivw-button *ngIf="state === PREVIEW_STATE" (click)="restart()">{{
+        'RETAKE_PHOTO' | translate
+      }}</ivw-button>
+    </div>
+  </div>
+</div>

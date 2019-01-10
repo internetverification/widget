@@ -1,0 +1,47 @@
+.step-indexes {
+  $color-wizard: lighten(gray, 20%);
+  $size-index: 40px;
+  box-sizing: border-box;
+
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  position: relative;
+
+  .horizontal-line {
+    width: 100%;
+    position: absolute;
+    bottom: 50%;
+    height: 3px;
+    z-index: 0;
+    background-color: $color-wizard;
+  }
+
+  .step-index {
+    position: relative;
+    z-index: 1;
+    border-radius: 50%;
+    display: flex;
+    background-color: white;
+    border: 1px solid $color-wizard;
+    color: $color-wizard;
+    width: $size-index;
+    height: $size-index;
+    margin: 0 $size-index / 2;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: not-allowed;
+
+    &.enabled {
+      cursor: pointer;
+    }
+
+    &.active {
+      $color-wizard: darken(black, 10%);
+      border: 2px solid $color-wizard;
+      color: $color-wizard;
+      font-weight: bolder;
+    }
+  }
+}

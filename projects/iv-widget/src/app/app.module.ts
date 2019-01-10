@@ -11,20 +11,28 @@ import { RouterModule } from '@angular/router';
 import { StepPageComponent } from './step-page/step-page.component';
 import { StoreModule } from './state/store/store.module';
 import { EffectsModule } from './state/effects/effects.module';
+import { DeviceTypeService } from './device-type.service';
+import { SummaryPageComponent } from './summary-page/summary-page.component';
+import { SummaryStepModule } from './steps-summary/summary-step/summary-step.module';
+import { WidgetStepsBarModule } from './components/widget-steps-bar/widget-steps-bar.module';
+import { ButtonModule } from './components/button/button.module';
 
 @NgModule({
-  declarations: [AppComponent, StepPageComponent],
+  declarations: [AppComponent, StepPageComponent, SummaryPageComponent],
   imports: [
     BrowserModule,
     StepModule,
+    SummaryStepModule,
+    WidgetStepsBarModule,
     RouterModule.forRoot([], { useHash: true }),
+    ButtonModule,
     StoreModule,
     EffectsModule,
     TranslateModule.forRoot()
   ],
-  providers: [],
-  entryComponents: [AppComponent, StepPageComponent],
-  bootstrap: [AppComponent]
+  providers: [DeviceTypeService],
+  entryComponents: [AppComponent, StepPageComponent, SummaryPageComponent]
+  // bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(private injector: Injector) {}
@@ -51,4 +59,5 @@ export class AppModule {
   const widget: any = document.createElement('iv-widget');
   widget.config = config;
   el.appendChild(widget);
+  return widget;
 };

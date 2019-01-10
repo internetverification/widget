@@ -1,0 +1,64 @@
+:host {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+.ivw-picture-step-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  .ivw-picture-video-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-video {
+      max-width: 100%;
+    }
+
+    @media screen and (orientation: portrait) {
+      &-video {
+        width: 100%;
+      }
+    }
+  }
+
+  .ivw-picture-overlay {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .ivw-svg-overlay {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+      padding: 3rem;
+    }
+
+    .ivw-buttons-bar {
+      flex-basis: 3rem;
+      padding: 0 1rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .ivw-bottom-buttons-bar {
+      // margin-top: 3rem;
+    }
+
+    .ivw-bottom-buttons-bar {
+      // margin-bottom: 3rem;
+    }
+  }
+}

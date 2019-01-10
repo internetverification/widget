@@ -1,0 +1,32 @@
+.ivw-svg {
+  &.ivw-svg-face {
+    svg {
+      @media screen and (orientation: portrait) {
+        width: 80%;
+      }
+
+      @media screen and (orientation: landscape) {
+        width: 40%;
+      }
+    }
+  }
+
+  &.ivw-svg-card {
+    svg {
+      @media screen and (orientation: portrait) {
+        width: 80%;
+      }
+
+      @media screen and (orientation: landscape) {
+        width: 80%;
+      }
+    }
+  }
+
+  svg {
+    width: 50%;
+
+    margin: 0 auto;
+    display: block;
+  }
+}

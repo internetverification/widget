@@ -1,0 +1,27 @@
+<div [ivwTheme]="'summary.step.container'">
+  <div
+    [ivwTheme]="{
+      'summary.step.bar': true,
+      'summary.step.barBlank': step?.progress?.state === 'BLANK',
+      'summary.step.barProgress': step?.progress?.state === 'PROCESSING',
+      'summary.step.barSuccess': step?.progress?.state === 'SUCCESS',
+      'summary.step.barRejected': step?.progress?.state === 'REJECTED'
+    }"
+  >
+    <div>{{ step?.config?.nameTranslateKey | translate }}</div>
+    <div>{{ step?.progress?.state }}</div>
+  </div>
+  <div
+    [ivwTheme]="'summary.step.details.container'"
+    class="ivw-step-container"
+    [ngSwitch]="step?.config?.type"
+  >
+    <div class="ivw-step-container-box" *ngSwitchCase="'picture'">
+      <ivw-picture [step]="step"></ivw-picture>
+    </div>
+    <div *ngSwitchCase="'information'">
+      <ivw-information [step]="step"></ivw-information>
+    </div>
+    <div *ngSwitchDefault>{{ 'INVALID_STEP_TYPE' | translate }}</div>
+  </div>
+</div>

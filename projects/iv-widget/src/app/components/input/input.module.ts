@@ -1,11 +1,12 @@
 import { NgModule, Input, forwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputComponent } from './input.component';
-import { ThemeDirective } from '../../directives/theme.directive';
+import { ThemeModule } from '../../theme/theme.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-  declarations: [InputComponent, ThemeDirective],
-  imports: [CommonModule],
+  declarations: [InputComponent],
+  imports: [CommonModule, ThemeModule, TranslateModule],
   exports: [InputComponent]
 })
 export class InputModule {}

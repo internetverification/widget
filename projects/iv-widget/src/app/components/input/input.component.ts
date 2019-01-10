@@ -1,22 +1,28 @@
 import { Component, Input, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  NgControl
+} from '@angular/forms';
 
 @Component({
   selector: 'ivw-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputComponent),
-      multi: true
-    }
+    // {
+    //   provide: NG_VALUE_ACCESSOR,
+    //   useExisting: forwardRef(() => InputComponent),
+    //   multi: true
+    // }
   ]
 })
 export class InputComponent implements ControlValueAccessor {
   public disabled = false;
 
-  constructor() {}
+  constructor(private ngControl: NgControl) {
+    ngControl.valueAccessor = this;
+  }
 
   @Input()
   label: string;
@@ -54,6 +60,15 @@ export class InputComponent implements ControlValueAccessor {
 
   inputChanged(event) {
     this.value = event.target.value;
-    console.log(event, this.value);
+  }
+
+  public hasError(error?: string) {
+    if (error) {
+      return this.ngControl.hasError(error) && this.ngControl.touched;
+    } else {
+      return (
+        Array.isArray(this.ngControl.errors) && this.ngControl.errors.length > 0
+      );
+    }
   }
 }

@@ -1,0 +1,6 @@
+<div *ngFor="let step of (steps$ | async)">
+  <ivw-summary-step [step]="step"></ivw-summary-step>
+</div>
+<div>
+  <ivw-button>{{ 'CONFIRM_SUMMARY' | translate }}</ivw-button>
+</div>

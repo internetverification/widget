@@ -1,0 +1,12 @@
+<div [ngSwitch]="type">
+  <div
+    class="ivw-svg ivw-svg-card"
+    *ngSwitchCase="'card'"
+    [innerHTML]="cardTemplate"
+  ></div>
+  <div
+    class="ivw-svg ivw-svg-face"
+    *ngSwitchCase="'face'"
+    [innerHTML]="faceTemplate"
+  ></div>
+</div>

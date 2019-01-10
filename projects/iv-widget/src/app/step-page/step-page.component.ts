@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { Step } from '../types';
 import { Store } from '@ngrx/store';
 import { SubmitStepAction } from '../state/store/actions/steps.actions';
 
@@ -11,12 +10,12 @@ import { SubmitStepAction } from '../state/store/actions/steps.actions';
   styleUrls: ['./step-page.component.scss']
 })
 export class StepPageComponent implements OnInit {
-  public step$ = this.activatedRoute.data;
+  public stepState$ = this.store.select('steps', String(this.currentStepId));
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private location: Location,
-    private router: Router,
+    public router: Router,
     private store: Store<{}>
   ) {}
 
@@ -26,7 +25,7 @@ export class StepPageComponent implements OnInit {
     this.location.back();
   }
 
-  private get currentStepId() {
+  public get currentStepId() {
     return this.router.config.indexOf(this.activatedRoute.routeConfig);
   }
 

@@ -1,0 +1,13 @@
+<div class="step-indexes">
+  <div class="horizontal-line">&nbsp;</div>
+  <div
+    *ngFor="let step of steps; let i = index; let isLast = last"
+    [class.active]="i === currentIndex"
+    [class.enabled]="step.enabled"
+    class="step-index"
+    (click)="stepClick(i, step)"
+  >
+    {{ i + 1 }}
+  </div>
+</div>
+<br />

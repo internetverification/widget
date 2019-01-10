@@ -1,10 +1,16 @@
 <div [ivwTheme]="'input.group'">
   <label [ivwTheme]="'input.label'" [for]="label">{{ label }}</label>
   <input
-    [ivwTheme]="'input.input'"
+    [ivwTheme]="['input.input', { 'input.inputError': hasError() }]"
     type="text"
     [name]="label"
     [value]="value"
-    (keydown)="inputChanged($event)"
+    (keyup)="inputChanged($event)"
   />
+</div>
+<div *ngIf="hasError('required')" [ivwTheme]="'input.inputErrorText'">
+  <small>{{ label }} {{ 'ERROR_IS_REQUIRED' | translate }}</small>
+</div>
+<div *ngIf="hasError('email')" [ivwTheme]="'input.inputErrorText'">
+  <small>{{ label }} {{ 'ERROR_EMAIL_INVALID' | translate }}</small>
 </div>

@@ -1,14 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>IvWidget</title>
-  <base href="/">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"
+    />
+    <meta charset="utf-8" />
+    <title>IvWidget</title>
+    <base href="/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <ivw-root></ivw-root>
-</body>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script type="text/javascript" src="assets/bootstrapTheme.js"></script>
+    <script type="text/javascript" src="assets/lang/en.js"></script>
+    <script type="text/javascript" src="assets/lang/fr.js"></script>
+  </head>
+  <body>
+    <!-- <ivw-root></ivw-root> -->
+    <div id="container"></div>
+    <select id="lang">
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+    </select>
+    <select id="theme">
+      <option value="none">None</option>
+      <option value="bootstrap">Bootstrap</option>
+    </select>
+    <script>
+      let done = false;
+      document.addEventListener('readystatechange', () => {
+        if (!done) {
+          done = true;
+          setTimeout(() => {
+            const widget = createIvWidget('container', {
+              idToken: '',
+              steps: [
+                {
+                  nameTranslateKey: 'INFORMATION_STEP_TITLE',
+                  type: 'information'
+                },
+                {
+                  nameTranslateKey: 'ID_PICTURE_STEP_TITLE',
+                  overlay_type: 'face',
+                  type: 'picture'
+                },
+                {
+                  nameTranslateKey: 'ID_PICTURE_STEP_TITLE',
+                  overlay_type: 'card',
+                  type: 'picture'
+                }
+              ],
+              lang: {
+                en: IvWidget.lang.en,
+                fr: IvWidget.lang.fr
+              }
+            });
+
+            document
+              .getElementById('lang')
+              .addEventListener('change', event => {
+                widget.currentLang = event.target.value;
+              });
+
+            document.getElementById('theme').value = 'none';
+            document
+              .getElementById('theme')
+              .addEventListener('change', event => {
+                widget.theme =
+                  event.target.value === 'bootstrap'
+                    ? IvWidget.themes.bootstrap
+                    : {};
+              });
+
+            setTimeout(() => {
+              document.getElementById('theme').value = 'bootstrap';
+              widget.theme = IvWidget.themes.bootstrap;
+              document.getElementById('lang').value = 'fr';
+              widget.currentLang = 'fr';
+            }, 2000);
+          }, 1000);
+        }
+      });
+    </script>
+  </body>
 </html>

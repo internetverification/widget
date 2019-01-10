@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { of, empty, timer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,6 @@ export class StepDataService {
 
   submitStep(payload: any) {
     console.log(payload);
-    return of();
+    return timer(Math.random() * 10 * 1000);
   }
 }

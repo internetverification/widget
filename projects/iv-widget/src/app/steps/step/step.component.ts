@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Step } from '../../types';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { StepState } from '../../types';
 import { BaseStepComponent } from '../base-step.class';
 
 @Component({
@@ -9,7 +10,7 @@ import { BaseStepComponent } from '../base-step.class';
 })
 export class StepComponent extends BaseStepComponent implements OnInit {
   @Input()
-  step: Step;
+  step: StepState;
 
   constructor() {
     super();

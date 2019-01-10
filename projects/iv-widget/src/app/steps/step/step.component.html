@@ -1,15 +1,21 @@
-<div [ngSwitch]="step?.type">
-  <div *ngSwitchCase="'picture'">
-    <ivw-picture
-      (previousStep)="previousStep.next($event)"
-      (nextStep)="nextStep.next($event)"
-    ></ivw-picture>
+<div class="ivw-step-container" [ngSwitch]="step?.config?.type">
+  <div class="ivw-step-container-box" *ngSwitchCase="'picture'">
+    <ivw-mobile-layout>
+      <ivw-picture
+        (previousStep)="previousStep.next($event)"
+        (nextStep)="nextStep.next($event)"
+        (submitStep)="submitStep.next($event)"
+        [step]="step"
+      ></ivw-picture>
+    </ivw-mobile-layout>
   </div>
   <div *ngSwitchCase="'information'">
     <ivw-information
+      [step]="step"
       (previousStep)="previousStep.next($event)"
       (nextStep)="nextStep.next($event)"
+      (submitStep)="submitStep.next($event)"
     ></ivw-information>
   </div>
-  <div *ngSwitchDefault>{{ "INVALID_STEP_TYPE" | translate }}</div>
+  <div *ngSwitchDefault>{{ 'INVALID_STEP_TYPE' | translate }}</div>
 </div>
