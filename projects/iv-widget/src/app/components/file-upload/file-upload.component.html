@@ -1,0 +1,9 @@
+<div [ivwTheme]="'input.group'">
+  <label [ivwTheme]="'input.label'" [for]="label">{{ label }}</label>
+  <input
+    [ivwTheme]="['input.input', { 'input.inputError': hasError() }]"
+    type="file"
+    [name]="label"
+    (change)="fileChange($event)"
+  />
+</div>

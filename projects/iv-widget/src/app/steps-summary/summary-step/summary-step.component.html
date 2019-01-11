@@ -22,6 +22,7 @@
     <div *ngSwitchCase="'information'">
       <ivw-information [step]="step"></ivw-information>
     </div>
+    <div *ngSwitchCase="'file'"><ivw-file [step]="step"></ivw-file></div>
     <div *ngSwitchDefault>{{ 'INVALID_STEP_TYPE' | translate }}</div>
   </div>
 </div>

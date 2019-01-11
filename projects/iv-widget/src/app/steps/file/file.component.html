@@ -4,18 +4,7 @@
   [innerHTML]="step?.config?.headerTextTranslateKey | translate | trustedHtml"
 ></div>
 <form [formGroup]="formGroup">
-  <ivw-input
-    label="{{ 'EMAIL' | translate }}"
-    formControlName="email"
-  ></ivw-input>
-  <ivw-input
-    label="{{ 'FIRST_NAME' | translate }}"
-    formControlName="firstName"
-  ></ivw-input>
-  <ivw-input
-    label="{{ 'LAST_NAME' | translate }}"
-    formControlName="lastName"
-  ></ivw-input>
+  <ivw-file-upload formControlName="file"></ivw-file-upload>
 </form>
 <div
   *ngIf="step?.config?.footerTextTranslateKey"

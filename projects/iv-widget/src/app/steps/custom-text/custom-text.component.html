@@ -1,0 +1,9 @@
+<div
+  *ngIf="step?.config?.contentTextTranslateKey"
+  [innerHTML]="step?.config?.contentTextTranslateKey | translate | trustedHtml"
+></div>
+<div>
+  <ivw-button (click)="nextStep.next()">{{
+    'BTN_AGREE' | translate
+  }}</ivw-button>
+</div>

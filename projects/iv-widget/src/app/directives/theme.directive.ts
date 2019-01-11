@@ -3,7 +3,6 @@ import { ConfigService } from '../config.service';
 import { Theme } from '../types';
 import { oc } from 'ts-optchain';
 import { BehaviorSubject, combineLatest } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 
 @Directive({
   selector: '[ivwTheme]'

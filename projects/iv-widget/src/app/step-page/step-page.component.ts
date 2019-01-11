@@ -26,7 +26,10 @@ export class StepPageComponent implements OnInit {
   }
 
   public get currentStepId() {
-    return this.router.config.indexOf(this.activatedRoute.routeConfig);
+    return Math.max(
+      this.router.config.indexOf(this.activatedRoute.routeConfig),
+      0
+    );
   }
 
   public nextStep() {

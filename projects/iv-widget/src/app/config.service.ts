@@ -27,6 +27,18 @@ export class ConfigService {
     this._theme$.next(value);
   }
 
+  private _steps$: BehaviorSubject<
+    IvWidgetConfig['steps']
+  > = new BehaviorSubject(null);
+
+  public get steps() {
+    return this._steps$.value;
+  }
+
+  public set steps(value: IvWidgetConfig['steps']) {
+    this._steps$.next(value);
+  }
+
   private _lang$: BehaviorSubject<IvWidgetConfig['lang']> = new BehaviorSubject(
     null
   );
@@ -47,10 +59,10 @@ export class ConfigService {
     this.translationService.use(value);
   }
 
-  private _config$: ReplaySubject<IvWidgetConfig> = new ReplaySubject();
-  public get config$() {
-    return this._config$.asObservable();
-  }
+  // private _config$: ReplaySubject<IvWidgetConfig> = new ReplaySubject();
+  // public get config$() {
+  //   return this._config$.asObservable();
+  // }
 
   public get theme$() {
     return this._theme$.pipe(
@@ -85,29 +97,25 @@ export class ConfigService {
   }
 
   private initSteps() {
-    this.config$.pipe(pluck('steps')).subscribe((steps: Step[]) => {
+    this._steps$.subscribe((steps: Step[]) => {
       this.router.config.splice(0, this.router.config.length);
-      steps.forEach((step, i) => {
-        this.router.config.push({
-          path: i === 0 ? '' : `step_${i}`,
-          component: StepPageComponent,
-          data: step
+      if (Array.isArray(steps)) {
+        steps.forEach((step, i) => {
+          this.router.config.push({
+            path: i === 0 ? '' : `step_${i}`,
+            component: StepPageComponent,
+            data: step
+          });
         });
-      });
-
-      this.router.config.push({
-        path: 'ivw-summary',
-        component: SummaryPageComponent
-      });
+        this.router.config.push({
+          path: 'ivw-summary',
+          component: SummaryPageComponent
+        });
+        this.store.dispatch(new InitStepAction(steps));
+      }
 
       // FIXME: Hack to fix routing problem in angular element
       this.router.navigate(['']);
-      this.store.dispatch(new InitStepAction(steps));
-    });
-
-    // FIXME: Hack to fix routing problem in angular element
-    window.addEventListener('hashchange', () => {
-      this.router.navigate([window.location.hash.replace('#', '')]);
     });
   }
 
@@ -118,10 +126,16 @@ export class ConfigService {
   ) {
     this.initLangWatching();
     this.initSteps();
+
+    // FIXME: Hack to fix routing problem in angular element
+    window.addEventListener('hashchange', () => {
+      this.router.navigate([window.location.hash.replace('#', '')]);
+    });
   }
 
   public addConfig(config: IvWidgetConfig) {
-    this._config$.next(config);
+    // this._config$.next(config);
+    this.steps = config.steps;
     this.theme = config.theme;
     this.lang = config.lang;
   }

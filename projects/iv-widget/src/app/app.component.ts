@@ -65,6 +65,16 @@ export class AppComponent implements OnInit {
   }
 
   @Input()
+  get steps() {
+    return this.configService.steps;
+  }
+
+  set steps(value) {
+    console.log('ok2');
+    this.configService.steps = value;
+  }
+
+  @Input()
   get currentLang() {
     return this.configService.currentLang;
   }
@@ -96,7 +106,9 @@ export class AppComponent implements OnInit {
       return [
         ...bSteps,
         {
-          enabled: steps.every(s => oc(s).progress.state('BLANK') !== 'BLANK'),
+          enabled: steps
+            .filter(s => !s.config.hideInSummary)
+            .every(s => oc(s).progress.state('BLANK') !== 'BLANK'),
           state: 'BLANK'
         }
       ];

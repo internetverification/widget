@@ -1,7 +1,7 @@
+@import '../../../common';
+
 :host {
-  height: 100%;
-  width: 100%;
-  display: block;
+  @include fullSize();
 }
 
 .ivw-picture-step-container {
@@ -10,8 +10,6 @@
   width: 100%;
 
   .ivw-picture-video-container {
-    position: absolute;
-    top: 0;
     height: 100%;
     width: 100%;
     display: flex;

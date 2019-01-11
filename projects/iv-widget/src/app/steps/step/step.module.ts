@@ -5,6 +5,8 @@ import { InformationModule } from '../information/information.module';
 import { PictureModule } from '../picture/picture.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { MobileLayoutModule } from '../../components/mobile-layout/mobile-layout.module';
+import { FileModule } from '../file/file.module';
+import { CustomTextModule } from '../custom-text/custom-text.module';
 
 @NgModule({
   declarations: [StepComponent],
@@ -12,6 +14,8 @@ import { MobileLayoutModule } from '../../components/mobile-layout/mobile-layout
     CommonModule,
     InformationModule,
     PictureModule,
+    FileModule,
+    CustomTextModule,
     TranslateModule,
     MobileLayoutModule
   ],

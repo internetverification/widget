@@ -17,5 +17,21 @@
       (submitStep)="submitStep.next($event)"
     ></ivw-information>
   </div>
+  <div *ngSwitchCase="'file'">
+    <ivw-file
+      [step]="step"
+      (previousStep)="previousStep.next($event)"
+      (nextStep)="nextStep.next($event)"
+      (submitStep)="submitStep.next($event)"
+    ></ivw-file>
+  </div>
+  <div *ngSwitchCase="'custom-text'">
+    <ivw-custom-text
+      [step]="step"
+      (previousStep)="previousStep.next($event)"
+      (nextStep)="nextStep.next($event)"
+      (submitStep)="submitStep.next($event)"
+    ></ivw-custom-text>
+  </div>
   <div *ngSwitchDefault>{{ 'INVALID_STEP_TYPE' | translate }}</div>
 </div>

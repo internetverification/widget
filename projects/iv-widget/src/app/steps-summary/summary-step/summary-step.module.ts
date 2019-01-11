@@ -5,6 +5,7 @@ import { PictureModule } from '../picture/picture.module';
 import { InformationModule } from '../information/information.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeModule } from '../../theme/theme.module';
+import { FileModule } from '../file/file.module';
 
 @NgModule({
   declarations: [SummaryStepComponent],
@@ -13,6 +14,7 @@ import { ThemeModule } from '../../theme/theme.module';
     PictureModule,
     InformationModule,
     TranslateModule,
+    FileModule,
     ThemeModule
   ],
   exports: [SummaryStepComponent]

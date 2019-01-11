@@ -18,7 +18,7 @@ import { DeviceTypeService } from '../../device-type.service';
 })
 export class MobileLayoutComponent implements OnInit, OnDestroy {
   @ViewChild('template')
-  test: TemplateRef<any>;
+  template: TemplateRef<any>;
 
   portal: CdkPortal;
 
@@ -32,9 +32,9 @@ export class MobileLayoutComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (this.shouldRenderModal) {
       this.modalService.init(ModalOutletComponent);
-      this.modalService.attach(this.test);
+      this.modalService.attach(this.template);
     } else {
-      this.portal = new TemplatePortal(this.test, null);
+      this.portal = new TemplatePortal(this.template, null);
     }
   }
 
