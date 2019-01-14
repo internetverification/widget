@@ -1,14 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StepComponent } from './step.component';
+import { NgModule } from '@angular/core';
+
+import { MobileLayoutModule } from '../../components/mobile-layout/mobile-layout.module';
+import { SharedModule } from '../../shared/shared.module';
+import { CustomTextModule } from '../custom-text/custom-text.module';
+import { FileModule } from '../file/file.module';
 import { InformationModule } from '../information/information.module';
 import { PictureModule } from '../picture/picture.module';
-import { TranslateModule } from '@ngx-translate/core';
-import { MobileLayoutModule } from '../../components/mobile-layout/mobile-layout.module';
-import { FileModule } from '../file/file.module';
-import { CustomTextModule } from '../custom-text/custom-text.module';
-import { TrustedHtmlModule } from '../../pipes/trusted-html/trusted-html.module';
-import { ThemeModule } from '../../theme/theme.module';
+import { StepComponent } from './step.component';
 
 @NgModule({
   declarations: [StepComponent],
@@ -18,9 +17,7 @@ import { ThemeModule } from '../../theme/theme.module';
     PictureModule,
     FileModule,
     CustomTextModule,
-    TranslateModule,
-    TrustedHtmlModule,
-    ThemeModule,
+    SharedModule,
     MobileLayoutModule
   ],
   exports: [StepComponent]

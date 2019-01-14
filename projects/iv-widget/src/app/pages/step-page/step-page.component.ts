@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { SubmitStepAction } from '../state/store/actions/steps.actions';
+import { SubmitStepAction } from '../../state/store/actions/steps.actions';
 
 @Component({
   selector: 'ivw-step-page',

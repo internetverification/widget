@@ -5,16 +5,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TrustedHtmlModule } from '../../pipes/trusted-html/trusted-html.module';
 import { ButtonModule } from '../../components/button/button.module';
 import { ThemeModule } from '../../theme/theme.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [CustomTextComponent],
-  imports: [
-    CommonModule,
-    TranslateModule,
-    ButtonModule,
-    TrustedHtmlModule,
-    ThemeModule
-  ],
+  imports: [CommonModule, SharedModule],
   exports: [CustomTextComponent]
 })
 export class CustomTextModule {}

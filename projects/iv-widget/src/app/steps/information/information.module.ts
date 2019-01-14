@@ -8,13 +8,7 @@ import { ThemeModule } from '../../theme/theme.module';
 
 @NgModule({
   declarations: [InformationComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    ReactiveFormsModule,
-    TrustedHtmlModule,
-    ThemeModule
-  ],
+  imports: [CommonModule, SharedModule, ReactiveFormsModule],
   exports: [InformationComponent]
 })
 export class InformationModule {}

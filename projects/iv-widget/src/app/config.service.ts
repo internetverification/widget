@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { ReplaySubject, BehaviorSubject } from 'rxjs';
-import { pluck, map } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { isDefined } from './rxjs.utils';
 import { InitStepAction } from './state/store/actions/steps.actions';
-import { StepPageComponent } from './step-page/step-page.component';
+import { StepPageComponent } from './pages/step-page/step-page.component';
 import { IvWidgetConfig, Step } from './types';
-import { SummaryPageComponent } from './summary-page/summary-page.component';
+import { SummaryPageComponent } from './pages/summary-page/summary-page.component';
 
 @Injectable({
   providedIn: 'root'
@@ -58,11 +58,6 @@ export class ConfigService {
   public set currentLang(value: string) {
     this.translationService.use(value);
   }
-
-  // private _config$: ReplaySubject<IvWidgetConfig> = new ReplaySubject();
-  // public get config$() {
-  //   return this._config$.asObservable();
-  // }
 
   public get theme$() {
     return this._theme$.pipe(

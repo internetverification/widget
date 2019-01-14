@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { SharedModule } from '../../shared/shared.module';
 import { InformationComponent } from './information.component';
-import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [InformationComponent],
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, SharedModule],
   exports: [InformationComponent]
 })
 export class InformationModule {}

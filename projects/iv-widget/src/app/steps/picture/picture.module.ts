@@ -7,7 +7,7 @@ import { SvgOverlayComponent } from './svg-overlay/svg-overlay.component';
 
 @NgModule({
   declarations: [PictureComponent, SvgOverlayComponent],
-  imports: [CommonModule, SharedModule, ThemeModule],
+  imports: [CommonModule, SharedModule],
   exports: [PictureComponent]
 })
 export class PictureModule {}

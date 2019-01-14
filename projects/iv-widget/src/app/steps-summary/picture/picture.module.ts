@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { SharedModule } from '../../shared/shared.module';
 import { PictureComponent } from './picture.component';
-import { ThemeModule } from '../../theme/theme.module';
 
 @NgModule({
   declarations: [PictureComponent],
-  imports: [CommonModule, ThemeModule],
+  imports: [CommonModule, SharedModule],
   exports: [PictureComponent]
 })
 export class PictureModule {}
