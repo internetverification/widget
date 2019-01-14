@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { InformationComponent } from './information.component';
 import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { Spectator, createTestComponentFactory } from '@netbasal/spectator';
 
 @Component({
   selector: 'ivw-input',
@@ -11,21 +12,10 @@ import { TranslateModule } from '@ngx-translate/core';
 class MockInputComponent {}
 
 describe('InformationComponent', () => {
-  let component: InformationComponent;
-  let fixture: ComponentFixture<InformationComponent>;
+  let spectator: Spectator<InformationComponent>;
+  const createComponent = createTestComponentFactory(InformationComponent);
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [InformationComponent, MockInputComponent],
-      imports: [TranslateModule.forRoot()]
-    }).compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(InformationComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(() => (spectator = createComponent()));
 
   it('should create', () => {
     expect(component).toBeTruthy();

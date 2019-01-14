@@ -80,7 +80,7 @@
             "polyfills": "projects/iv-widget/src/polyfills.ts",
             "tsConfig": "projects/iv-widget/tsconfig.spec.json",
             "karmaConfig": "projects/iv-widget/karma.conf.js",
-            "styles": ["projects/iv-widget/src/styles.css"],
+            "styles": ["projects/iv-widget/src/styles.scss"],
             "scripts": [],
             "assets": [
               "projects/iv-widget/src/favicon.ico",

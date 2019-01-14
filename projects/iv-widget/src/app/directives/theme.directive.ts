@@ -1,8 +1,21 @@
-import { Directive, Renderer2, ElementRef, Input, OnInit } from '@angular/core';
-import { ConfigService } from '../config.service';
-import { Theme } from '../types';
+import {
+  Directive,
+  Renderer2,
+  ElementRef,
+  Input,
+  OnInit,
+  Inject
+} from '@angular/core';
 import { oc } from 'ts-optchain';
-import { BehaviorSubject, combineLatest } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+
+export const THEME_PROVIDER_TOKEN = 'theme_provider';
+
+type Theme = any;
+
+export interface ThemeProvider {
+  theme$: Observable<Theme>;
+}
 
 @Directive({
   selector: '[ivwTheme]'
@@ -11,7 +24,8 @@ export class ThemeDirective implements OnInit {
   constructor(
     private renderer: Renderer2,
     private hostElement: ElementRef,
-    private configService: ConfigService
+    @Inject(THEME_PROVIDER_TOKEN)
+    private configService: ThemeProvider
   ) {}
 
   private addedClass: string[] = [];

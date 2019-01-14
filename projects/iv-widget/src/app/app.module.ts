@@ -15,6 +15,8 @@ import { StoreModule } from './state/store/store.module';
 import { SummaryStepModule } from './steps-summary/summary-step/summary-step.module';
 import { StepModule } from './steps/step/step.module';
 import { IvWidgetConfig } from './types';
+import { THEME_PROVIDER_TOKEN } from './directives/theme.directive';
+import { ConfigService } from './config.service';
 
 @NgModule({
   declarations: [AppComponent, StepPageComponent, SummaryPageComponent],
@@ -29,7 +31,10 @@ import { IvWidgetConfig } from './types';
     SharedModule,
     TranslateModule.forRoot()
   ],
-  providers: [DeviceTypeService],
+  providers: [
+    DeviceTypeService,
+    { provide: THEME_PROVIDER_TOKEN, useExisting: ConfigService }
+  ],
   entryComponents: [AppComponent, StepPageComponent, SummaryPageComponent]
   // bootstrap: [AppComponent]
 })

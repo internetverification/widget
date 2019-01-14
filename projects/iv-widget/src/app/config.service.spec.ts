@@ -14,16 +14,4 @@ describe('ConfigService', () => {
     const service: ConfigService = TestBed.get(ConfigService);
     expect(service).toBeTruthy();
   });
-
-  it('should emit config when addConfig', done => {
-    const service: ConfigService = TestBed.get(ConfigService);
-    const config: any = {};
-
-    service.config$.subscribe(result => {
-      expect<any>(result).toBe(config);
-      done();
-    });
-
-    service.addConfig(config);
-  });
 });
