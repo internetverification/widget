@@ -8,20 +8,29 @@
     <meta charset="utf-8" />
     <title>IvWidget</title>
     <base href="/" />
-
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <script type="text/javascript" src="assets/bootstrapTheme.js"></script>
+    <script
+      type="text/javascript"
+      src="assets/themes/bootstrapTheme.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/themes/niceAdminTheme.js"
+    ></script>
     <script type="text/javascript" src="assets/defaultConfig.js"></script>
     <script type="text/javascript" src="assets/scenario1.js"></script>
     <script type="text/javascript" src="assets/scenario2.js"></script>
+    <script type="text/javascript" src="assets/customgreen.js"></script>
     <script type="text/javascript" src="assets/lang/en.js"></script>
     <script type="text/javascript" src="assets/lang/fr.js"></script>
+    <script
+      type="text/javascript"
+      src="assets/themes/customgreenTheme.js"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway"
+      rel="stylesheet"
+    />
     <style>
       #container {
         margin: 0 auto;
@@ -45,12 +54,15 @@
       </select>
       <select id="theme">
         <option value="none">None</option>
+        <option value="customGreen">Custom Green</option>
         <option value="bootstrap">Bootstrap</option>
+        <option value="niceAdmin">Nice Admin</option>
       </select>
       <select id="workflow">
+        <option value="customGreen">Custom Green</option>
         <option value="default">Default</option>
-        <option value="scenario1">Scenario 1</option>
-        <option value="scenario2">Scenario 2</option>
+        <option value="scenario1">ID verify</option>
+        <option value="scenario2">ID verify + Address</option>
       </select>
     </div>
     <script>
@@ -62,7 +74,7 @@
           setTimeout(() => {
             const widget = createIvWidget('container', {
               idToken: '',
-              steps: IvWidget.config.default,
+              steps: IvWidget.config.customGreen,
               lang: {
                 en: IvWidget.lang.en,
                 fr: IvWidget.lang.fr
@@ -79,10 +91,20 @@
             document
               .getElementById('theme')
               .addEventListener('change', event => {
-                widget.theme =
-                  event.target.value === 'bootstrap'
-                    ? IvWidget.themes.bootstrap
-                    : {};
+                switch (event.target.value) {
+                  case 'none':
+                    widget.theme = {};
+                    break;
+                  case 'customGreen':
+                    widget.theme = IvWidget.themes.customGreen;
+                  case 'bootstrap':
+                    widget.theme = IvWidget.themes.bootstrap;
+                    break;
+                  case 'niceAdmin':
+                    console.log('Nice Admin');
+                    widget.theme = IvWidget.themes.niceAdmin;
+                    break;
+                }
               });
 
             document.getElementById('workflow').value = 'default';
@@ -94,6 +116,9 @@
                   case 'default':
                     widget.steps = IvWidget.config.default;
                     break;
+                  case 'default':
+                    widget.steps = IvWidget.config.customGreen;
+                    break;
                   case 'scenario1':
                     widget.steps = IvWidget.config.scenario1;
                     break;
@@ -104,8 +129,8 @@
               });
 
             setTimeout(() => {
-              document.getElementById('theme').value = 'bootstrap';
-              widget.theme = IvWidget.themes.bootstrap;
+              document.getElementById('theme').value = 'customGreen';
+              widget.theme = IvWidget.themes.customGreen;
               document.getElementById('lang').value = 'fr';
               widget.currentLang = 'fr';
             }, 2000);

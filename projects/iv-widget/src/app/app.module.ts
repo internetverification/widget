@@ -16,6 +16,8 @@ import { SummaryPageComponent } from './summary-page/summary-page.component';
 import { SummaryStepModule } from './steps-summary/summary-step/summary-step.module';
 import { WidgetStepsBarModule } from './components/widget-steps-bar/widget-steps-bar.module';
 import { ButtonModule } from './components/button/button.module';
+import { ThemeModule } from './theme/theme.module';
+import { TrustedHtmlModule } from './pipes/trusted-html/trusted-html.module';
 
 @NgModule({
   declarations: [AppComponent, StepPageComponent, SummaryPageComponent],
@@ -28,6 +30,8 @@ import { ButtonModule } from './components/button/button.module';
     ButtonModule,
     StoreModule,
     EffectsModule,
+    ThemeModule,
+    TrustedHtmlModule,
     TranslateModule.forRoot()
   ],
   providers: [DeviceTypeService],

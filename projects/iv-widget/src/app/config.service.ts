@@ -71,6 +71,15 @@ export class ConfigService {
           {
             summary: {
               step: {
+                details: {
+                  file: {
+                    style: `
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    `
+                  }
+                },
                 bar: {
                   style: `
                     width: 100%;

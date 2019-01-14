@@ -3,10 +3,11 @@
   (ivwResizeChange)="resize.next($event)"
   class="ivw-picture-step-container"
 >
+  <div class="ivw-picture-placeholder"></div>
   <div class="ivw-picture-video-container">
     <video
       class="ivw-picture-video-container-video"
-      [ivwHidden]="state !== CAPTURE_STATE"
+      [ivwHidden]="state !== CAPTURE_STATE || !(isVideoReady$ | async)"
       autoplay
       #videoElement
     ></video>
@@ -24,15 +25,23 @@
         [type]="step?.config?.overlay_type"
       ></ivw-svg-overlay>
     </div>
-    <div class="ivw-buttons-bar ivw-bottom-buttons-bar">
-      <ivw-button *ngIf="state === PREVIEW_STATE" (click)="submit()">{{
-        'NEXT' | translate
-      }}</ivw-button>
-      <ivw-button *ngIf="state === CAPTURE_STATE" (click)="capture()">{{
-        'CAPTURE' | translate
-      }}</ivw-button>
+    <div
+      [ivwTheme]="'steps.picture.buttons.container'"
+      class="ivw-buttons-bar ivw-bottom-buttons-bar"
+    >
+      <ivw-button
+        [disabled]="!(isVideoReady$ | async)"
+        *ngIf="state === CAPTURE_STATE"
+        (click)="capture()"
+        >{{
+          step?.config?.captureTranslateKey || 'CAPTURE' | translate
+        }}</ivw-button
+      >
       <ivw-button *ngIf="state === PREVIEW_STATE" (click)="restart()">{{
         'RETAKE_PHOTO' | translate
+      }}</ivw-button>
+      <ivw-button *ngIf="state === PREVIEW_STATE" (click)="submit()">{{
+        'PICTURE_STEP_NEXT' | translate
       }}</ivw-button>
     </div>
   </div>

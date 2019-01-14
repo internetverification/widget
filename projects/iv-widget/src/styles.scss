@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+
+.nice-admin {
+  @import './themes/nice-admin-theme/style.scss';
+}
+
+.bootstrap-theme {
+  @import './themes/nice-admin-theme/bootstrap/bootstrap.scss';
+}
+
+.customgreen {
+  @import './themes/customgreen/variable.scss';
+  @import './themes/nice-admin-theme/bootstrap/bootstrap.scss';
+
+  * {
+    font-family: Raleway;
+  }
+
+  h1 {
+    font-weight: bolder;
+  }
+
+  .subtitle {
+    margin: 10px 0;
+  }
+
+  ivw-widget-steps-bar {
+    display: none;
+  }
+
+  p {
+    line-height: 1.6em;
+  }
+
+  .button-container {
+    padding: 0px;
+    ivw-button {
+      width: 100%;
+      display: flex;
+      bottom: 10px;
+      position: relative;
+      justify-content: space-around;
+      margin: 0 5px;
+      .btn {
+        flex: 1;
+        max-height: 40px;
+      }
+      // margin: 20px 0;
+    }
+  }
+}

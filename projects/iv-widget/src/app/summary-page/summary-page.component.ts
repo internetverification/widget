@@ -12,7 +12,15 @@ export class SummaryPageComponent implements OnInit {
 
   public steps$ = this.store.select('steps').pipe(
     map(steps => {
-      return Object.keys(steps).map(key => steps[key]);
+      return Object.keys(steps)
+        .map(key => steps[key])
+        .filter(step => !step.config.hideInSummary);
+    })
+  );
+
+  public isReady$ = this.steps$.pipe(
+    map(steps => {
+      return steps.every(s => s.progress.state === 'SUCCESS');
     })
   );
 

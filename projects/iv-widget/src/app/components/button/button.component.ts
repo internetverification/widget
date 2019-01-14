@@ -1,4 +1,12 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
+} from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -11,6 +19,8 @@ export class ButtonComponent implements OnInit {
   click = new EventEmitter();
 
   private _disabled$ = new BehaviorSubject(false);
+
+  public disabled$ = this._disabled$.asObservable();
 
   @Input()
   public get disabled() {

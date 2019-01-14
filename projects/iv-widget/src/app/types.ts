@@ -1,6 +1,8 @@
 export interface PictureStep {
   nameTranslateKey: string;
   type: 'picture';
+  subtitleTranslateKey?: string;
+  captureTranslateKey?: string;
   overlay_type: 'card' | 'face';
   hideInSummary?: boolean;
 }
@@ -9,6 +11,7 @@ export interface FileStep {
   nameTranslateKey: string;
   headerTextTranslateKey?: string;
   footerTextTranslateKey?: string;
+  subtitleTranslateKey?: string;
   type: 'file';
   hideInSummary?: boolean;
 }
@@ -17,6 +20,7 @@ export interface InformationStep {
   nameTranslateKey: string;
   headerTextTranslateKey?: string;
   footerTextTranslateKey?: string;
+  subtitleTranslateKey?: string;
   type: 'information';
   hideInSummary?: boolean;
 }
@@ -24,6 +28,7 @@ export interface InformationStep {
 export interface CustomTextStep {
   nameTranslateKey: string;
   contentTextTranslateKey?: string;
+  subtitleTranslateKey?: string;
   type: 'custom-text';
   hideInSummary?: boolean;
 }

@@ -1,3 +1,8 @@
+<h2
+  [ivwTheme]="'steps.subtitle'"
+  *ngIf="step?.config?.subtitleTranslateKey"
+  [innerHTML]="step?.config?.subtitleTranslateKey | translate | trustedHtml"
+></h2>
 <div class="ivw-step-container" [ngSwitch]="step?.config?.type">
   <div class="ivw-step-container-box" *ngSwitchCase="'picture'">
     <ivw-mobile-layout>

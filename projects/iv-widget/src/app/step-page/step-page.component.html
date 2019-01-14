@@ -1,6 +1,8 @@
+<h1 [ivwTheme]="'global.title'" [innerHTML]="'GLOBAL_TITLE' | translate"></h1>
 <ivw-step
   (nextStep)="nextStep()"
   (previousStep)="previousStep()"
   (submitStep)="submitStep($event)"
   [step]="stepState$ | async"
 ></ivw-step>
+<div [innerHTML]="'GLOBAL_FOOTER_TEXT' | translate | trustedHtml"></div>

@@ -1,9 +1,8 @@
 <div *ngFor="let step of (steps$ | async)">
-  <ivw-summary-step
-    *ngIf="!step?.config?.hideInSummary"
-    [step]="step"
-  ></ivw-summary-step>
+  <ivw-summary-step [step]="step"></ivw-summary-step>
 </div>
-<div>
-  <ivw-button>{{ 'CONFIRM_SUMMARY' | translate }}</ivw-button>
+<div [ivwTheme]="'summary.buttonContainer'">
+  <ivw-button [disabled]="!(isReady$ | async)">{{
+    'CONFIRM_SUMMARY' | translate
+  }}</ivw-button>
 </div>

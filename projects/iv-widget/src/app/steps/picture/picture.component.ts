@@ -4,7 +4,8 @@ import {
   ViewChild,
   ElementRef,
   Input,
-  OnDestroy
+  OnDestroy,
+  ChangeDetectorRef
 } from '@angular/core';
 import { BaseStepComponent } from '../base-step.class';
 import { CameraService } from './camera.service';
@@ -50,11 +51,17 @@ export class PictureComponent extends BaseStepComponent
 
   public resize = new ReplaySubject<{ width: number; height: number }>();
 
-  constructor(private cameraService: CameraService) {
+  public isVideoReady$ = new BehaviorSubject(false);
+
+  constructor(
+    private cameraService: CameraService,
+    private _cd: ChangeDetectorRef
+  ) {
     super();
   }
 
   ngOnInit() {
+    this.isVideoReady$.subscribe(console.log);
     const image = oc(this.step).payload.image();
     if (image) {
       this.state = this.PREVIEW_STATE;
@@ -88,6 +95,8 @@ export class PictureComponent extends BaseStepComponent
             .getRenderer(this.videoElement.nativeElement, null)
             .pipe(
               tap(renderer => renderer.render()),
+              tap(() => this.isVideoReady$.next(true)),
+              tap(() => this._cd.detectChanges()),
               switchMap(renderer => {
                 return this._captureSubject.pipe(
                   tap(() => {
@@ -97,7 +106,8 @@ export class PictureComponent extends BaseStepComponent
                 );
               }),
               // We stop the media stream after the picture is taken
-              take(1)
+              take(1),
+              tap(() => this.isVideoReady$.next(false))
             );
         }),
         takeUntil(this.destroySubject$)

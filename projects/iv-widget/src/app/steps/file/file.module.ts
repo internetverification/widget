@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { TrustedHtmlModule } from '../../pipes/trusted-html/trusted-html.module';
 import { ButtonModule } from '../../components/button/button.module';
+import { ThemeModule } from '../../theme/theme.module';
 
 @NgModule({
   declarations: [FileComponent],
@@ -15,7 +16,8 @@ import { ButtonModule } from '../../components/button/button.module';
     ButtonModule,
     ReactiveFormsModule,
     TranslateModule,
-    TrustedHtmlModule
+    TrustedHtmlModule,
+    ThemeModule
   ],
   exports: [FileComponent]
 })

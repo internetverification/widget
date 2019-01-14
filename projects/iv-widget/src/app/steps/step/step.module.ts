@@ -7,6 +7,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MobileLayoutModule } from '../../components/mobile-layout/mobile-layout.module';
 import { FileModule } from '../file/file.module';
 import { CustomTextModule } from '../custom-text/custom-text.module';
+import { TrustedHtmlModule } from '../../pipes/trusted-html/trusted-html.module';
+import { ThemeModule } from '../../theme/theme.module';
 
 @NgModule({
   declarations: [StepComponent],
@@ -17,6 +19,8 @@ import { CustomTextModule } from '../custom-text/custom-text.module';
     FileModule,
     CustomTextModule,
     TranslateModule,
+    TrustedHtmlModule,
+    ThemeModule,
     MobileLayoutModule
   ],
   exports: [StepComponent]

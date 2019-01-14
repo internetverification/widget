@@ -6,7 +6,7 @@ var IvWidget = IvWidget || {};
   config.default = [
     {
       nameTranslateKey: 'INFORMATION_STEP_TITLE',
-      contentTextTranslateKey: 'ENTER_YOUR_INFORMATION',
+      contentTextTranslateKey: 'FIRST_STEP_CONTENT',
       type: 'custom-text',
       hideInSummary: true
     },

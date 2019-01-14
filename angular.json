@@ -22,7 +22,7 @@
               "projects/iv-widget/src/favicon.ico",
               "projects/iv-widget/src/assets"
             ],
-            "styles": ["projects/iv-widget/src/styles.css"],
+            "styles": ["projects/iv-widget/src/styles.scss"],
             "scripts": [
               {
                 "input": "node_modules/document-register-element/build/document-register-element.js"
@@ -121,125 +121,6 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "projects/iv-widget-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      }
-    },
-    "widget-demo": {
-      "root": "projects/widget-demo/",
-      "sourceRoot": "projects/widget-demo/src",
-      "projectType": "application",
-      "prefix": "demo",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/widget-demo",
-            "index": "projects/widget-demo/src/index.html",
-            "main": "projects/widget-demo/src/main.ts",
-            "polyfills": "projects/widget-demo/src/polyfills.ts",
-            "tsConfig": "projects/widget-demo/tsconfig.app.json",
-            "assets": [
-              "projects/widget-demo/src/favicon.ico",
-              "projects/widget-demo/src/assets"
-            ],
-            "styles": ["projects/widget-demo/src/styles.css"],
-            "scripts": ["dist/iv-widget.js"]
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "projects/widget-demo/src/environments/environment.ts",
-                  "with": "projects/widget-demo/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "300kb",
-                  "maximumError": "5mb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "widget-demo:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "widget-demo:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "widget-demo:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/widget-demo/src/test.ts",
-            "polyfills": "projects/widget-demo/src/polyfills.ts",
-            "tsConfig": "projects/widget-demo/tsconfig.spec.json",
-            "karmaConfig": "projects/widget-demo/karma.conf.js",
-            "styles": ["projects/widget-demo/src/styles.css"],
-            "scripts": [],
-            "assets": [
-              "projects/widget-demo/src/favicon.ico",
-              "projects/widget-demo/src/assets"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/widget-demo/tsconfig.app.json",
-              "projects/widget-demo/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      }
-    },
-    "widget-demo-e2e": {
-      "root": "projects/widget-demo-e2e/",
-      "projectType": "application",
-      "prefix": "",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/widget-demo-e2e/protractor.conf.js",
-            "devServerTarget": "widget-demo:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "widget-demo:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "projects/widget-demo-e2e/tsconfig.e2e.json",
             "exclude": ["**/node_modules/**"]
           }
         }

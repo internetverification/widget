@@ -1,5 +1,5 @@
 <button
-  [disabled]="disabled"
+  [disabled]="disabled$ | async"
   [ivwTheme]="'button'"
   (click)="click.next($event)"
 >

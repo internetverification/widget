@@ -21,6 +21,8 @@
   *ngIf="step?.config?.footerTextTranslateKey"
   [innerHTML]="step?.config?.footerTextTranslateKey | translate | trustedHtml"
 ></div>
-<ivw-button [disabled]="formGroup.invalid" (click)="submit()">{{
-  'NEXT' | translate
-}}</ivw-button>
+<div [ivwTheme]="'steps.information.buttons.container'">
+  <ivw-button [disabled]="formGroup.invalid" (click)="submit()">{{
+    'NEXT' | translate
+  }}</ivw-button>
+</div>
