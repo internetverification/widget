@@ -41,6 +41,12 @@ export type LangMap = any;
 export interface IvWidgetConfig {
   idToken: string;
   steps: Step[];
+  config?: {
+    apiUrl: string;
+    tenantId: string;
+    serviceId: string;
+    submissionId: string;
+  };
   theme?: Theme;
   lang?: {
     [key: string]: LangMap;
@@ -54,14 +60,16 @@ export type StepState =
   | CustomTextState;
 
 export interface BaseStepState {
-  config: Step;
+  config: WithRoute<Step>;
   progress: {
     state: 'BLANK' | 'PROCESSING' | 'SUCCESS' | 'REJECTED';
   };
 }
 
+export type WithRoute<T> = T & { id: number; route: string };
+
 export interface InformationStepState extends BaseStepState {
-  config: InformationStep;
+  config: WithRoute<InformationStep>;
   payload?: {
     email?: string;
     firstName?: string;
@@ -70,20 +78,20 @@ export interface InformationStepState extends BaseStepState {
 }
 
 export interface FileStepState extends BaseStepState {
-  config: FileStep;
+  config: WithRoute<FileStep>;
   payload?: {
     file: { name: string; content: string };
   };
 }
 
 export interface PictureStepState extends BaseStepState {
-  config: PictureStep;
+  config: WithRoute<PictureStep>;
   payload?: {
     image: string;
   };
 }
 
 export interface CustomTextState extends BaseStepState {
-  config: CustomTextStep;
+  config: WithRoute<CustomTextStep>;
   payload: undefined;
 }

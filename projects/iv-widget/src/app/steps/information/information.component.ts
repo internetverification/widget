@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { BaseStepComponent } from '../base-step.class';
-import { StepState, InformationStepState } from '../../types';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { oc } from 'ts-optchain';
+import { InformationStepState } from '../../types';
+import { BaseStepComponent } from '../base-step.class';
 
 @Component({
   selector: 'ivw-information',

@@ -57,11 +57,18 @@ export class AppModule {
 // Add global function to allow other application to initialize the component
 (window as any).createIvWidget = function(
   idSelector: string,
-  config: IvWidgetConfig = { idToken: '', steps: [] }
+  config: IvWidgetConfig = {
+    idToken: '',
+    steps: [],
+    config: { apiUrl: '', tenantId: '', serviceId: '', submissionId: '' }
+  }
 ) {
   const el = document.getElementById(idSelector);
   const widget: any = document.createElement('iv-widget');
-  widget.config = config;
+  widget.steps = config.steps;
+  widget.lang = config.lang;
+  widget.theme = config.theme;
+  widget.config = config.config;
   el.appendChild(widget);
   return widget;
 };

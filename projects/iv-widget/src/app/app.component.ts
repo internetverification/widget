@@ -13,40 +13,6 @@ import { oc } from 'ts-optchain';
 })
 export class AppComponent implements OnInit {
   @Input()
-  config: IvWidgetConfig = {
-    idToken: '',
-    steps: [
-      {
-        nameTranslateKey: 'INFORMATION_STEP_TITLE',
-        type: 'information'
-      },
-      {
-        nameTranslateKey: 'ID_PICTURE_STEP_TITLE',
-        type: 'picture',
-        overlay_type: 'card'
-      }
-    ],
-    lang: {
-      en: {
-        EMAIL: 'Email',
-        FIRST_NAME: 'First name',
-        LAST_NAME: 'Last name',
-        ENTER_YOUR_INFORMATION: 'Enter your information',
-        INVALID_STEP_TYPE: 'Invalid step type',
-        NEXT: 'Next'
-      },
-      fr: {
-        ENTER_YOUR_INFORMATION: 'Entrez vos informations',
-        INVALID_STEP_TYPE: `Ce type détape n'est pas supporté`,
-        NEXT: 'Suivant',
-        EMAIL: 'Courriel',
-        FIRST_NAME: 'Prénom',
-        LAST_NAME: 'Nom'
-      }
-    }
-  };
-
-  @Input()
   get theme() {
     return this.configService.theme;
   }
@@ -71,6 +37,15 @@ export class AppComponent implements OnInit {
 
   set steps(value) {
     this.configService.steps = value;
+  }
+
+  @Input()
+  get config() {
+    return this.configService.config;
+  }
+
+  set config(value) {
+    this.configService.config = value;
   }
 
   @Input()
@@ -124,7 +99,5 @@ export class AppComponent implements OnInit {
     private store: Store<{}>
   ) {}
 
-  ngOnInit() {
-    this.configService.addConfig(this.config);
-  }
+  ngOnInit() {}
 }

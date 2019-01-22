@@ -57,9 +57,7 @@ var IvWidget = IvWidget || {};
         <p class="text-justify">La vérification de votre âge est requise pour protéger les mineurs d'un accès non autorisé à nos produits.
         Nous défendons les mineurs d'acheter nos produits. Notre système compare la pièce d'identité d'un visteurs avec leur photo en temps réel pour établir l'âge de celui-ci.
         Nous attention particulière démontre le plus haut niveau de responsabilité envers les clients, parents et les autorités.
-        </p> 
+        </p>
     `
   };
 })(IvWidget);
-
-exports.en = IvWidget.lang.en;

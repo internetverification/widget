@@ -27,6 +27,18 @@ export class ConfigService {
     this._theme$.next(value);
   }
 
+  private _config$: BehaviorSubject<
+    IvWidgetConfig['config']
+  > = new BehaviorSubject(null);
+
+  public get config() {
+    return this._config$.value;
+  }
+
+  public set config(value: IvWidgetConfig['config']) {
+    this._config$.next(value);
+  }
+
   private _steps$: BehaviorSubject<
     IvWidgetConfig['steps']
   > = new BehaviorSubject(null);
@@ -104,9 +116,14 @@ export class ConfigService {
     this._steps$.subscribe((steps: Step[]) => {
       this.router.config.splice(0, this.router.config.length);
       if (Array.isArray(steps)) {
-        steps.forEach((step, i) => {
+        const stepsWithRoute = steps.map((x, i) => ({
+          ...x,
+          id: i,
+          route: i === 0 ? '' : `step_${i}`
+        }));
+        stepsWithRoute.forEach((step, i) => {
           this.router.config.push({
-            path: i === 0 ? '' : `step_${i}`,
+            path: step.route,
             component: StepPageComponent,
             data: step
           });
@@ -115,7 +132,7 @@ export class ConfigService {
           path: 'ivw-summary',
           component: SummaryPageComponent
         });
-        this.store.dispatch(new InitStepAction(steps));
+        this.store.dispatch(new InitStepAction(stepsWithRoute));
       }
 
       // FIXME: Hack to fix routing problem in angular element

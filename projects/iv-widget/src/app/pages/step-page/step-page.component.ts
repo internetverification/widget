@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { SubmitStepAction } from '../../state/store/actions/steps.actions';
+import { StepState } from '../../types';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'ivw-step-page',
@@ -33,12 +35,28 @@ export class StepPageComponent implements OnInit {
   }
 
   public nextStep() {
-    const i = this.currentStepId;
-    const next = this.router.config[i + 1];
-    this.router.navigate([next.path]);
+    let i = this.currentStepId;
+    this.stepState$.pipe(take(1)).subscribe((steps: StepState[]) => {
+      let next = steps[i];
+      while (
+        !(i < this.router.config.length - 1) &&
+        next.progress.state === 'SUCCESS'
+      ) {
+        next = steps[++i];
+      }
+      this.router.navigate([this.router.config[i + 1].path]);
+    });
   }
 
   public submitStep(stepPayload) {
-    this.store.dispatch(new SubmitStepAction(this.currentStepId, stepPayload));
+    this.stepState$.pipe(take(1)).subscribe((stepState: StepState) => {
+      this.store.dispatch(
+        new SubmitStepAction(
+          this.currentStepId,
+          stepState.config.type,
+          stepPayload
+        )
+      );
+    });
   }
 }

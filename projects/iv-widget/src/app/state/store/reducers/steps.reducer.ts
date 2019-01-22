@@ -2,6 +2,18 @@ import { ActionTypes, StepAction } from '../actions/steps.actions';
 
 export const initialState = {};
 
+function cloneObject<T>(obj: T) {
+  const clone: T = {} as T;
+  for (const i in obj) {
+    if (obj[i] !== null && typeof obj[i] === 'object') {
+      clone[i] = cloneObject(obj[i]);
+    } else {
+      clone[i] = obj[i];
+    }
+  }
+  return clone as T;
+}
+
 const updateStep = (step, stepUpdate: any) => {
   return Object.assign({}, step, stepUpdate);
 };
@@ -9,20 +21,29 @@ const updateStep = (step, stepUpdate: any) => {
 const addProgress = (step, progress) => {
   const prevLogs = step.progress.logs || [];
   prevLogs.push(progress);
-  const newStep = { ...step };
+  const newStep = cloneObject(step);
   newStep.progress.logs = prevLogs;
   newStep.progress.state = progress.state;
+  return newStep;
+};
+
+const addStepError = (step, error) => {
+  const newStep = cloneObject(step);
+  newStep.progress.state = 'ERROR';
   return newStep;
 };
 
 export function stepsReducer(state = initialState, action: StepAction) {
   switch (action.type) {
     case ActionTypes.PROGRESS_UPDATE:
-      const progressUpdateStep = state[action.stepId];
-      const uStep = addProgress(progressUpdateStep, action.payload);
       return {
         ...state,
-        [action.stepId]: uStep
+        [action.stepId]: addProgress(state[action.stepId], action.payload)
+      };
+    case ActionTypes.SUBMIT_STEP_ERROR:
+      return {
+        ...state,
+        [action.stepId]: addStepError(state[action.stepId], action.error)
       };
     case ActionTypes.SUBMIT_STEP:
       const step = state[action.stepId];

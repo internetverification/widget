@@ -1,11 +1,13 @@
 <div [ivwTheme]="'summary.step.container'">
   <div
+    [routerLink]="['..', step?.config?.route]"
     [ivwTheme]="{
       'summary.step.bar': true,
       'summary.step.barBlank': step?.progress?.state === 'BLANK',
       'summary.step.barProgress': step?.progress?.state === 'PROCESSING',
       'summary.step.barSuccess': step?.progress?.state === 'SUCCESS',
-      'summary.step.barRejected': step?.progress?.state === 'REJECTED'
+      'summary.step.barRejected': step?.progress?.state === 'REJECTED',
+      'summary.step.barError': step?.progress?.state === 'ERROR'
     }"
   >
     <div>{{ step?.config?.nameTranslateKey | translate }}</div>
@@ -15,7 +17,8 @@
         'summary.step.iconBlank': step?.progress?.state === 'BLANK',
         'summary.step.iconProgress': step?.progress?.state === 'PROCESSING',
         'summary.step.iconSuccess': step?.progress?.state === 'SUCCESS',
-        'summary.step.iconRejected': step?.progress?.state === 'REJECTED'
+        'summary.step.iconRejected': step?.progress?.state === 'REJECTED',
+        'summary.step.iconError': step?.progress?.state === 'ERROR'
       }"
     ></div>
   </div>

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Observable } from 'rxjs';
-import { map, mergeMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, mergeMap, catchError } from 'rxjs/operators';
 
 import { StepDataService } from '../../data/step-data.service';
 import {
   ActionTypes,
   ProgressUpdateAction,
-  SubmitStepAction
+  SubmitStepAction,
+  SubmitStepErrorAction
 } from '../store/actions/steps.actions';
 import { Action } from '@ngrx/store';
 
@@ -17,9 +18,12 @@ export class StepsEffects {
   submitStep$: Observable<Action> = this.actions$.pipe(
     ofType(ActionTypes.SUBMIT_STEP),
     mergeMap((action: SubmitStepAction) =>
-      this.stepData.submitStep(action.payload).pipe(
+      this.stepData.submitStep(action.stepType, action.payload).pipe(
         map(() => {
           return new ProgressUpdateAction(action.stepId, { state: 'SUCCESS' });
+        }),
+        catchError(error => {
+          return of(new SubmitStepErrorAction(action.stepId, { error }));
         })
       )
     )
