@@ -70,7 +70,6 @@ export class AppComponent implements OnInit {
   }
 
   set steps(value) {
-    console.log('ok2');
     this.configService.steps = value;
   }
 

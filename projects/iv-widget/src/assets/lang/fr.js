@@ -18,6 +18,7 @@ var IvWidget = IvWidget || {};
     NEXT: 'Suivant',
     PICTURE_STEP_NEXT: 'Soumettre la photo',
     RETAKE_PHOTO: 'Reprendre la photo',
+    SWITCH_CAMERA: 'Changer de camera',
 
     INFORMATION_STEP_TITLE: 'Information',
     ID_PICTURE_STEP_TITLE: `Photo de pièce d'identité`,
@@ -60,3 +61,5 @@ var IvWidget = IvWidget || {};
     `
   };
 })(IvWidget);
+
+exports.en = IvWidget.lang.en;

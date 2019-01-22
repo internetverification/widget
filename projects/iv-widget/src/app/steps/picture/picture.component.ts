@@ -1,28 +1,29 @@
 import {
+  ChangeDetectorRef,
   Component,
-  OnInit,
-  ViewChild,
   ElementRef,
   Input,
   OnDestroy,
-  ChangeDetectorRef
+  OnInit,
+  ViewChild
 } from '@angular/core';
-import { BaseStepComponent } from '../base-step.class';
-import { CameraService } from './camera.service';
-import { Subject, BehaviorSubject, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, Subject, of } from 'rxjs';
 import {
-  tap,
+  debounceTime,
+  distinctUntilKeyChanged,
+  filter,
+  startWith,
   switchMap,
   take,
-  debounceTime,
-  distinctUntilChanged,
-  distinctUntilKeyChanged,
-  startWith,
   takeUntil,
-  filter
+  tap,
+  map
 } from 'rxjs/operators';
-import { PictureStepState } from '../../types';
 import { oc } from 'ts-optchain';
+import { PictureStepState } from '../../types';
+import { BaseStepComponent } from '../base-step.class';
+import { CameraService } from './camera.service';
+import { DeviceTypeService } from '../../device-type.service';
 
 @Component({
   selector: 'ivw-picture',
@@ -34,6 +35,8 @@ export class PictureComponent extends BaseStepComponent
   public readonly CAPTURE_STATE = 'capture';
   public readonly PREVIEW_STATE = 'preview';
   public state = this.CAPTURE_STATE;
+
+  private cameraOrientation$ = new BehaviorSubject('user');
 
   private destroySubject$ = new Subject();
 
@@ -53,15 +56,19 @@ export class PictureComponent extends BaseStepComponent
 
   public isVideoReady$ = new BehaviorSubject(false);
 
+  public isMobile$ = this.deviceType
+    .getPlatformType$()
+    .pipe(map(type => type === 'Mobile'));
+
   constructor(
     private cameraService: CameraService,
+    private deviceType: DeviceTypeService,
     private _cd: ChangeDetectorRef
   ) {
     super();
   }
 
   ngOnInit() {
-    this.isVideoReady$.subscribe(console.log);
     const image = oc(this.step).payload.image();
     if (image) {
       this.state = this.PREVIEW_STATE;
@@ -90,9 +97,26 @@ export class PictureComponent extends BaseStepComponent
             distinctUntilKeyChanged('height')
           );
         }),
-        switchMap(({ width, height }) => {
+        switchMap(() => {
+          return this.isMobile$.pipe(
+            switchMap(isMobile => {
+              if (isMobile) {
+                return this.cameraOrientation$.pipe(
+                  map(facingMode => {
+                    return {
+                      facingMode
+                    };
+                  })
+                );
+              } else {
+                return of({});
+              }
+            })
+          );
+        }),
+        switchMap(options => {
           return this.cameraService
-            .getRenderer(this.videoElement.nativeElement, null)
+            .getRenderer(this.videoElement.nativeElement, options)
             .pipe(
               tap(renderer => renderer.render()),
               tap(() => this.isVideoReady$.next(true)),
@@ -128,6 +152,12 @@ export class PictureComponent extends BaseStepComponent
       image: this.canvas.nativeElement.toDataURL('image/png')
     });
     this.nextStep.next();
+  }
+
+  switchCamera() {
+    this.cameraOrientation$.next(
+      this.cameraOrientation$.value === 'user' ? 'environment' : 'user'
+    );
   }
 
   ngOnDestroy(): void {

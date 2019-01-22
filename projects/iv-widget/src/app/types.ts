@@ -1,6 +1,7 @@
 export interface PictureStep {
   nameTranslateKey: string;
   type: 'picture';
+  allow_camera_switch?: string;
   subtitleTranslateKey?: string;
   captureTranslateKey?: string;
   overlay_type: 'card' | 'face';

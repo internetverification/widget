@@ -64,6 +64,16 @@ var IvWidget = IvWidget || {};
         }
       },
       picture: {
+        switchCamera: {
+          button: {
+            class: 'btn btn-primary'
+          }
+        },
+        topButtons: {
+          container: {
+            class: 'top-button-container'
+          }
+        },
         buttons: {
           container: {
             style: alignCenter,
@@ -87,6 +97,9 @@ var IvWidget = IvWidget || {};
         `
       },
       step: {
+        icon: {
+          class: 'icon'
+        },
         container: {
           class: 'card'
         },

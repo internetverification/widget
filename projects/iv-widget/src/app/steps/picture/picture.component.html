@@ -2,6 +2,7 @@
   ivwResize
   (ivwResizeChange)="resize.next($event)"
   class="ivw-picture-step-container"
+  [class.ivwIsMobile]="isMobile$ | async"
 >
   <div class="ivw-picture-placeholder"></div>
   <div class="ivw-picture-video-container">
@@ -18,7 +19,15 @@
     ></canvas>
   </div>
   <div class="ivw-picture-overlay">
-    <div class="ivw-buttons-bar ivw-top-buttons-bar"></div>
+    <div
+      class="ivw-buttons-bar ivw-top-buttons-bar"
+      [ivwTheme]="'steps.picture.topButtons.container'"
+    >
+      <ivw-camera-switcher
+        *ngIf="step?.config?.allow_camera_switch && state === CAPTURE_STATE"
+        (cameraSwitched)="switchCamera($event)"
+      ></ivw-camera-switcher>
+    </div>
     <div class="ivw-svg-overlay">
       <ivw-svg-overlay
         [ivwHidden]="state !== CAPTURE_STATE"

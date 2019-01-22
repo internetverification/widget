@@ -22,6 +22,7 @@ var IvWidget = IvWidget || {};
       subtitleTranslateKey: 'ID_PICTURE_SUBTITLE',
       captureTranslateKey: 'ID_PICTURE_CAPTURE',
       overlay_type: 'card',
+      allow_camera_switch: true,
       type: 'picture'
     }
   ];

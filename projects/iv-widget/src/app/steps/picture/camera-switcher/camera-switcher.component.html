@@ -1,0 +1,11 @@
+<div *ngIf="(isMobile$ | async)">
+  <button
+    (click)="cameraSwitched.emit()"
+    [ivwTheme]="'steps.picture.switchCamera.button'"
+  >
+    <i [ivwTheme]="'steps.picture.switchCamera.icon'"></i>
+    <span [ivwTheme]="'steps.picture.switchCamera.text'">{{
+      'SWITCH_CAMERA' | translate
+    }}</span>
+  </button>
+</div>

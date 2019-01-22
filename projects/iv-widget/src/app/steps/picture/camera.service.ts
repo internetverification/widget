@@ -44,7 +44,7 @@ export class CameraService {
 
   public getRenderer(
     videoElement: HTMLVideoElement,
-    options: { width: number; height: number }
+    options: { width?: number; height?: number; facingMode?: { exact: string } }
   ) {
     return this.getUserMedia(options).pipe(
       map(mediaStream => {

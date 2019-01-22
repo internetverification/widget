@@ -18,6 +18,7 @@ var IvWidget = IvWidget || {};
     NEXT: 'Next',
     PICTURE_STEP_NEXT: 'Upload photo',
     RETAKE_PHOTO: 'Retake photo',
+    SWITCH_CAMERA: 'Switch camera',
 
     INFORMATION_STEP_TITLE: 'Information',
     ID_PICTURE_STEP_TITLE: 'Id picture',

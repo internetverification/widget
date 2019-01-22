@@ -9,7 +9,15 @@
     }"
   >
     <div>{{ step?.config?.nameTranslateKey | translate }}</div>
-    <div>{{ step?.progress?.state }}</div>
+    <div
+      [ivwTheme]="{
+        'summary.step.icon': true,
+        'summary.step.iconBlank': step?.progress?.state === 'BLANK',
+        'summary.step.iconProgress': step?.progress?.state === 'PROCESSING',
+        'summary.step.iconSuccess': step?.progress?.state === 'SUCCESS',
+        'summary.step.iconRejected': step?.progress?.state === 'REJECTED'
+      }"
+    ></div>
   </div>
   <div
     [ivwTheme]="'summary.step.details.container'"
