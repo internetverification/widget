@@ -5,7 +5,7 @@ import { ConfigService } from '../config.service';
 
 interface StepDocument {
   step: string;
-  type: 'png/base64';
+  type: 'jpeg/base64';
   data: string;
 }
 
@@ -40,15 +40,15 @@ export class StepDataService {
       case 'picture':
         const { image } = payload;
         return this.submitDocument({
-          data: image.replace('data:image/png;base64,', ''),
-          type: 'png/base64',
+          data: image.replace('data:image/jpeg;base64,', ''),
+          type: 'jpeg/base64',
           step: '1'
         });
       case 'file':
         const { file } = payload;
         return this.submitDocument({
           data: file,
-          type: 'png/base64',
+          type: 'jpeg/base64',
           step: '1'
         });
       case 'information':

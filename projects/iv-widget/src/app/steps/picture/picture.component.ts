@@ -149,7 +149,7 @@ export class PictureComponent extends BaseStepComponent
 
   submit() {
     this.submitStep.next({
-      image: this.canvas.nativeElement.toDataURL('image/png')
+      image: this.canvas.nativeElement.toDataURL('image/jpeg')
     });
     this.nextStep.next();
   }

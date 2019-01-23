@@ -83,6 +83,6 @@ export class Renderer {
       this.videoElement.clientWidth,
       this.videoElement.clientHeight
     );
-    return canvas.toDataURL('image/png');
+    return canvas.toDataURL('image/jpeg');
   }
 }
