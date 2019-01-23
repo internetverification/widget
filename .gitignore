@@ -4,6 +4,10 @@
 /dist
 /tmp
 /out-tsc
+/projects/iv-widget-lib/
+/.vscode/
+.bitmap
+bit.json
 
 # dependencies
 /node_modules

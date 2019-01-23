@@ -1,11 +1,12 @@
 {
-  "name": "iv-widget",
+  "name": "@iv/iv-widget",
   "version": "0.0.0",
   "files": [
     "dist/lang",
     "dist/themes",
     "dist/iv-widget.js"
   ],
+  "main": "dist/iv-widget.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
