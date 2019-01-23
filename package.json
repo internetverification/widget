@@ -1,13 +1,17 @@
 {
   "name": "@iv/iv-widget",
   "version": "0.0.0",
+  "files": [
+    "dist/lang",
+    "dist/themes",
+    "dist/iv-widget.js"
+  ],
   "main": "dist/iv-widget.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "build:widget": "ng build --project=iv-widget --prod --output-hashing=none && gulp",
-    "postinstall": "npm install && npm run build:widget",
     "extract": "ngx-translate-extract --input ./projects/iv-widget --output ./projects/iv-widget/src/assets/i18n/empty.json --clean --sort --format namespaced-json",
     "gulp": "gulp -f ./gulpfile.js",
     "test": "ng test",
