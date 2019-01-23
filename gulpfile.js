@@ -13,13 +13,6 @@ gulp.task('concat', function() {
     .pipe(gulp.dest('./dist/'));
 });
 
-// gulp.task('assets', function() {
-//   return gulp
-//     .src(['./projects/iv-widget/src/assets/bootstrapTheme.js'])
-//     .pipe(concat('bootstrapTheme.js'))
-//     .pipe(gulp.dest('./dist/'));
-// });
-
 gulp.task('lang', function() {
   return gulp
     .src(['./projects/iv-widget/src/assets/lang/*.js'])
