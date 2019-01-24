@@ -119,7 +119,7 @@ export class ConfigService {
         const stepsWithRoute = steps.map((x, i) => ({
           ...x,
           id: i,
-          route: i === 0 ? '' : `step_${i}`
+          route: `step_${i}`
         }));
         stepsWithRoute.forEach((step, i) => {
           this.router.config.push({
@@ -136,7 +136,7 @@ export class ConfigService {
       }
 
       // FIXME: Hack to fix routing problem in angular element
-      this.router.navigate(['']);
+      this.router.navigate(['step_0']);
     });
   }
 

@@ -14,6 +14,8 @@ import { Action } from '@ngrx/store';
 
 @Injectable()
 export class StepsEffects {
+  constructor(private stepData: StepDataService, private actions$: Actions) {}
+
   @Effect()
   submitStep$: Observable<Action> = this.actions$.pipe(
     ofType(ActionTypes.SUBMIT_STEP),
@@ -28,6 +30,4 @@ export class StepsEffects {
       )
     )
   );
-
-  constructor(private stepData: StepDataService, private actions$: Actions) {}
 }
