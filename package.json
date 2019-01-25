@@ -4,9 +4,10 @@
   "files": [
     "dist/lang",
     "dist/themes",
-    "dist/iv-widget.js"
+    "dist/iv-widget.js",
+    "bundle.js"
   ],
-  "main": "dist/iv-widget.js",
+  "main": "bundle.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
