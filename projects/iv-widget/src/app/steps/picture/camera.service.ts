@@ -17,6 +17,12 @@ export class CameraService {
   }
 
   private getUserMedia(options) {
+    window.navigator.getUserMedia =
+      (window.navigator as any).getUserMedia ||
+      (window.navigator as any).webkitGetUserMedia ||
+      (window.navigator as any).mozGetUserMedia ||
+      (window.navigator as any).msGetUserMedia;
+
     const mediaStreams = [];
     const obs: Observable<MediaStream> = Observable.create(
       (observer: Observer<MediaStream>) => {
