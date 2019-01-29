@@ -49,8 +49,8 @@
     <div id="container"></div>
     <div id="select-buttons">
       <select id="lang">
-        <option value="fr">Français</option>
         <option value="en">English</option>
+        <option value="fr">Français</option>
       </select>
       <select id="theme">
         <option value="none">None</option>
@@ -70,77 +70,63 @@
       document.addEventListener('readystatechange', () => {
         if (!done) {
           done = true;
-          console.log(IvWidget.config.default);
-          setTimeout(() => {
-            const widget = createIvWidget('container', {
-              idToken: '',
-              steps: IvWidget.config.customGreen,
-              lang: {
-                en: IvWidget.lang.en,
-                fr: IvWidget.lang.fr
-              },
-              config: {
-                apiUrl: '',
-                tenantId: 'test',
-                serviceId: 'test',
-                submissionId: '0d22c86a-2cbf-4544-81f2-2e0e7021fb4b'
+          const widget = createIvWidget('container', {
+            idToken: '',
+            steps: IvWidget.config.customGreen,
+            lang: {
+              en: IvWidget.lang.en,
+              fr: IvWidget.lang.fr
+            },
+            config: {
+              apiUrl: '',
+              tenantId: 'test',
+              serviceId: 'test',
+              submissionId: '0d22c86a-2cbf-4544-81f2-2e0e7021fb4b'
+            }
+          });
+
+          document.getElementById('lang').addEventListener('change', event => {
+            widget.currentLang = event.target.value;
+          });
+
+          document.getElementById('theme').value = 'none';
+          document.getElementById('theme').addEventListener('change', event => {
+            switch (event.target.value) {
+              case 'none':
+                widget.theme = {};
+                break;
+              case 'customGreen':
+                widget.theme = IvWidget.themes.customGreen;
+              case 'bootstrap':
+                widget.theme = IvWidget.themes.bootstrap;
+                break;
+              case 'niceAdmin':
+                console.log('Nice Admin');
+                widget.theme = IvWidget.themes.niceAdmin;
+                break;
+            }
+          });
+
+          document.getElementById('workflow').value = 'default';
+          document
+            .getElementById('workflow')
+            .addEventListener('change', event => {
+              console.log('ok');
+              switch (event.target.value) {
+                case 'default':
+                  widget.steps = IvWidget.config.default;
+                  break;
+                case 'default':
+                  widget.steps = IvWidget.config.customGreen;
+                  break;
+                case 'scenario1':
+                  widget.steps = IvWidget.config.scenario1;
+                  break;
+                case 'scenario2':
+                  widget.steps = IvWidget.config.scenario2;
+                  break;
               }
             });
-
-            document
-              .getElementById('lang')
-              .addEventListener('change', event => {
-                widget.currentLang = event.target.value;
-              });
-
-            document.getElementById('theme').value = 'none';
-            document
-              .getElementById('theme')
-              .addEventListener('change', event => {
-                switch (event.target.value) {
-                  case 'none':
-                    widget.theme = {};
-                    break;
-                  case 'customGreen':
-                    widget.theme = IvWidget.themes.customGreen;
-                  case 'bootstrap':
-                    widget.theme = IvWidget.themes.bootstrap;
-                    break;
-                  case 'niceAdmin':
-                    console.log('Nice Admin');
-                    widget.theme = IvWidget.themes.niceAdmin;
-                    break;
-                }
-              });
-
-            document.getElementById('workflow').value = 'default';
-            document
-              .getElementById('workflow')
-              .addEventListener('change', event => {
-                console.log('ok');
-                switch (event.target.value) {
-                  case 'default':
-                    widget.steps = IvWidget.config.default;
-                    break;
-                  case 'default':
-                    widget.steps = IvWidget.config.customGreen;
-                    break;
-                  case 'scenario1':
-                    widget.steps = IvWidget.config.scenario1;
-                    break;
-                  case 'scenario2':
-                    widget.steps = IvWidget.config.scenario2;
-                    break;
-                }
-              });
-
-            setTimeout(() => {
-              document.getElementById('theme').value = 'customGreen';
-              widget.theme = IvWidget.themes.customGreen;
-              document.getElementById('lang').value = 'fr';
-              widget.currentLang = 'fr';
-            }, 2000);
-          }, 2000);
         }
       });
     </script>
