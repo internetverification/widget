@@ -21,7 +21,7 @@ jobs:
             - ./node_modules
       - run:
           name: test
-          command: ng e2e
+          command: npm run e2e
 
 workflows:
   version: 2
