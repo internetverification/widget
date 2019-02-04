@@ -14,7 +14,6 @@ import { EffectsModule } from './state/effects/effects.module';
 import { StoreModule } from './state/store/store.module';
 import { SummaryStepModule } from './steps-summary/summary-step/summary-step.module';
 import { StepModule } from './steps/step/step.module';
-import { IvWidgetConfig } from './types';
 import { THEME_PROVIDER_TOKEN } from './directives/theme.directive';
 import { ConfigService } from './config.service';
 
@@ -41,7 +40,12 @@ import { ConfigService } from './config.service';
 export class AppModule {
   constructor(private injector: Injector) {}
 
+  public customElement = null;
+
   ngDoBootstrap() {
+    const isRegistered = function(name) {
+      return document.createElement(name).constructor !== HTMLElement;
+    };
     const strategyFactory = new ElementZoneStrategyFactory(
       AppComponent,
       this.injector
@@ -50,25 +54,10 @@ export class AppModule {
       injector: this.injector,
       strategyFactory
     });
-    customElements.define('iv-widget', el);
+    this.customElement = el;
+    if (!isRegistered('iv-widget')) {
+      customElements.define('iv-widget', el);
+    }
+    return el;
   }
 }
-
-// Add global function to allow other application to initialize the component
-(window as any).createIvWidget = function(
-  idSelector: string,
-  config: IvWidgetConfig = {
-    idToken: '',
-    steps: [],
-    config: { apiUrl: '', tenantId: '', serviceId: '', submissionId: '' }
-  }
-) {
-  const el = document.getElementById(idSelector);
-  const widget: any = document.createElement('iv-widget');
-  widget.steps = config.steps;
-  widget.lang = config.lang;
-  widget.theme = config.theme;
-  widget.config = config.config;
-  el.appendChild(widget);
-  return widget;
-};

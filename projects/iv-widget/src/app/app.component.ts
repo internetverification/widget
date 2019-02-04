@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { IvWidgetConfig, StepState } from './types';
 import { ConfigService } from './config.service';
 import { Router, ActivatedRoute, NavigationEnd, Route } from '@angular/router';
@@ -11,7 +11,7 @@ import { oc } from 'ts-optchain';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   @Input()
   get theme() {
     return this.configService.theme;
@@ -100,4 +100,8 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
+
+  ngOnDestroy(): void {
+    this.configService.destroy();
+  }
 }

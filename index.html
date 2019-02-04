@@ -7,9 +7,12 @@
       crossorigin="anonymous"
     />
     <script type="text/javascript" src="./dist/iv-widget.js"></script>
-    <script type="text/javascript" src="./dist/bootstrapTheme.js"></script>
-    <script type="text/javascript" src="./dist/fr.js"></script>
-    <script type="text/javascript" src="./dist/en.js"></script>
+    <script
+      type="text/javascript"
+      src="./dist/themes/bootstrapTheme.js"
+    ></script>
+    <script type="text/javascript" src="./dist/lang/fr.js"></script>
+    <script type="text/javascript" src="./dist/lang/en.js"></script>
   </head>
   <body>
     <div id="container"></div>
@@ -23,8 +26,8 @@
               idToken: '',
               steps: [{ type: 'information' }, { type: 'picture' }],
               lang: {
-                en: IvWidget.lang.en,
-                fr: IvWidget.lang.fr
+                en: window.IvWidget.lang.en,
+                fr: window.IvWidget.lang.fr
               },
               theme: IvWidget.themes.bootstrap
             });

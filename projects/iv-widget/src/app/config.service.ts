@@ -103,6 +103,14 @@ export class ConfigService {
     );
   }
 
+  private listener = (() => {
+    const path = location.hash.replace('#', '');
+    const isPartOfWidget = this.router.config.find(x => x === path);
+    if (isPartOfWidget) {
+      this.router.navigate([path]);
+    }
+  }).bind(this);
+
   private initLangWatching() {
     this._lang$.pipe(isDefined).subscribe(lang => {
       Object.entries(lang).forEach(([key, values]) => {
@@ -133,10 +141,13 @@ export class ConfigService {
           component: SummaryPageComponent
         });
         this.store.dispatch(new InitStepAction(stepsWithRoute));
-      }
 
-      // FIXME: Hack to fix routing problem in angular element
-      this.router.navigate(['step_0']);
+        // FIXME: Hack to fix routing problem in angular element
+        setTimeout(
+          () => this.router.navigate([this.router.config[0].path]),
+          10
+        );
+      }
     });
   }
 
@@ -149,15 +160,16 @@ export class ConfigService {
     this.initSteps();
 
     // FIXME: Hack to fix routing problem in angular element
-    window.addEventListener('hashchange', () => {
-      this.router.navigate([window.location.hash.replace('#', '')]);
-    });
+    window.addEventListener('hashchange', this.listener);
   }
 
   public addConfig(config: IvWidgetConfig) {
-    // this._config$.next(config);
     this.steps = config.steps;
     this.theme = config.theme;
     this.lang = config.lang;
+  }
+
+  public destroy() {
+    window.removeEventListener('hashchange', this.listener);
   }
 }

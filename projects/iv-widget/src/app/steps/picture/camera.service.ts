@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, Observer, from } from 'rxjs';
-import { map, finalize, tap } from 'rxjs/operators';
+import { from, Observable, Observer, Subject } from 'rxjs';
+import { finalize, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,18 +18,18 @@ export class CameraService {
 
   private getUserMedia(options) {
     const mediaStreams = [];
-    const obs: Observable<MediaStream> = Observable.create(
+    const obs: Subject<MediaStream> = Observable.create(
       (observer: Observer<MediaStream>) => {
-        window.navigator.getUserMedia(
-          {
+        window.navigator.mediaDevices
+          .getUserMedia({
             video: options,
             audio: false
-          },
-          stream => observer.next(stream),
-          error => observer.error(error)
-        );
+          })
+          .then(stream => observer.next(stream))
+          .catch(err => observer.error(err));
       }
     );
+
     return obs.pipe(
       tap(stream => {
         mediaStreams.push(stream);

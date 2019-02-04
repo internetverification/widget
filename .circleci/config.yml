@@ -1,0 +1,30 @@
+version: 2
+
+defaults: &defaults
+  working_directory: ~/iv-widget
+  docker:
+    - image: circleci/node:10-browsers-legacy
+
+jobs:
+  widget-test:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install npm dependencies
+          command: npm ci
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: test
+          command: npm run e2e
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - widget-test
