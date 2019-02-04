@@ -66,11 +66,11 @@
       </select>
     </div>
     <script>
-      let done = false;
-      document.addEventListener('readystatechange', () => {
+      var done = false;
+      document.addEventListener('readystatechange', function() {
         if (!done) {
           done = true;
-          const widget = createIvWidget('container', {
+          var widget = createIvWidget('container', {
             idToken: '',
             steps: IvWidget.config.customGreen,
             lang: {
@@ -85,32 +85,36 @@
             }
           });
 
-          document.getElementById('lang').addEventListener('change', event => {
-            widget.currentLang = event.target.value;
-          });
+          document
+            .getElementById('lang')
+            .addEventListener('change', function(event) {
+              widget.currentLang = event.target.value;
+            });
 
           document.getElementById('theme').value = 'none';
-          document.getElementById('theme').addEventListener('change', event => {
-            switch (event.target.value) {
-              case 'none':
-                widget.theme = {};
-                break;
-              case 'customGreen':
-                widget.theme = IvWidget.themes.customGreen;
-              case 'bootstrap':
-                widget.theme = IvWidget.themes.bootstrap;
-                break;
-              case 'niceAdmin':
-                console.log('Nice Admin');
-                widget.theme = IvWidget.themes.niceAdmin;
-                break;
-            }
-          });
+          document
+            .getElementById('theme')
+            .addEventListener('change', function(event) {
+              switch (event.target.value) {
+                case 'none':
+                  widget.theme = {};
+                  break;
+                case 'customGreen':
+                  widget.theme = IvWidget.themes.customGreen;
+                case 'bootstrap':
+                  widget.theme = IvWidget.themes.bootstrap;
+                  break;
+                case 'niceAdmin':
+                  console.log('Nice Admin');
+                  widget.theme = IvWidget.themes.niceAdmin;
+                  break;
+              }
+            });
 
           document.getElementById('workflow').value = 'default';
           document
             .getElementById('workflow')
-            .addEventListener('change', event => {
+            .addEventListener('change', function(event) {
               console.log('ok');
               switch (event.target.value) {
                 case 'default':

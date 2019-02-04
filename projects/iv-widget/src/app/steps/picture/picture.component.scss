@@ -44,13 +44,18 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 
     .ivw-svg-overlay {
       display: flex;
       flex-direction: column;
       justify-content: center;
       flex: 1;
+      max-height: 300px;
       padding: 3rem;
+      @-moz-document url-prefix() {
+        padding: 0 !important;
+      }
     }
 
     .ivw-buttons-bar {
@@ -58,14 +63,6 @@
       padding: 0 1rem;
       display: flex;
       justify-content: space-between;
-    }
-
-    .ivw-bottom-buttons-bar {
-      // margin-top: 3rem;
-    }
-
-    .ivw-bottom-buttons-bar {
-      // margin-bottom: 3rem;
     }
   }
 }
