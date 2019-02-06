@@ -42,6 +42,8 @@ The theme configuration can be used to add inline styles or class to almost all 
 
 There is a few predefined theme which add classes according to popular css framework such as bootstrap
 
+[See the list of keys](./THEMING.md)
+
 ## Lang
 
 The lang configuration is used to define languages that can be used by the widget
@@ -86,6 +88,8 @@ There is 4 possbile steps type
 - File
 - Information
 - Picture
+
+[More detail](./WORKFLOW.md)
 
 # IvWidget Development
 
