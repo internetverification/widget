@@ -7,7 +7,9 @@
   <div class="ivw-picture-placeholder"></div>
   <div class="ivw-picture-video-container">
     <video
-      class="ivw-picture-video-container-video"
+      class="ivw-picture-video-container-video {{
+        (shouldMirror$ | async) ? 'mirror' : ''
+      }}"
       [ivwHidden]="state !== CAPTURE_STATE || !(isVideoReady$ | async)"
       autoplay
       playsinline

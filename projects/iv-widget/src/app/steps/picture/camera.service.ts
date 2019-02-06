@@ -46,9 +46,13 @@ export class CameraService {
     videoElement: HTMLVideoElement,
     options: { width?: number; height?: number; facingMode?: { exact: string } }
   ) {
+    const shouldMirror =
+      options && options.facingMode && options.facingMode.exact
+        ? options.facingMode.exact !== 'environment'
+        : true;
     return this.getUserMedia(options).pipe(
       map(mediaStream => {
-        return new Renderer(videoElement, mediaStream);
+        return new Renderer(videoElement, mediaStream, shouldMirror);
       })
     );
   }
@@ -57,7 +61,8 @@ export class CameraService {
 export class Renderer {
   constructor(
     private videoElement: HTMLVideoElement,
-    private mediaStream: MediaStream
+    private mediaStream: MediaStream,
+    private mirror = true
   ) {}
 
   render() {
@@ -76,6 +81,10 @@ export class Renderer {
     const ctx = canvas.getContext('2d');
     canvas.width = this.videoElement.clientWidth;
     canvas.height = this.videoElement.clientHeight;
+    if (this.mirror) {
+      ctx.translate(this.videoElement.clientWidth, 0);
+      ctx.scale(-1, 1);
+    }
     ctx.drawImage(
       this.videoElement,
       0,

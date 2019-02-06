@@ -30,6 +30,12 @@
       max-width: 100%;
     }
 
+    /* Mirror the image */
+    .mirror {
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+    }
+
     @media screen and (orientation: portrait) {
       &-video {
         width: 100%;
@@ -37,9 +43,15 @@
     }
   }
 
+  .ivw-picture-video-container-canvas {
+    z-index: 1;
+    position: relative;
+  }
+
   .ivw-picture-overlay {
     position: absolute;
     top: 0;
+    z-index: 2;
     height: 100%;
     width: 100%;
     display: flex;
@@ -63,6 +75,10 @@
       padding: 0 1rem;
       display: flex;
       justify-content: space-between;
+    }
+
+    .ivw-top-buttons-bar {
+      padding-top: 1rem;
     }
   }
 }

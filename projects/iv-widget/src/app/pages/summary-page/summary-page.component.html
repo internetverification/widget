@@ -1,6 +1,8 @@
+<div [innerHTML]="'SUMMARY_HEADER_TEXT' | translate | trustedHtml"></div>
 <div *ngFor="let step of (steps$ | async)">
   <ivw-summary-step [step]="step"></ivw-summary-step>
 </div>
+<div [innerHTML]="'SUMMARY_FOOTER_TEXT' | translate | trustedHtml"></div>
 <div [ivwTheme]="'summary.buttonContainer'">
   <ivw-button [disabled]="!(isReady$ | async)">{{
     'CONFIRM_SUMMARY' | translate
