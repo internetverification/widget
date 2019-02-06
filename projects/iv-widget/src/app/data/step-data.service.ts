@@ -30,7 +30,7 @@ export class StepDataService {
   constructor(private httpClient: HttpClient, private config: ConfigService) {}
 
   private get apiEndpoint() {
-    return `${this.config.config.apiUrl}/${this.config.config.tenantId}/${
+    return `${this.config.config.apiUrl || ''}/${this.config.config.tenantId}/${
       this.config.config.serviceId
     }/submissions/${this.config.config.submissionId}`;
   }
