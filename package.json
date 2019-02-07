@@ -1,12 +1,14 @@
 {
-  "name": "@iv/iv-widget",
-  "version": "0.0.0",
+  "name": "@internetverification/widget",
+  "version": "0.0.1",
   "files": [
-    "dist/lang",
-    "dist/themes",
-    "dist/iv-widget.js"
+    "public/lang",
+    "public/themes",
+    "public/iv-widget.js",
+    "public/index.js",
+    "index.js"
   ],
-  "main": "dist/iv-widget.js",
+  "main": "index.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -14,11 +16,21 @@
     "build:widget": "ng build --project=iv-widget --prod --output-hashing=none && gulp",
     "extract": "ngx-translate-extract --input ./projects/iv-widget --output ./projects/iv-widget/src/assets/i18n/empty.json --clean --sort --format namespaced-json",
     "gulp": "gulp -f ./gulpfile.js",
+    "prepare:npm": "npm run build:widget && npm run rollup && npm run copy:readme",
+    "copy:readme": "cp README.md ./public",
+    "rollup": "npm run rollup:widget && npm run rollup:lang:* && npm run rollup:theme:*",
+    "rollup:widget": "rollup main.js --format umd --name 'IvWidget' --file public/index.js --extend",
+    "rollup:lang:*": "npm run rollup:lang:en && npm run rollup:lang:fr",
+    "rollup:lang:en": "rollup projects/iv-widget/src/assets/lang/en.js --format umd --name 'IvWidget.lang.en' --file public/lang/en.js",
+    "rollup:lang:fr": "rollup projects/iv-widget/src/assets/lang/fr.js --format umd --name 'IvWidget.lang.fr' --file public/lang/fr.js",
+    "rollup:theme:*": "npm run rollup:theme:bootstrap && npm run rollup:theme:customGreen && npm run rollup:theme:niceAdmin",
+    "rollup:theme:bootstrap": "rollup projects/iv-widget/src/assets/themes/bootstrapTheme.js --format umd --name 'IvWidget.theme.bootstrap' --file public/theme/bootstrap.js",
+    "rollup:theme:customGreen": "rollup projects/iv-widget/src/assets/themes/customgreenTheme.js --format umd --name 'IvWidget.theme.customGreen' --file public/theme/customGreen.js",
+    "rollup:theme:niceAdmin": "rollup projects/iv-widget/src/assets/themes/niceAdminTheme.js --format umd --name 'IvWidget.theme.niceAdmin' --file public/theme/niceAdmin.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.11.0",
     "@angular-devkit/build-ng-packagr": "~0.11.0",

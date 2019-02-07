@@ -8,6 +8,8 @@
 /.vscode/
 .bitmap
 bit.json
+index.js
+/public
 
 # dependencies
 /node_modules

@@ -1,103 +1,96 @@
-var IvWidget = IvWidget || {};
-
-(function(ivWidget) {
-  var themes = ivWidget.themes || {};
-  ivWidget.themes = themes;
-
-  const alignEnd = `
+const alignEnd = `
   width: 100%;
   display: flex;
   justify-content: flex-end;
   `;
 
-  const alignCenter = `
+const alignCenter = `
   width: 100%;
   display: flex;
   justify-content: center;
   `;
 
-  themes.niceAdmin = {
-    widget: {
-      container: {
-        class: 'nice-admin'
-      }
+export default {
+  widget: {
+    container: {
+      class: 'nice-admin'
+    }
+  },
+  input: {
+    group: {
+      class: 'form-group'
     },
     input: {
-      group: {
-        class: 'form-group'
-      },
-      input: {
-        class: 'form-control'
-      },
-      inputErrorText: {
-        class: 'text-danger'
-      }
+      class: 'form-control'
     },
-    button: {
-      class: 'btn btn-primary'
-    },
-    steps: {
-      information: {
-        buttons: {
-          container: {
-            style: alignEnd
-          }
-        }
-      },
-      customText: {
-        buttons: {
-          container: {
-            style: alignCenter
-          }
-        }
-      },
-      file: {
-        buttons: {
-          container: {
-            style: alignEnd
-          }
+    inputErrorText: {
+      class: 'text-danger'
+    }
+  },
+  button: {
+    class: 'btn btn-primary'
+  },
+  steps: {
+    information: {
+      buttons: {
+        container: {
+          style: alignEnd
         }
       }
     },
-    summary: {
-      buttonContainer: {
-        style: `
+    customText: {
+      buttons: {
+        container: {
+          style: alignCenter
+        }
+      }
+    },
+    file: {
+      buttons: {
+        container: {
+          style: alignEnd
+        }
+      }
+    }
+  },
+  summary: {
+    buttonContainer: {
+      style: `
         margin-top: 10px;
         ${alignCenter}
         `
+    },
+    step: {
+      container: {
+        class: 'card'
       },
-      step: {
-        container: {
-          class: 'card'
-        },
-        bar: {
-          class: 'card-header',
-          style: `
+      bar: {
+        class: 'card-header',
+        style: `
             display: flex;
             justify-content: space-between;
           `
-        },
-        barSuccess: {
-          class: 'bg-success text-white'
-        },
-        details: {
-          file: {
-            style: `
+      },
+      barSuccess: {
+        class: 'bg-success text-white'
+      },
+      details: {
+        file: {
+          style: `
             width: 100%;
             display: flex;
             justify-content: space-between;
             `
-          },
-          container: {
-            class: 'card-body'
-          },
-          picture: {
-            style: `
+        },
+        container: {
+          class: 'card-body'
+        },
+        picture: {
+          style: `
               max-width: 100%;
             `
-          }
         }
       }
     }
-  };
-})(IvWidget);
+  }
+};
