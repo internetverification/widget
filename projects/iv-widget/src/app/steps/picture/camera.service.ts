@@ -58,7 +58,6 @@ export class CameraService {
     videoElement: HTMLVideoElement,
     options: { width?: number; height?: number; facingMode?: { exact: string } }
   ) {
-    alert(options.facingMode);
     const shouldMirror = this.shouldMirror(options.facingMode);
     return this.getUserMedia(options).pipe(
       map(mediaStream => {
