@@ -42,14 +42,24 @@ export class CameraService {
     );
   }
 
+  shouldMirror(facingMode: { exact: string } | string | undefined) {
+    if (!facingMode) {
+      return true;
+    }
+
+    let value = facingMode;
+    if (typeof facingMode === 'object') {
+      value = facingMode.exact;
+    }
+    return value !== 'environment';
+  }
+
   public getRenderer(
     videoElement: HTMLVideoElement,
     options: { width?: number; height?: number; facingMode?: { exact: string } }
   ) {
-    const shouldMirror =
-      options && options.facingMode && options.facingMode.exact
-        ? options.facingMode.exact !== 'environment'
-        : true;
+    alert(options.facingMode);
+    const shouldMirror = this.shouldMirror(options.facingMode);
     return this.getUserMedia(options).pipe(
       map(mediaStream => {
         return new Renderer(videoElement, mediaStream, shouldMirror);
