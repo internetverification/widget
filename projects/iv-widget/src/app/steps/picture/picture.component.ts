@@ -60,6 +60,17 @@ export class PictureComponent extends BaseStepComponent
     .getPlatformType$()
     .pipe(map(type => type === 'Mobile'));
 
+  public shouldMirror$ = this.isMobile$.pipe(
+    startWith(true),
+    switchMap(() => {
+      return this.cameraOrientation$.pipe(
+        map(orientation => {
+          return orientation !== 'environment';
+        })
+      );
+    })
+  );
+
   constructor(
     private cameraService: CameraService,
     private deviceType: DeviceTypeService,

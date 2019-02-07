@@ -42,13 +42,27 @@ export class CameraService {
     );
   }
 
+  shouldMirror(facingMode: { exact: string } | string | undefined) {
+    if (!facingMode) {
+      return true;
+    }
+
+    let value = facingMode;
+    if (typeof facingMode === 'object') {
+      value = facingMode.exact;
+    }
+    return value !== 'environment';
+  }
+
   public getRenderer(
     videoElement: HTMLVideoElement,
     options: { width?: number; height?: number; facingMode?: { exact: string } }
   ) {
+    alert(options.facingMode);
+    const shouldMirror = this.shouldMirror(options.facingMode);
     return this.getUserMedia(options).pipe(
       map(mediaStream => {
-        return new Renderer(videoElement, mediaStream);
+        return new Renderer(videoElement, mediaStream, shouldMirror);
       })
     );
   }
@@ -57,7 +71,8 @@ export class CameraService {
 export class Renderer {
   constructor(
     private videoElement: HTMLVideoElement,
-    private mediaStream: MediaStream
+    private mediaStream: MediaStream,
+    private mirror = true
   ) {}
 
   render() {
@@ -76,6 +91,10 @@ export class Renderer {
     const ctx = canvas.getContext('2d');
     canvas.width = this.videoElement.clientWidth;
     canvas.height = this.videoElement.clientHeight;
+    if (this.mirror) {
+      ctx.translate(this.videoElement.clientWidth, 0);
+      ctx.scale(-1, 1);
+    }
     ctx.drawImage(
       this.videoElement,
       0,

@@ -104,8 +104,8 @@ export class ConfigService {
   }
 
   private listener = (() => {
-    const path = location.hash.replace('#', '');
-    const isPartOfWidget = this.router.config.find(x => x === path);
+    const path = location.hash.replace('#', '').replace('/', '');
+    const isPartOfWidget = this.router.config.find(x => x.path === path);
     if (isPartOfWidget) {
       this.router.navigate([path]);
     }

@@ -71,7 +71,6 @@
         if (!done) {
           done = true;
           var widget = createIvWidget('container', {
-            idToken: '',
             steps: IvWidget.config.customGreen,
             lang: {
               en: IvWidget.lang.en,
@@ -105,7 +104,6 @@
                   widget.theme = IvWidget.themes.bootstrap;
                   break;
                 case 'niceAdmin':
-                  console.log('Nice Admin');
                   widget.theme = IvWidget.themes.niceAdmin;
                   break;
               }
@@ -115,7 +113,6 @@
           document
             .getElementById('workflow')
             .addEventListener('change', function(event) {
-              console.log('ok');
               switch (event.target.value) {
                 case 'default':
                   widget.steps = IvWidget.config.default;
