@@ -6,7 +6,7 @@ The necessary files for the widget can be installed through npm with
 
 `npm install @internetverification/widget`
 
-Then be sure to include the file `./node_modules/@internetverification/widget/public/index.js` to your page scripts
+Then be sure to include the file `./node_modules/@internetverification/widget/index.js` to your page scripts
 
 You can also import
 
@@ -17,7 +17,7 @@ or
 ## Usage
 
 ```
-var widget = createIvWidget('my-container-id', {
+var widget = IvWidget.createIvWidget('my-container-id', {
   steps: myStepConfig,
   lang: myLangConfig,
   theme: myThemeConfig
@@ -27,6 +27,23 @@ var widget = createIvWidget('my-container-id', {
     submissionId: 'your_submission_id'
   }
 });
+```
+
+### Example html document using the widget
+
+```
+<html>
+<head>
+  <!-- ivWidget.js correspond to ./node_modules/@internetverification/widget/index.js -->
+  <script type="text/javascript" src="ivWidget.js" />
+<body>
+<p>My paragraph</p>
+<div id="my-widget-container"></div>
+<script>
+  IvWidget.createIvWidget("my-widget-container", ...)
+</script>
+</body>
+</html>
 ```
 
 ## Config
