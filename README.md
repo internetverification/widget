@@ -22,8 +22,9 @@ var widget = IvWidget.createIvWidget('my-container-id', {
   lang: myLangConfig,
   theme: myThemeConfig
   config: {
-    tenantId: 'your_tenant_id',
-    serviceId: 'your_service_id',
+    apiUrl: 'api_root', // normally http://app.internetverification.com/submission
+    tenantId: 'your_tenant_slug',
+    serviceId: 'your_service_slug',
     submissionId: 'your_submission_id'
   }
 });
