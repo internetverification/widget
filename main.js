@@ -9,10 +9,12 @@ export const createIvWidget = function(
 ) {
   const el = document.getElementById(idSelector);
   const widget = document.createElement('iv-widget');
-  widget.steps = config.steps;
-  widget.lang = config.lang;
-  widget.theme = config.theme;
-  widget.config = config.config;
+  requestAnimationFrame(() => {
+    widget.steps = config.steps;
+    widget.lang = config.lang;
+    widget.theme = config.theme;
+    widget.config = config.config;
+  });
   el.appendChild(widget);
   return widget;
 };

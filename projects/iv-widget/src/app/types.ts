@@ -4,6 +4,7 @@ export interface PictureStep {
   allow_camera_switch?: string;
   subtitleTranslateKey?: string;
   captureTranslateKey?: string;
+  enablePermissionTranslateKey?: string;
   overlay_type: 'card' | 'face';
   hideInSummary?: boolean;
 }

@@ -7,23 +7,25 @@ import {
   OnInit,
   ViewChild
 } from '@angular/core';
-import { BehaviorSubject, ReplaySubject, Subject, of } from 'rxjs';
+import { BehaviorSubject, of, ReplaySubject, Subject } from 'rxjs';
 import {
   debounceTime,
+  delay,
   distinctUntilKeyChanged,
   filter,
+  map,
+  retryWhen,
   startWith,
   switchMap,
   take,
   takeUntil,
-  tap,
-  map
+  tap
 } from 'rxjs/operators';
 import { oc } from 'ts-optchain';
+import { DeviceTypeService } from '../../device-type.service';
 import { PictureStepState } from '../../types';
 import { BaseStepComponent } from '../base-step.class';
 import { CameraService } from './camera.service';
-import { DeviceTypeService } from '../../device-type.service';
 
 @Component({
   selector: 'ivw-picture',
@@ -55,6 +57,7 @@ export class PictureComponent extends BaseStepComponent
   public resize = new ReplaySubject<{ width: number; height: number }>();
 
   public isVideoReady$ = new BehaviorSubject(false);
+  public cameraDisabled$ = new BehaviorSubject(false);
 
   public isMobile$ = this.deviceType
     .getPlatformType$()
@@ -70,6 +73,8 @@ export class PictureComponent extends BaseStepComponent
       );
     })
   );
+
+  private readonly PERMISSION_DENIED = 'NotAllowedError';
 
   constructor(
     private cameraService: CameraService,
@@ -129,6 +134,21 @@ export class PictureComponent extends BaseStepComponent
           return this.cameraService
             .getRenderer(this.videoElement.nativeElement, options)
             .pipe(
+              // Permission was denied
+              // Retry each second until the user gives access in case of a permission denied error
+              retryWhen(errors => {
+                return errors.pipe(
+                  tap(e => {
+                    if (e.name !== this.PERMISSION_DENIED) {
+                      throw e;
+                    } else {
+                      this.cameraDisabled$.next(true);
+                    }
+                  }),
+                  delay(1000)
+                );
+              }),
+              tap(() => this.cameraDisabled$.next(false)),
               tap(renderer => renderer.render()),
               tap(() => this.isVideoReady$.next(true)),
               tap(() => this._cd.detectChanges()),

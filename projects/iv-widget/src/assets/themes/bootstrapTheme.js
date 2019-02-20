@@ -74,6 +74,9 @@ export default {
       barSuccess: {
         class: 'bg-success text-white'
       },
+      barError: {
+        class: 'bg-danger text-white'
+      },
       details: {
         file: {
           style: `

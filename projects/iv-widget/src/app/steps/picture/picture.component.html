@@ -40,6 +40,15 @@
         *ngIf="step?.config?.allow_camera_switch && state === CAPTURE_STATE"
         (cameraSwitched)="switchCamera($event)"
       ></ivw-camera-switcher>
+      <div
+        [ivwTheme]="'steps.topButtons.enablePermission'"
+        *ngIf="(cameraDisabled$ | async)"
+      >
+        {{
+          step?.config?.enablePermissionTranslateKey || 'ENABLE_PERMISSION'
+            | translate
+        }}
+      </div>
     </div>
     <div style="flex:1"></div>
     <div
