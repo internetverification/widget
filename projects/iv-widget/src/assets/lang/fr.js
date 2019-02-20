@@ -14,6 +14,9 @@ export default {
   PICTURE_STEP_NEXT: 'Soumettre la photo',
   RETAKE_PHOTO: 'Reprendre la photo',
   SWITCH_CAMERA: 'Changer de camera',
+  ENABLE_PERMISSION: 'Activez votre camera pour continuer',
+  SUMMARY_FOOTER_TEXT: '',
+  SUMMARY_HEADER_TEXT: '',
 
   INFORMATION_STEP_TITLE: 'Information',
   ID_PICTURE_STEP_TITLE: `Photo de pièce d'identité`,

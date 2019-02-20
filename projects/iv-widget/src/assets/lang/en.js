@@ -14,6 +14,9 @@ export default {
   PICTURE_STEP_NEXT: 'Upload photo',
   RETAKE_PHOTO: 'Retake photo',
   SWITCH_CAMERA: 'Switch camera',
+  ENABLE_PERMISSION: 'Please enable your camera',
+  SUMMARY_FOOTER_TEXT: '',
+  SUMMARY_HEADER_TEXT: '',
 
   INFORMATION_STEP_TITLE: 'Information',
   ID_PICTURE_STEP_TITLE: 'Id picture',
