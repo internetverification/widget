@@ -7,7 +7,7 @@
       class="ivw-small"
       name="day"
       formControlName="day"
-      placeholder="day"
+      placeholder="{{ 'DAY' | translate }}"
       (keypress)="isAllowed($event)"
     />
     <input
@@ -20,7 +20,7 @@
       name="month"
       class="ivw-small"
       formControlName="month"
-      placeholder="month"
+      placeholder="{{ 'MONTH' | translate }}"
       (keypress)="isAllowed($event)"
     />
     <input
@@ -33,7 +33,7 @@
       name="year"
       class="ivw-med"
       formControlName="year"
-      placeholder="year"
+      placeholder="{{ 'YEAR' | translate }}"
       (keypress)="isAllowed($event)"
     />
   </div>

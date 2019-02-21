@@ -20,7 +20,7 @@ export class InformationComponent extends BaseStepComponent implements OnInit {
   }
 
   ngOnInit() {
-    const fields = this.step.config.fields;
+    const fields = oc(this.step).config.fields([]);
     const formConfig = fields.reduce((prev, current) => {
       return {
         ...prev,

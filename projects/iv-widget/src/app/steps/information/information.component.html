@@ -3,7 +3,7 @@
   *ngIf="step?.config?.headerTextTranslateKey"
   [innerHTML]="step?.config?.headerTextTranslateKey | translate | trustedHtml"
 ></div>
-<form [formGroup]="formGroup">
+<form *ngIf="step?.config?.fields" [formGroup]="formGroup">
   <div *ngFor="let field of step?.config?.fields" [ngSwitch]="field.type">
     <ivw-date
       *ngSwitchCase="'date'"

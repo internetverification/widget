@@ -24,6 +24,7 @@ export default {
   SUBADMINISTRATIVE_AREA: 'Subadministrative area',
   POSTAL_CODE: 'Postal code',
   COUNTRY: 'Country',
+  ERROR_PATTERN_INVALID: 'is invalid',
   INFORMATION_STEP_TITLE: 'Information',
   ID_PICTURE_STEP_TITLE: 'Id picture',
   FACE_PICTURE_STEP_TITLE: 'Face picture',
@@ -32,7 +33,10 @@ export default {
   SELFIE_PICTURE_SUBTITLE: 'Take a pic of your face',
   ID_PICTURE_CAPTURE: 'Take Id picture',
   SELFIE_PICTURE_CAPTURE: 'Take selfie picture',
-  ERROR_PATTERN_INVALID: 'is invalid',
+
+  YEAR: 'year',
+  MONTH: 'month',
+  DAY: 'day',
 
   GLOBAL_TITLE: 'Verify your age',
   FIRST_STEP_CONTENT: `

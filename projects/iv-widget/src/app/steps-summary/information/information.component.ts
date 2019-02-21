@@ -16,7 +16,7 @@ export class InformationComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    const fields = this.step.config.fields;
+    const fields = oc(this.step).config.fields([]);
     this.fields = fields.map(field => {
       return {
         label: field.labelTranslateKey,
