@@ -36,10 +36,80 @@ This key can refer to an html template and can be used to display rich content
 
 Used to display a form that collect information
 
+You can specify a list of fields which will be displayed in a form on the widget
+
+**Different field type are:**
+
+- email
+- date
+- text
+
+Field are `required` by default, if you want to make a field optional set the the property `optional` to true
+
+If you need a field to match a specific pattern you can specify a RegEx in the `pattern` property
+
+**Example config**
+
 ```
 {
 nameTranslateKey: 'INFORMATION_STEP_TITLE',
-type: 'information'
+type: 'information',
+fields: [
+    {
+      labelTranslateKey: 'EMAIL',
+      name: 'email',
+      type: 'email'
+    },
+    {
+      labelTranslateKey: 'FIRST_NAME',
+      name: 'firstName',
+      type: 'text'
+    },
+    {
+      labelTranslateKey: 'LAST_NAME',
+      name: 'lastName',
+      type: 'text'
+    },
+    {
+      labelTranslateKey: 'DATE_OF_BIRTH',
+      name: 'dob',
+      type: 'date'
+    },
+    {
+      labelTranslateKey: 'CIVIC_ADDRESS',
+      name: 'address_civic_address',
+      text: 'text'
+    },
+    {
+      labelTranslateKey: 'MUNICIPALITY',
+      name: 'address_municipality',
+      text: 'text'
+    },
+    {
+      labelTranslateKey: 'ADMINISTRATIVE_AREA',
+      name: 'address_administrative_area',
+      text: 'text'
+    },
+    {
+      labelTranslateKey: 'SUBADMINISTRATIVE_AREA',
+      name: 'address_subadministrative_area',
+      text: 'text',
+      // This field is not required
+      optional: true
+    },
+    {
+      labelTranslateKey: 'POSTAL_CODE',
+      name: 'address_postal_code',
+      text: 'text',
+      // Canadian postal code
+      pattern: /^[^d,f,i,o,q,u,w,z]\d[^d,f,i,o,q,u,w,z]\s?\d[^d,f,i,o,q,u,w,z]\d$/i
+    },
+    {
+      labelTranslateKey: 'COUNTRY',
+      name: 'address_country',
+      text: 'text'
+    }]
+  },
 }
 ```
 

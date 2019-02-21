@@ -17,6 +17,7 @@ export default {
   ENABLE_PERMISSION: 'Activez votre camera pour continuer',
   SUMMARY_FOOTER_TEXT: '',
   SUMMARY_HEADER_TEXT: '',
+  DATE_OF_BIRTH: 'Date de naissance',
 
   INFORMATION_STEP_TITLE: 'Information',
   ID_PICTURE_STEP_TITLE: `Photo de pièce d'identité`,
@@ -26,6 +27,13 @@ export default {
   SELFIE_PICTURE_SUBTITLE: 'Prenez une photo de votre visage',
   ID_PICTURE_CAPTURE: 'Prendre la photo',
   SELFIE_PICTURE_CAPTURE: 'Prendre la photo',
+  CIVIC_ADDRESS: 'Adresse civique',
+  MUNICIPALITY: 'Ville',
+  ADMINISTRATIVE_AREA: 'État / Province',
+  SUBADMINISTRATIVE_AREA: 'Zone sous-administrative',
+  POSTAL_CODE: 'Code postal',
+  COUNTRY: 'Pays',
+  ERROR_PATTERN_INVALID: 'est invalide',
 
   GLOBAL_TITLE: 'Vérifiez votre âge',
   FIRST_STEP_CONTENT: `

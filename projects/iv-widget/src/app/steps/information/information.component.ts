@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { oc } from 'ts-optchain';
-import { InformationStepState } from '../../types';
+import { InformationStepState, InformationStepField } from '../../types';
 import { BaseStepComponent } from '../base-step.class';
 
 @Component({
@@ -20,14 +20,33 @@ export class InformationComponent extends BaseStepComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formGroup = this._fb.group({
-      email: [
-        oc(this.step).payload.email(''),
-        [Validators.email, Validators.required]
-      ],
-      firstName: [oc(this.step).payload.firstName(''), Validators.required],
-      lastName: [oc(this.step).payload.lastName(''), Validators.required]
-    });
+    const fields = this.step.config.fields;
+    const formConfig = fields.reduce((prev, current) => {
+      return {
+        ...prev,
+        [current.name]: [this.getValue(current), this.getValidators(current)]
+      };
+    }, {});
+
+    this.formGroup = this._fb.group(formConfig);
+  }
+
+  private getValidators(field: InformationStepField) {
+    let validators = field.optional ? [] : [Validators.required];
+    validators = field.pattern
+      ? [...validators, Validators.pattern(field.pattern)]
+      : validators;
+
+    switch (field.type) {
+      case 'email':
+        return [Validators.email, ...validators];
+      default:
+        return [...validators];
+    }
+  }
+
+  private getValue(field: InformationStepField): string {
+    return oc(this.step).payload[field.name]('');
   }
 
   submit() {

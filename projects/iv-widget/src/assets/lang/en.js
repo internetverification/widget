@@ -17,7 +17,13 @@ export default {
   ENABLE_PERMISSION: 'Please enable your camera',
   SUMMARY_FOOTER_TEXT: '',
   SUMMARY_HEADER_TEXT: '',
-
+  DATE_OF_BIRTH: 'Date of birth',
+  CIVIC_ADDRESS: 'Civic address',
+  MUNICIPALITY: 'Municiplity',
+  ADMINISTRATIVE_AREA: 'State / Province',
+  SUBADMINISTRATIVE_AREA: 'Subadministrative area',
+  POSTAL_CODE: 'Postal code',
+  COUNTRY: 'Country',
   INFORMATION_STEP_TITLE: 'Information',
   ID_PICTURE_STEP_TITLE: 'Id picture',
   FACE_PICTURE_STEP_TITLE: 'Face picture',
@@ -26,6 +32,7 @@ export default {
   SELFIE_PICTURE_SUBTITLE: 'Take a pic of your face',
   ID_PICTURE_CAPTURE: 'Take Id picture',
   SELFIE_PICTURE_CAPTURE: 'Take selfie picture',
+  ERROR_PATTERN_INVALID: 'is invalid',
 
   GLOBAL_TITLE: 'Verify your age',
   FIRST_STEP_CONTENT: `

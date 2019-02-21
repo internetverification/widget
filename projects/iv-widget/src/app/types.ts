@@ -25,6 +25,15 @@ export interface InformationStep {
   subtitleTranslateKey?: string;
   type: 'information';
   hideInSummary?: boolean;
+  fields: InformationStepField[];
+}
+
+export interface InformationStepField {
+  type: 'text' | 'date' | 'email';
+  labelTranslateKey: string;
+  name: string;
+  optional?: boolean;
+  pattern?: RegExp | string;
 }
 
 export interface CustomTextStep {
@@ -72,9 +81,7 @@ export type WithRoute<T> = T & { id: number; route: string };
 export interface InformationStepState extends BaseStepState {
   config: WithRoute<InformationStep>;
   payload?: {
-    email?: string;
-    firstName?: string;
-    lastName?: string;
+    [key: string]: string;
   };
 }
 
