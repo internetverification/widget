@@ -34,6 +34,7 @@ export default {
   POSTAL_CODE: 'Code postal',
   COUNTRY: 'Pays',
   ERROR_PATTERN_INVALID: 'est invalide',
+  LOADING: 'chargement...',
 
   YEAR: 'année',
   MONTH: 'mois',

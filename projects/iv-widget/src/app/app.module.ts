@@ -16,9 +16,15 @@ import { EffectsModule } from './state/effects/effects.module';
 import { StoreModule } from './state/store/store.module';
 import { SummaryStepModule } from './steps-summary/summary-step/summary-step.module';
 import { StepModule } from './steps/step/step.module';
+import { LoadingComponent } from './pages/loading/loading.component';
 
 @NgModule({
-  declarations: [AppComponent, StepPageComponent, SummaryPageComponent],
+  declarations: [
+    AppComponent,
+    StepPageComponent,
+    SummaryPageComponent,
+    LoadingComponent
+  ],
   imports: [
     BrowserModule,
     StepModule,
@@ -34,7 +40,12 @@ import { StepModule } from './steps/step/step.module';
     DeviceTypeService,
     { provide: THEME_PROVIDER_TOKEN, useExisting: ConfigService }
   ],
-  entryComponents: [AppComponent, StepPageComponent, SummaryPageComponent]
+  entryComponents: [
+    AppComponent,
+    StepPageComponent,
+    SummaryPageComponent,
+    LoadingComponent
+  ]
 })
 export class AppModule {
   constructor(private injector: Injector) {}

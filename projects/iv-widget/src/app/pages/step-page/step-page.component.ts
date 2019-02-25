@@ -29,7 +29,7 @@ export class StepPageComponent implements OnInit {
 
   public get currentStepId() {
     return Math.max(
-      this.router.config.indexOf(this.activatedRoute.routeConfig),
+      this.router.config.indexOf(this.activatedRoute.routeConfig) - 1,
       0
     );
   }

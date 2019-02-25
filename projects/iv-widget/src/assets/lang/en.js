@@ -33,6 +33,7 @@ export default {
   SELFIE_PICTURE_SUBTITLE: 'Take a pic of your face',
   ID_PICTURE_CAPTURE: 'Take Id picture',
   SELFIE_PICTURE_CAPTURE: 'Take selfie picture',
+  LOADING: 'loading...',
 
   YEAR: 'year',
   MONTH: 'month',

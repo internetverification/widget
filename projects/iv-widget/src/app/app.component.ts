@@ -60,8 +60,8 @@ export class AppComponent implements OnInit, OnDestroy {
   public currentStepId$ = this.router.events.pipe(
     filter(e => e instanceof NavigationEnd),
     map((r: any) => {
-      return this.router.config.findIndex(
-        x => r.url.replace('/', '') === x.path
+      return (
+        this.router.config.findIndex(x => r.url.replace('/', '') === x.path) - 1
       );
     })
   );
@@ -90,7 +90,7 @@ export class AppComponent implements OnInit, OnDestroy {
   );
 
   public navigate(id: number) {
-    this.router.navigate([this.router.config[id].path]);
+    this.router.navigate([this.router.config[id + 1].path]);
   }
 
   constructor(

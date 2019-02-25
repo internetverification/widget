@@ -10,6 +10,7 @@ import { InitStepAction } from './state/store/actions/steps.actions';
 import { StepPageComponent } from './pages/step-page/step-page.component';
 import { IvWidgetConfig, Step } from './types';
 import { SummaryPageComponent } from './pages/summary-page/summary-page.component';
+import { LoadingComponent } from './pages/loading/loading.component';
 
 @Injectable({
   providedIn: 'root'
@@ -129,6 +130,10 @@ export class ConfigService {
           id: i,
           route: `step_${i}`
         }));
+        this.router.config.push({
+          path: 'ivw-loading',
+          component: LoadingComponent
+        });
         stepsWithRoute.forEach((step, i) => {
           this.router.config.push({
             path: step.route,
@@ -140,13 +145,11 @@ export class ConfigService {
           path: 'ivw-summary',
           component: SummaryPageComponent
         });
-        this.store.dispatch(new InitStepAction(stepsWithRoute));
-
         // FIXME: Hack to fix routing problem in angular element
-        setTimeout(
-          () => this.router.navigate([this.router.config[0].path]),
-          10
-        );
+        setTimeout(async () => {
+          await this.router.navigate([this.router.config[0].path]);
+          this.store.dispatch(new InitStepAction(stepsWithRoute));
+        }, 10);
       }
     });
   }
