@@ -14,21 +14,36 @@
   <body>
     <div id="container"></div>
     <script>
+      const steps = [
+        {
+          nameTranslateKey: 'INFORMATION_STEP_TITLE',
+          type: 'information'
+        },
+        {
+          nameTranslateKey: 'ID_PICTURE_STEP_TITLE',
+          overlay_type: 'face',
+          type: 'picture'
+        }
+      ];
       let done = false;
       document.addEventListener('readystatechange', () => {
         if (!done) {
           done = true;
-          setTimeout(() => {
-            IvWidget.createIvWidget('container', {
-              idToken: '',
-              steps: [{ type: 'information' }, { type: 'picture' }],
-              lang: {
-                en: window.IvWidget.lang.en,
-                fr: window.IvWidget.lang.fr
-              },
-              theme: IvWidget.theme.bootstrap
-            });
-          }, 1000);
+          IvWidget.createIvWidget('container', {
+            // idToken: '',
+            steps: steps,
+            lang: {
+              en: window.IvWidget.lang.en,
+              fr: window.IvWidget.lang.fr
+            },
+            theme: IvWidget.theme.bootstrap,
+            config: {
+              apiUrl: 'options.apiUrl',
+              tenantId: 'options.tenan',
+              serviceId: 'options.tenan',
+              submissionId: 'options.tenan'
+            }
+          });
         }
       });
     </script>

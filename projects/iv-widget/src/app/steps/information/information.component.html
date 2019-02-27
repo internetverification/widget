@@ -3,19 +3,19 @@
   *ngIf="step?.config?.headerTextTranslateKey"
   [innerHTML]="step?.config?.headerTextTranslateKey | translate | trustedHtml"
 ></div>
-<form [formGroup]="formGroup">
-  <ivw-input
-    label="{{ 'EMAIL' | translate }}"
-    formControlName="email"
-  ></ivw-input>
-  <ivw-input
-    label="{{ 'FIRST_NAME' | translate }}"
-    formControlName="firstName"
-  ></ivw-input>
-  <ivw-input
-    label="{{ 'LAST_NAME' | translate }}"
-    formControlName="lastName"
-  ></ivw-input>
+<form *ngIf="step?.config?.fields" [formGroup]="formGroup">
+  <div *ngFor="let field of step?.config?.fields" [ngSwitch]="field.type">
+    <ivw-date
+      *ngSwitchCase="'date'"
+      label="{{ field.labelTranslateKey | translate }}"
+      [formControlName]="field.name"
+    ></ivw-date>
+    <ivw-input
+      *ngSwitchDefault
+      label="{{ field.labelTranslateKey | translate }}"
+      [formControlName]="field.name"
+    ></ivw-input>
+  </div>
 </form>
 <div
   *ngIf="step?.config?.footerTextTranslateKey"

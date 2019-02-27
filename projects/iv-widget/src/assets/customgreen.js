@@ -6,6 +6,64 @@ var IvWidget = IvWidget || {};
   config.customGreen = [
     {
       nameTranslateKey: 'INFORMATION_STEP_TITLE',
+      type: 'information',
+      fields: [
+        {
+          labelTranslateKey: 'EMAIL',
+          name: 'email',
+          type: 'email'
+        },
+        {
+          labelTranslateKey: 'FIRST_NAME',
+          name: 'firstName',
+          type: 'text'
+        },
+        {
+          labelTranslateKey: 'LAST_NAME',
+          name: 'lastName',
+          type: 'text'
+        },
+        {
+          labelTranslateKey: 'DATE_OF_BIRTH',
+          name: 'dob',
+          type: 'date'
+        },
+        {
+          labelTranslateKey: 'CIVIC_ADDRESS',
+          name: 'address_civic_address',
+          text: 'text'
+        },
+        {
+          labelTranslateKey: 'MUNICIPALITY',
+          name: 'address_municipality',
+          text: 'text'
+        },
+        {
+          labelTranslateKey: 'ADMINISTRATIVE_AREA',
+          name: 'address_administrative_area',
+          text: 'text'
+        },
+        {
+          labelTranslateKey: 'SUBADMINISTRATIVE_AREA',
+          name: 'address_subadministrative_area',
+          text: 'text',
+          optional: true
+        },
+        {
+          labelTranslateKey: 'POSTAL_CODE',
+          name: 'address_postal_code',
+          text: 'text',
+          pattern: /^[^d,f,i,o,q,u,w,z]\d[^d,f,i,o,q,u,w,z]\s?\d[^d,f,i,o,q,u,w,z]\d$/i
+        },
+        {
+          labelTranslateKey: 'COUNTRY',
+          name: 'address_country',
+          text: 'text'
+        }
+      ]
+    },
+    {
+      nameTranslateKey: 'INFORMATION_STEP_TITLE',
       contentTextTranslateKey: 'CUSTOM_GREEN_CONTENT',
       type: 'custom-text',
       hideInSummary: true

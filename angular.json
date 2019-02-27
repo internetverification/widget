@@ -10,6 +10,52 @@
       "prefix": "ivw",
       "schematics": {},
       "architect": {
+        "build-dev": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/iv-widget",
+            "index": "projects/iv-widget/src/index.html",
+            "main": "projects/iv-widget/src/dev.ts",
+            "polyfills": "projects/iv-widget/src/polyfills.ts",
+            "tsConfig": "projects/iv-widget/tsconfig.app.json",
+            "assets": [
+              "projects/iv-widget/src/favicon.ico",
+              "projects/iv-widget/src/assets"
+            ],
+            "styles": ["projects/iv-widget/src/styles.scss"],
+            "scripts": [
+              {
+                "input": "node_modules/document-register-element/build/document-register-element.js"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/iv-widget/src/environments/environment.ts",
+                  "with": "projects/iv-widget/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
@@ -59,7 +105,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "iv-widget:build"
+            "browserTarget": "iv-widget:build-dev"
           },
           "configurations": {
             "production": {

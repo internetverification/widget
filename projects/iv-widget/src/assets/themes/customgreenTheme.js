@@ -35,6 +35,30 @@ export default {
       class: 'text-danger'
     }
   },
+  date: {
+    group: {
+      class: 'form-group'
+    },
+    day: {
+      style: 'width: 4em'
+    },
+    month: {
+      style: 'width: 4em'
+    },
+    year: {
+      style: 'width: 8em'
+    },
+    inputs: {
+      class: 'form-inline'
+    },
+    input: {
+      class: 'form-control',
+      style: 'margin: 0 5px'
+    },
+    inputErrorText: {
+      class: 'text-danger'
+    }
+  },
   button: {
     class: 'btn btn-primary'
   },

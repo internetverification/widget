@@ -12,7 +12,24 @@ var IvWidget = IvWidget || {};
     },
     {
       nameTranslateKey: 'INFORMATION_STEP_TITLE',
-      type: 'information'
+      type: 'information',
+      fields: [
+        {
+          labelTranslateKey: 'EMAIL',
+          name: 'email',
+          type: 'email'
+        },
+        {
+          labelTranslateKey: 'FIRST_NAME',
+          name: 'firstName',
+          type: 'text'
+        },
+        {
+          labelTranslateKey: 'LAST_NAME',
+          name: 'lastName',
+          type: 'text'
+        }
+      ]
     },
     {
       nameTranslateKey: 'ID_PICTURE_STEP_TITLE',

@@ -1,21 +1,11 @@
-import { Component, Input, forwardRef } from '@angular/core';
-import {
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
-  NgControl
-} from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'ivw-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
-  providers: [
-    // {
-    //   provide: NG_VALUE_ACCESSOR,
-    //   useExisting: forwardRef(() => InputComponent),
-    //   multi: true
-    // }
-  ]
+  providers: []
 })
 export class InputComponent implements ControlValueAccessor {
   public disabled = false;

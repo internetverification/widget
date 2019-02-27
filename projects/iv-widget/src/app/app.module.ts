@@ -6,7 +6,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ElementZoneStrategyFactory } from 'elements-zone-strategy';
 import { AppComponent } from './app.component';
 import { WidgetStepsBarModule } from './components/widget-steps-bar/widget-steps-bar.module';
+import { ConfigService } from './config.service';
 import { DeviceTypeService } from './device-type.service';
+import { THEME_PROVIDER_TOKEN } from './directives/theme.directive';
 import { StepPageComponent } from './pages/step-page/step-page.component';
 import { SummaryPageComponent } from './pages/summary-page/summary-page.component';
 import { SharedModule } from './shared/shared.module';
@@ -14,8 +16,6 @@ import { EffectsModule } from './state/effects/effects.module';
 import { StoreModule } from './state/store/store.module';
 import { SummaryStepModule } from './steps-summary/summary-step/summary-step.module';
 import { StepModule } from './steps/step/step.module';
-import { THEME_PROVIDER_TOKEN } from './directives/theme.directive';
-import { ConfigService } from './config.service';
 
 @NgModule({
   declarations: [AppComponent, StepPageComponent, SummaryPageComponent],
@@ -35,7 +35,6 @@ import { ConfigService } from './config.service';
     { provide: THEME_PROVIDER_TOKEN, useExisting: ConfigService }
   ],
   entryComponents: [AppComponent, StepPageComponent, SummaryPageComponent]
-  // bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(private injector: Injector) {}

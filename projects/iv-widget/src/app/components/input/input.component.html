@@ -14,3 +14,6 @@
 <div *ngIf="hasError('email')" [ivwTheme]="'input.inputErrorText'">
   <small>{{ 'ERROR_EMAIL_INVALID' | translate }}</small>
 </div>
+<div *ngIf="hasError('pattern')" [ivwTheme]="'input.inputErrorText'">
+  <small>{{ label }} {{ 'ERROR_PATTERN_INVALID' | translate }}</small>
+</div>

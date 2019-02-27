@@ -26,6 +26,18 @@ export default {
   SELFIE_PICTURE_SUBTITLE: 'Prenez une photo de votre visage',
   ID_PICTURE_CAPTURE: 'Prendre la photo',
   SELFIE_PICTURE_CAPTURE: 'Prendre la photo',
+  DATE_OF_BIRTH: 'Date de naissance',
+  CIVIC_ADDRESS: 'Adresse civique',
+  MUNICIPALITY: 'Ville',
+  ADMINISTRATIVE_AREA: 'État / Province',
+  SUBADMINISTRATIVE_AREA: 'Zone sous-administrative',
+  POSTAL_CODE: 'Code postal',
+  COUNTRY: 'Pays',
+  ERROR_PATTERN_INVALID: 'est invalide',
+
+  YEAR: 'année',
+  MONTH: 'mois',
+  DAY: 'jour',
 
   GLOBAL_TITLE: 'Vérifiez votre âge',
   FIRST_STEP_CONTENT: `
