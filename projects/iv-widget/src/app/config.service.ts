@@ -11,6 +11,7 @@ import { StepPageComponent } from './pages/step-page/step-page.component';
 import { IvWidgetConfig, Step } from './types';
 import { SummaryPageComponent } from './pages/summary-page/summary-page.component';
 import { LoadingComponent } from './pages/loading/loading.component';
+import defaultTheme from '../assets/themes/defaultTheme';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ import { LoadingComponent } from './pages/loading/loading.component';
 export class ConfigService {
   private _theme$: BehaviorSubject<
     IvWidgetConfig['theme']
-  > = new BehaviorSubject(null);
+  > = new BehaviorSubject(defaultTheme);
 
   public get theme() {
     return this._theme$.value;

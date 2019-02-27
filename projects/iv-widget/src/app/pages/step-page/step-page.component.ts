@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { SubmitStepAction } from '../../state/store/actions/steps.actions';
 import { StepState } from '../../types';
 import { take } from 'rxjs/operators';
+import { oc } from 'ts-optchain';
 
 @Component({
   selector: 'ivw-step-page',
@@ -40,11 +41,11 @@ export class StepPageComponent implements OnInit {
       let next = steps[i];
       while (
         !(i < this.router.config.length - 1) &&
-        next.progress.state === 'SUCCESS'
+        oc(next).progress.state() === 'SUCCESS'
       ) {
         next = steps[++i];
       }
-      this.router.navigate([this.router.config[i + 1].path]);
+      this.router.navigate([this.router.config[i + 2].path]);
     });
   }
 
