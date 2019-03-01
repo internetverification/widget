@@ -64,7 +64,7 @@ export default {
     <br>
         <h2 class="text-center">Why is this required?</h2>
         <p class="text-justify">Age Verification is requied to protect minors fom unauthorized access to our products.
-        We prohibits the underage from obtaining products. Our sytem responsibly compares an online visitor's
+        We prohibits the underage from obtaining products. Our system responsibly compares an online visitor's
         government issued ID and their real-time photograph to accurately establish age.
         Our serious due diligence demonstrates the highest levels of compliance and social responsibility to consumers, parents, law enforcement agencies and regulatory bodies.
         </p>

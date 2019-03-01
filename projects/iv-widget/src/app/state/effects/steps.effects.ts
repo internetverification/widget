@@ -24,14 +24,18 @@ export class StepsEffects {
   submitStep$: Observable<Action> = this.actions$.pipe(
     ofType(ActionTypes.SUBMIT_STEP),
     mergeMap((action: SubmitStepAction) =>
-      this.stepData.submitStep(action.stepType, action.payload).pipe(
-        map(() => {
-          return new ProgressUpdateAction(action.stepId, { state: 'SUCCESS' });
-        }),
-        catchError(error => {
-          return of(new SubmitStepErrorAction(action.stepId, { error }));
-        })
-      )
+      this.stepData
+        .submitStep(action.stepId, action.stepType, action.payload)
+        .pipe(
+          map(() => {
+            return new ProgressUpdateAction(action.stepId, {
+              state: 'SUCCESS'
+            });
+          }),
+          catchError(error => {
+            return of(new SubmitStepErrorAction(action.stepId, { error }));
+          })
+        )
     )
   );
 

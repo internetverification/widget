@@ -9,6 +9,7 @@ import { WidgetStepsBarModule } from './components/widget-steps-bar/widget-steps
 import { ConfigService } from './config.service';
 import { DeviceTypeService } from './device-type.service';
 import { THEME_PROVIDER_TOKEN } from './directives/theme.directive';
+import { LoadingComponent } from './pages/loading/loading.component';
 import { StepPageComponent } from './pages/step-page/step-page.component';
 import { SummaryPageComponent } from './pages/summary-page/summary-page.component';
 import { SharedModule } from './shared/shared.module';
@@ -16,7 +17,6 @@ import { EffectsModule } from './state/effects/effects.module';
 import { StoreModule } from './state/store/store.module';
 import { SummaryStepModule } from './steps-summary/summary-step/summary-step.module';
 import { StepModule } from './steps/step/step.module';
-import { LoadingComponent } from './pages/loading/loading.component';
 
 @NgModule({
   declarations: [

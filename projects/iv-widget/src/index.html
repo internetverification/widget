@@ -50,6 +50,7 @@
         <option value="scenario1">ID verify</option>
         <option value="scenario2">ID verify + Address</option>
       </select>
+      <button id="reset">Reset</button>
     </div>
     <script>
       var done = false;
@@ -76,6 +77,11 @@
               widget.currentLang = event.target.value;
             });
 
+          document
+            .getElementById('reset')
+            .addEventListener('click', function() {
+              widget.steps = [...IvWidget.config.customGreen];
+            });
           document.getElementById('theme').value = 'none';
           document
             .getElementById('theme')

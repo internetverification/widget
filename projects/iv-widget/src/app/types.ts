@@ -53,8 +53,7 @@ export interface IvWidgetConfig {
   steps: Step[];
   config?: {
     apiUrl: string;
-    tenantId: string;
-    serviceId: string;
+    jwt: string;
     submissionId: string;
   };
   theme?: Theme;

@@ -1,6 +1,6 @@
 {
   "name": "@internetverification/widget",
-  "version": "0.0.7",
+  "version": "0.0.12",
   "files": [
     "public/lang",
     "public/themes",
