@@ -20,7 +20,8 @@ export class InformationComponent implements OnInit {
     this.fields = fields.map(field => {
       return {
         label: field.labelTranslateKey,
-        value: oc(this.step).payload[field.name]('')
+        value: oc(this.step).payload[field.name](''),
+        type: field.type
       };
     });
   }

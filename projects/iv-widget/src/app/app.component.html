@@ -1,7 +1,8 @@
 <div [ivwTheme]="'widget.container'">
   <ivw-widget-steps-bar
-    *ngIf="(currentStepId$ | async)"
+    *ngIf="showStepper$ && (currentStepId$ | async) + 1"
     [steps]="steps$ | async"
+    [ivwTheme]="'global.stepper'"
     [currentIndex]="currentStepId$ | async"
     (stepClicked)="navigate($event)"
   ></ivw-widget-steps-bar>

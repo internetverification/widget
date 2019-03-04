@@ -1,5 +1,24 @@
-<div>
-  <div *ngFor="let field of fields">
-    <span>{{ field.label | translate }} </span><span> {{ field.value }} </span>
+<div [ivwTheme]="'summary.step.details.information.container'">
+  <div
+    [ivwTheme]="'summary.step.details.information.field'"
+    *ngFor="let field of fields"
+    [ngSwitch]="field.type"
+  >
+    <ng-container *ngSwitchCase="'date'">
+      <span [ivwTheme]="'summary.step.details.information.label'">{{
+        field.label | translate
+      }}</span
+      ><span [ivwTheme]="'summary.step.details.information.value'">
+        {{ field.value | date }}
+      </span>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      <span [ivwTheme]="'summary.step.details.information.label'">{{
+        field.label | translate
+      }}</span
+      ><span [ivwTheme]="'summary.step.details.information.value'">
+        {{ field.value }}
+      </span>
+    </ng-container>
   </div>
 </div>

@@ -1,4 +1,9 @@
-<h1 [ivwTheme]="'global.title'" [innerHTML]="'GLOBAL_TITLE' | translate"></h1>
+<div [ivwTheme]="'global.title'" [innerHTML]="'GLOBAL_TITLE' | translate"></div>
+<div
+  *ngIf="(stepError$ | async)"
+  [ivwTheme]="'steps.error'"
+  [innerHTML]="'STEP_ERROR' | translate | trustedHtml"
+></div>
 <ivw-step
   (nextStep)="nextStep()"
   (previousStep)="previousStep()"

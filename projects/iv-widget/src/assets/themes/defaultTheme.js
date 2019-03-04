@@ -1,4 +1,8 @@
 export default {
+  global: {
+    stepper: { class: 'ivw-global-stepper' },
+    title: { class: 'ivw-global-title' }
+  },
   widget: {
     container: {
       class: 'ivw-widget-container'
@@ -19,9 +23,17 @@ export default {
     }
   },
   button: {
-    class: 'ivw-button'
+    inner: {
+      class: 'ivw-button'
+    },
+    container: {
+      class: 'ivw-button'
+    }
   },
   steps: {
+    error: {
+      class: 'ivw-steps-error'
+    },
     subtitle: {
       class: 'ivw-steps-subtitle'
     },
@@ -110,7 +122,18 @@ export default {
           class: 'ivw-summary-step-details-picture'
         },
         information: {
-          class: 'ivw-summary-step-details-information'
+          container: {
+            class: 'ivw-summary-step-details-information-container'
+          },
+          field: {
+            class: 'ivw-summary-step-details-information-field'
+          },
+          label: {
+            class: 'ivw-summary-step-details-information-label'
+          },
+          value: {
+            class: 'ivw-summary-step-details-information-value'
+          }
         }
       }
     }

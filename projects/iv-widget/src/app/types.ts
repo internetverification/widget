@@ -71,7 +71,7 @@ export type StepState =
 export interface BaseStepState {
   config: WithRoute<Step>;
   progress: {
-    state: 'BLANK' | 'PROCESSING' | 'SUCCESS' | 'REJECTED';
+    state: 'BLANK' | 'PROCESSING' | 'SUCCESS' | 'REJECTED' | 'ERROR';
   };
 }
 

@@ -57,6 +57,7 @@
       class="ivw-buttons-bar ivw-bottom-buttons-bar"
     >
       <ivw-button
+        [ivwTheme]="'button.container'"
         [disabled]="!(isVideoReady$ | async)"
         *ngIf="state === CAPTURE_STATE"
         (click)="capture()"
@@ -64,12 +65,18 @@
           step?.config?.captureTranslateKey || 'CAPTURE' | translate
         }}</ivw-button
       >
-      <ivw-button *ngIf="state === PREVIEW_STATE" (click)="restart()">{{
-        'RETAKE_PHOTO' | translate
-      }}</ivw-button>
-      <ivw-button *ngIf="state === PREVIEW_STATE" (click)="submit()">{{
-        'PICTURE_STEP_NEXT' | translate
-      }}</ivw-button>
+      <ivw-button
+        [ivwTheme]="'button.container'"
+        *ngIf="state === PREVIEW_STATE"
+        (click)="restart()"
+        >{{ 'RETAKE_PHOTO' | translate }}</ivw-button
+      >
+      <ivw-button
+        [ivwTheme]="'button.container'"
+        *ngIf="state === PREVIEW_STATE"
+        (click)="submit()"
+        >{{ 'PICTURE_STEP_NEXT' | translate }}</ivw-button
+      >
     </div>
   </div>
 </div>

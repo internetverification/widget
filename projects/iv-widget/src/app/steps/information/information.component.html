@@ -1,4 +1,6 @@
-<h1>{{ 'ENTER_YOUR_INFORMATION' | translate }}</h1>
+<div [ivwTheme]="'steps.information.title'">
+  {{ 'ENTER_YOUR_INFORMATION' | translate }}
+</div>
 <div
   *ngIf="step?.config?.headerTextTranslateKey"
   [innerHTML]="step?.config?.headerTextTranslateKey | translate | trustedHtml"
@@ -22,7 +24,10 @@
   [innerHTML]="step?.config?.footerTextTranslateKey | translate | trustedHtml"
 ></div>
 <div [ivwTheme]="'steps.information.buttons.container'">
-  <ivw-button [disabled]="formGroup.invalid" (click)="submit()">{{
-    'NEXT' | translate
-  }}</ivw-button>
+  <ivw-button
+    [ivwTheme]="'button.container'"
+    [disabled]="formGroup.invalid"
+    (click)="submit()"
+    >{{ 'NEXT' | translate }}</ivw-button
+  >
 </div>

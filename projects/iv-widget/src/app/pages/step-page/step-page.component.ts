@@ -1,11 +1,16 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { SubmitStepAction } from '../../state/store/actions/steps.actions';
-import { StepState } from '../../types';
-import { take } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { filter, skip, switchMap, take, tap } from 'rxjs/operators';
 import { oc } from 'ts-optchain';
+import {
+  SubmitStepAction,
+  ActionTypes
+} from '../../state/store/actions/steps.actions';
+import { StepState } from '../../types';
 
 @Component({
   selector: 'ivw-step-page',
@@ -15,11 +20,19 @@ import { oc } from 'ts-optchain';
 export class StepPageComponent implements OnInit {
   public stepState$ = this.store.select('steps', String(this.currentStepId));
 
+  public stepError$ = this.store
+    .select('steps', String(this.currentStepId), 'progress', 'state')
+    .pipe(
+      skip(1),
+      filter(state => state === 'ERROR')
+    );
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private location: Location,
     public router: Router,
-    private store: Store<{}>
+    private store: Store<{}>,
+    private actions: Actions
   ) {}
 
   ngOnInit() {}
@@ -35,21 +48,29 @@ export class StepPageComponent implements OnInit {
     );
   }
 
+  public waitForAction$ = of({});
+
   public nextStep() {
     let i = this.currentStepId;
-    this.stepState$.pipe(take(1)).subscribe((steps: StepState[]) => {
-      let next = steps[i];
-      while (
-        !(i < this.router.config.length - 1) &&
-        oc(next).progress.state() === 'SUCCESS'
-      ) {
-        next = steps[++i];
-      }
-      this.router.navigate([this.router.config[i + 2].path]);
-    });
+    this.stepState$
+      .pipe(
+        take(1),
+        switchMap(() => this.waitForAction$)
+      )
+      .subscribe((steps: StepState[]) => {
+        let next = steps[i];
+        while (
+          !(i < this.router.config.length - 1) &&
+          oc(next).progress.state() === 'SUCCESS'
+        ) {
+          next = steps[++i];
+        }
+        this.router.navigate([this.router.config[i + 2].path]);
+      });
   }
 
   public submitStep(stepPayload) {
+    this.actions.pipe(ofType(ActionTypes.PROGRESS_UPDATE));
     this.stepState$.pipe(take(1)).subscribe((stepState: StepState) => {
       this.store.dispatch(
         new SubmitStepAction(

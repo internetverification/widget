@@ -150,6 +150,24 @@ export class ConfigService {
         setTimeout(async () => {
           await this.router.navigate([this.router.config[0].path]);
           this.store.dispatch(new InitStepAction(stepsWithRoute));
+
+          if (this.config.jwt) {
+            console.warn(
+              'IV Widget was initialized without JWT parameter which is required by IV api'
+            );
+          }
+
+          if (this.config.submissionId) {
+            console.warn(
+              'IV Widget was initialized without Submission ID parameter which is required by IV api'
+            );
+          }
+
+          if (this.config.apiUrl) {
+            console.warn(
+              'IV Widget was initialized without api url parameter which is required'
+            );
+          }
         }, 10);
       }
     });

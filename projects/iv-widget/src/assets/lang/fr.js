@@ -35,10 +35,11 @@ export default {
   COUNTRY: 'Pays',
   ERROR_PATTERN_INVALID: 'est invalide',
   LOADING: 'chargement...',
+  STEP_ERROR: 'Une erreur est survenue. Veuillez réessayer.',
 
-  YEAR: 'année',
-  MONTH: 'mois',
-  DAY: 'jour',
+  YEAR: 'aaaa',
+  MONTH: 'mm',
+  DAY: 'jj',
 
   GLOBAL_TITLE: 'Vérifiez votre âge',
   FIRST_STEP_CONTENT: `

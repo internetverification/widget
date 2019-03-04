@@ -34,10 +34,12 @@ export default {
   ID_PICTURE_CAPTURE: 'Take Id picture',
   SELFIE_PICTURE_CAPTURE: 'Take selfie picture',
   LOADING: 'loading...',
+  STEP_ERROR:
+    'There was an error trying to send your information. Please try again.',
 
-  YEAR: 'year',
-  MONTH: 'month',
-  DAY: 'day',
+  YEAR: 'yyyy',
+  MONTH: 'mm',
+  DAY: 'dd',
 
   GLOBAL_TITLE: 'Verify your age',
   FIRST_STEP_CONTENT: `

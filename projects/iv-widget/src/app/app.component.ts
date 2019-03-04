@@ -1,10 +1,11 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { IvWidgetConfig, StepState } from './types';
-import { ConfigService } from './config.service';
-import { Router, ActivatedRoute, NavigationEnd, Route } from '@angular/router';
-import { map, filter } from 'rxjs/operators';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { of } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { oc } from 'ts-optchain';
+import { ConfigService } from './config.service';
+import { StepState } from './types';
 
 @Component({
   selector: 'ivw-root',
@@ -12,6 +13,8 @@ import { oc } from 'ts-optchain';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
+  public showStepper$ = of(true);
+
   @Input()
   get theme() {
     return this.configService.theme;

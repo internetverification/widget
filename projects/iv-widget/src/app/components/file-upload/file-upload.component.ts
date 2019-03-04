@@ -65,9 +65,9 @@ export class FileUploadComponent {
 
   private getBase64$(
     file: File
-  ): Observable<{ name: string; content: string }> {
+  ): Observable<{ name: string; content: string; type: string }> {
     return Observable.create(
-      (observer: Observer<{ name: string; content: string }>) => {
+      (observer: Observer<{ name: string; content: string; type: string }>) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => {
@@ -79,8 +79,9 @@ export class FileUploadComponent {
             encoded += '='.repeat(4 - (encoded.length % 4));
           }
           const name = file.name;
+          const type = file.type;
           const content = encoded;
-          observer.next({ name, content });
+          observer.next({ name, content, type });
         };
         reader.onerror = error => observer.error(error);
       }
