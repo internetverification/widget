@@ -4,7 +4,8 @@
 
 - `widget.container` Correspond to the root container of the widget
 - `global.title` Style applied to the title of the widget
-- `button` Style for buttons through the widget
+- `button.inner` Style for buttons through the widget
+- `button.container` Style for buttons container through the widget
 - `input.group` Style applied to the container of an input and its label
 - `input.label` Style for the default label through the widget
 - `input.input` Style for the default input through the widget
@@ -16,6 +17,10 @@
 - `summary.step.container` Style applied to the container of each steps in the summary page
 - `summary.step.details.file` Style applied to file step in the summary page
 - `summary.step.details.picture` Style applied to picture step in the summary page
+- `summary.step.details.information.container` Style applied to information step in the summary page
+- `summary.step.details.information.label` Style applied to information step field labels in the summary page
+- `summary.step.details.information.label` Style applied to information step field labels in the summary page
+- `summary.step.details.information.value` Style applied to information step field value in the summary page
 - `summary.step.details.container` Style applied to container of information steps in the summary page
 
 ## Steps page keys
@@ -71,8 +76,8 @@ var widget = createIvWidget('my-container-id', {
   lang: myLangConfig,
   theme: bootstrapTheme // Default theme could also be myExtendedTheme
   config: {
-    tenantId: 'your_tenant_id',
-    serviceId: 'your_service_id',
+    jwt: 'your_jwt_token',
+    apiUrl: 'base api url',
     submissionId: 'your_submission_id'
   }
 });

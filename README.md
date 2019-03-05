@@ -22,7 +22,7 @@ var widget = IvWidget.createIvWidget('my-container-id', {
   lang: myLangConfig,
   theme: myThemeConfig
   config: {
-    apiUrl: 'api_root', // normally http://app.internetverification.com/submission
+    apiUrl: 'api_root', // normally https://app.internetverification.com/submission
     jwt: 'jwt_token_provided_by_internetverification',
     submissionId: 'your_submission_id'
   }

@@ -127,6 +127,12 @@ type: 'picture'
 
 overlay_type: can be either 'face' or 'card. Correspond to the overlay shape over the user camera
 
+allow_camera_switch: boolean that activate the switch camera on mobile. Default false
+
+disableMirroring: boolean that tell the picture step to disable mirroring on desktop. Default false
+
+disableMirroringMobile: boolean that tell the picture step to disable mirroring on mobile (only when camera is facing user). Default false
+
 ## File
 
 ```
