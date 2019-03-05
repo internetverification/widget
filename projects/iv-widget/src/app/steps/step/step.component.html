@@ -1,8 +1,15 @@
-<h2
+<div
   [ivwTheme]="'steps.subtitle'"
   *ngIf="step?.config?.subtitleTranslateKey"
   [innerHTML]="step?.config?.subtitleTranslateKey | translate | trustedHtml"
-></h2>
+></div>
+<div
+  *ngIf="step?.config?.descriptiveTextTranslateKey"
+  [ivwTheme]="'steps.descriptivetext'"
+  [innerHTML]="
+    step?.config?.descriptiveTextTranslateKey | translate | trustedHtml
+  "
+></div>
 <div class="ivw-step-container" [ngSwitch]="step?.config?.type">
   <div class="ivw-step-container-box" *ngSwitchCase="'picture'">
     <ivw-mobile-layout>

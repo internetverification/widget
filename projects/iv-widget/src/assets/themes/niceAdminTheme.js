@@ -1,9 +1,3 @@
-const alignEnd = `
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  `;
-
 const alignCenter = `
   width: 100%;
   display: flex;
@@ -15,6 +9,9 @@ export default {
     container: {
       class: 'nice-admin'
     }
+  },
+  global: {
+    title: { class: 'h1' }
   },
   input: {
     group: {
@@ -52,13 +49,18 @@ export default {
     }
   },
   button: {
-    class: 'btn btn-primary'
+    inner: {
+      class: 'btn btn-primary'
+    }
   },
   steps: {
     information: {
+      title: {
+        class: 'h2'
+      },
       buttons: {
         container: {
-          style: alignEnd
+          style: alignCenter
         }
       }
     },
@@ -72,7 +74,7 @@ export default {
     file: {
       buttons: {
         container: {
-          style: alignEnd
+          style: alignCenter
         }
       }
     }

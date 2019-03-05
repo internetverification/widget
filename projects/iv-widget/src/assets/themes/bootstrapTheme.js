@@ -1,19 +1,18 @@
-const alignEnd = `
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  `;
-
 const alignCenter = `
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   `;
 
 export default {
   widget: {
     container: {
       class: 'bootstrap-theme'
+    }
+  },
+  global: {
+    title: {
+      class: 'h1 text-primary text-center'
     }
   },
   input: {
@@ -52,13 +51,18 @@ export default {
     }
   },
   button: {
-    class: 'btn btn-primary'
+    inner: {
+      class: 'btn btn-primary'
+    }
   },
   steps: {
     information: {
+      title: {
+        class: 'h2'
+      },
       buttons: {
         container: {
-          style: alignEnd
+          style: alignCenter
         }
       }
     },
@@ -72,7 +76,7 @@ export default {
     file: {
       buttons: {
         container: {
-          style: alignEnd
+          style: alignCenter
         }
       }
     }

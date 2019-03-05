@@ -2,10 +2,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { ConfigService } from '../config.service';
+import { oc } from 'ts-optchain';
 
 interface StepDocument {
   step: string;
-  type: 'jpeg/base64';
+  type: 'jpeg/base64' | 'pdf/base64';
   data: string;
 }
 
@@ -23,6 +24,8 @@ interface StepInformation {
   };
 }
 
+const DOUBLE_SLASH = /([^:]\/)\/+/g;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,6 +33,19 @@ export class StepDataService {
   constructor(private httpClient: HttpClient, private config: ConfigService) {}
 
   private get apiEndpoint() {
+    try {
+      if (typeof URL !== 'undefined') {
+        return new URL(
+          `${this.config.config.apiUrl}/submissions/${
+            this.config.config.submissionId
+          }`.replace(DOUBLE_SLASH, '$1')
+        );
+      }
+    } catch (ex) {
+      console.warn('Your apiUrl is invalid');
+      return `/submissions/${this.config.config.submissionId}`;
+    }
+
     return `${this.config.config.apiUrl || ''}/submissions/${
       this.config.config.submissionId
     }`;
@@ -46,11 +62,21 @@ export class StepDataService {
         });
       case 'file':
         const { file } = payload;
-        return this.submitDocument({
-          data: file,
-          type: 'jpeg/base64',
-          step: String(id)
-        });
+        if (file.type === 'image/jpeg') {
+          return this.submitDocument({
+            data: file.content,
+            type: 'jpeg/base64',
+            step: String(id - 1)
+          });
+        } else if (file.type === 'application/pdf') {
+          return this.submitDocument({
+            data: file.content,
+            type: 'pdf/base64',
+            step: String(id - 1)
+          });
+        } else {
+          return throwError(new Error('File type not supported'));
+        }
       case 'information':
         return this.submitInformation(payload);
       default:
@@ -60,7 +86,10 @@ export class StepDataService {
 
   private getHeaders(): HttpHeaders {
     const header = new HttpHeaders();
-    return header.append('Authorization', `Bearer ${this.config.config.jwt}`);
+    return header.append(
+      'Authorization',
+      `Bearer ${oc(this.config).config.jwt()}`
+    );
   }
   submitDocument(document: StepDocument) {
     return this.httpClient.post(`${this.apiEndpoint}/documents`, document, {

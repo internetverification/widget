@@ -1,12 +1,14 @@
-<div [ngSwitch]="type">
-  <div
+<ng-container [ngSwitch]="type">
+  <svg
     class="ivw-svg ivw-svg-card"
+    viewBox="0 0 86 54"
     *ngSwitchCase="'card'"
     [innerHTML]="cardTemplate"
-  ></div>
-  <div
+  ></svg>
+  <svg
     class="ivw-svg ivw-svg-face"
     *ngSwitchCase="'face'"
+    viewBox="0 0 768 1024"
     [innerHTML]="faceTemplate"
-  ></div>
-</div>
+  ></svg>
+</ng-container>

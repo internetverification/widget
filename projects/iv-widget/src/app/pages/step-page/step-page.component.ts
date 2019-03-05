@@ -35,6 +35,7 @@ export class StepPageComponent implements OnInit {
     private actions: Actions
   ) {}
 
+  public waitForAction$ = of({});
   ngOnInit() {}
 
   public previousStep() {
@@ -48,14 +49,12 @@ export class StepPageComponent implements OnInit {
     );
   }
 
-  public waitForAction$ = of({});
-
   public nextStep() {
     let i = this.currentStepId;
     this.stepState$
       .pipe(
-        take(1),
-        switchMap(() => this.waitForAction$)
+        switchMap(() => this.waitForAction$),
+        take(1)
       )
       .subscribe((steps: StepState[]) => {
         let next = steps[i];
@@ -70,7 +69,9 @@ export class StepPageComponent implements OnInit {
   }
 
   public submitStep(stepPayload) {
-    this.actions.pipe(ofType(ActionTypes.PROGRESS_UPDATE));
+    this.waitForAction$ = this.actions.pipe(
+      ofType(ActionTypes.PROGRESS_UPDATE)
+    );
     this.stepState$.pipe(take(1)).subscribe((stepState: StepState) => {
       this.store.dispatch(
         new SubmitStepAction(

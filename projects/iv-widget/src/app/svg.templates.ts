@@ -1,19 +1,12 @@
 export const svgTemplateCard = () => `
-    <svg
-      viewBox="0 0 86 54"
-    >
       <rect
         width="86"
         height="54"
         style="fill:rgba(255, 255, 255, 0);stroke-width:5;stroke:rgba(139, 139, 139, 0.7)"
       />
-    </svg>
 `;
 
 export const svgTemplateFace = () => `
-    <svg
-      viewBox="0 0 768 1024"
-    >
       <g>
         <title>Layer 1</title>
         <path
@@ -27,5 +20,4 @@ export const svgTemplateFace = () => `
           fill="none"
         />
       </g>
-    </svg>
 `;

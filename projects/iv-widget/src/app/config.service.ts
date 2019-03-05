@@ -4,14 +4,13 @@ import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import defaultTheme from '../assets/themes/defaultTheme';
+import { LoadingComponent } from './pages/loading/loading.component';
+import { StepPageComponent } from './pages/step-page/step-page.component';
+import { SummaryPageComponent } from './pages/summary-page/summary-page.component';
 import { isDefined } from './rxjs.utils';
 import { InitStepAction } from './state/store/actions/steps.actions';
-import { StepPageComponent } from './pages/step-page/step-page.component';
 import { IvWidgetConfig, Step } from './types';
-import { SummaryPageComponent } from './pages/summary-page/summary-page.component';
-import { LoadingComponent } from './pages/loading/loading.component';
-import defaultTheme from '../assets/themes/defaultTheme';
 
 @Injectable({
   providedIn: 'root'
@@ -150,24 +149,6 @@ export class ConfigService {
         setTimeout(async () => {
           await this.router.navigate([this.router.config[0].path]);
           this.store.dispatch(new InitStepAction(stepsWithRoute));
-
-          if (this.config.jwt) {
-            console.warn(
-              'IV Widget was initialized without JWT parameter which is required by IV api'
-            );
-          }
-
-          if (this.config.submissionId) {
-            console.warn(
-              'IV Widget was initialized without Submission ID parameter which is required by IV api'
-            );
-          }
-
-          if (this.config.apiUrl) {
-            console.warn(
-              'IV Widget was initialized without api url parameter which is required'
-            );
-          }
         }, 10);
       }
     });

@@ -1,9 +1,3 @@
-const alignEnd = `
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  `;
-
 const alignCenter = `
   width: 100%;
   display: flex;
@@ -16,7 +10,7 @@ export default {
       style: `
         text-transform: uppercase;
         `,
-      class: 'text-primary text-center'
+      class: 'text-primary text-center h1'
     }
   },
   widget: {
@@ -60,16 +54,21 @@ export default {
     }
   },
   button: {
-    class: 'btn btn-primary'
+    inner: {
+      class: 'btn btn-primary'
+    }
   },
   steps: {
     subtitle: {
       class: 'text-center subtitle'
     },
     information: {
+      title: {
+        class: 'h2'
+      },
       buttons: {
         container: {
-          style: alignEnd
+          style: alignCenter
         }
       }
     },
@@ -102,7 +101,7 @@ export default {
     file: {
       buttons: {
         container: {
-          style: alignEnd
+          style: alignCenter
         }
       }
     }
