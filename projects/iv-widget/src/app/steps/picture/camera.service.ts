@@ -56,9 +56,13 @@ export class CameraService {
 
   public getRenderer(
     videoElement: HTMLVideoElement,
-    options: { width?: number; height?: number; facingMode?: { exact: string } }
+    options: {
+      width?: number;
+      height?: number;
+      facingMode?: { exact: string };
+    },
+    shouldMirror = false
   ) {
-    const shouldMirror = this.shouldMirror(options.facingMode);
     return this.getUserMedia(options).pipe(
       map(mediaStream => {
         return new Renderer(videoElement, mediaStream, shouldMirror);

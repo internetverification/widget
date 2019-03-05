@@ -33,22 +33,22 @@ export class StepDataService {
   constructor(private httpClient: HttpClient, private config: ConfigService) {}
 
   private get apiEndpoint() {
+    const subId = oc(this.config).config.submissionId();
     try {
       if (typeof URL !== 'undefined') {
         return new URL(
-          `${this.config.config.apiUrl}/submissions/${
-            this.config.config.submissionId
-          }`.replace(DOUBLE_SLASH, '$1')
+          `${this.config.config.apiUrl}/submissions/${subId}`.replace(
+            DOUBLE_SLASH,
+            '$1'
+          )
         );
       }
     } catch (ex) {
       console.warn('Your apiUrl is invalid');
-      return `/submissions/${this.config.config.submissionId}`;
+      return `/submissions/${subId}`;
     }
 
-    return `${this.config.config.apiUrl || ''}/submissions/${
-      this.config.config.submissionId
-    }`;
+    return `${oc(this.config).config.apiUrl() || ''}/submissions/${subId}`;
   }
 
   submitStep(id: number, type: string, payload: any) {

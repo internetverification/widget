@@ -8,6 +8,8 @@ export interface PictureStep {
   descriptiveTextTranslateKey?: string;
   overlay_type: 'card' | 'face';
   hideInSummary?: boolean;
+  disableMirroring?: boolean;
+  disableMirroringMobile?: boolean;
 }
 
 export interface FileStep {

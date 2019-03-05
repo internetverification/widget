@@ -19,7 +19,8 @@ import {
   switchMap,
   take,
   takeUntil,
-  tap
+  tap,
+  catchError
 } from 'rxjs/operators';
 import { oc } from 'ts-optchain';
 import { DeviceTypeService } from '../../device-type.service';
@@ -63,14 +64,21 @@ export class PictureComponent extends BaseStepComponent
     .getPlatformType$()
     .pipe(map(type => type === 'Mobile'));
 
-  public shouldMirror$ = this.isMobile$.pipe(
+  public shouldMirror$ = this.deviceType.getPlatformType$().pipe(
     startWith(true),
-    switchMap(() => {
-      return this.cameraOrientation$.pipe(
-        map(orientation => {
-          return orientation !== 'environment';
-        })
-      );
+    switchMap(type => {
+      if (type === 'Mobile') {
+        return this.cameraOrientation$.pipe(
+          map(orientation => {
+            // On mobile we only want to disable mirroring on user faceing
+            return (
+              orientation === 'user' && !this.step.config.disableMirroringMobile
+            );
+          })
+        );
+      } else {
+        return of(!this.step.config.disableMirroring);
+      }
     })
   );
 
@@ -131,8 +139,19 @@ export class PictureComponent extends BaseStepComponent
           );
         }),
         switchMap(options => {
+          return this.shouldMirror$.pipe(
+            map(mirror => {
+              return [options, mirror];
+            })
+          );
+        }),
+        switchMap(([options, mirror]) => {
           return this.cameraService
-            .getRenderer(this.videoElement.nativeElement, options)
+            .getRenderer(
+              this.videoElement.nativeElement,
+              options,
+              mirror as boolean
+            )
             .pipe(
               // Permission was denied
               // Retry each second until the user gives access in case of a permission denied error
@@ -162,7 +181,11 @@ export class PictureComponent extends BaseStepComponent
               }),
               // We stop the media stream after the picture is taken
               take(1),
-              tap(() => this.isVideoReady$.next(false))
+              tap(() => this.isVideoReady$.next(false)),
+              catchError(e => {
+                console.error(e);
+                return of();
+              })
             );
         }),
         takeUntil(this.destroySubject$)
