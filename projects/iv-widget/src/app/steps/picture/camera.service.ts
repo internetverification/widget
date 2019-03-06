@@ -61,11 +61,12 @@ export class CameraService {
       height?: number;
       facingMode?: { exact: string };
     },
-    shouldMirror = false
+    shouldMirror = false,
+    flipImage = false
   ) {
     return this.getUserMedia(options).pipe(
       map(mediaStream => {
-        return new Renderer(videoElement, mediaStream, shouldMirror);
+        return new Renderer(videoElement, mediaStream, shouldMirror, flipImage);
       })
     );
   }
@@ -75,7 +76,8 @@ export class Renderer {
   constructor(
     private videoElement: HTMLVideoElement,
     private mediaStream: MediaStream,
-    private mirror = true
+    private mirror = true,
+    private flipCapturedImage = false
   ) {}
 
   render() {
@@ -86,6 +88,10 @@ export class Renderer {
     this.mediaStream.getTracks().forEach(track => track.stop());
   }
 
+  private xor(val1, val2) {
+    return (val1 && !val2) || (!val1 && val2);
+  }
+
   draw(canvasElement?: HTMLCanvasElement) {
     let canvas = canvasElement;
     if (!canvasElement) {
@@ -94,7 +100,7 @@ export class Renderer {
     const ctx = canvas.getContext('2d');
     canvas.width = this.videoElement.clientWidth;
     canvas.height = this.videoElement.clientHeight;
-    if (this.mirror) {
+    if (this.xor(this.mirror, this.flipCapturedImage)) {
       ctx.translate(this.videoElement.clientWidth, 0);
       ctx.scale(-1, 1);
     }

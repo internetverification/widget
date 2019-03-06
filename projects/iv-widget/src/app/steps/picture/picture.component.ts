@@ -7,7 +7,13 @@ import {
   OnInit,
   ViewChild
 } from '@angular/core';
-import { BehaviorSubject, of, ReplaySubject, Subject } from 'rxjs';
+import {
+  BehaviorSubject,
+  of,
+  ReplaySubject,
+  Subject,
+  MonoTypeOperatorFunction
+} from 'rxjs';
 import {
   debounceTime,
   delay,
@@ -20,13 +26,14 @@ import {
   take,
   takeUntil,
   tap,
-  catchError
+  catchError,
+  first
 } from 'rxjs/operators';
 import { oc } from 'ts-optchain';
 import { DeviceTypeService } from '../../device-type.service';
 import { PictureStepState } from '../../types';
 import { BaseStepComponent } from '../base-step.class';
-import { CameraService } from './camera.service';
+import { CameraService, Renderer } from './camera.service';
 
 @Component({
   selector: 'ivw-picture',
@@ -70,7 +77,7 @@ export class PictureComponent extends BaseStepComponent
       if (type === 'Mobile') {
         return this.cameraOrientation$.pipe(
           map(orientation => {
-            // On mobile we only want to disable mirroring on user faceing
+            // On mobile we only want to disable mirroring on user facing
             return (
               orientation === 'user' && !this.step.config.disableMirroringMobile
             );
@@ -81,6 +88,24 @@ export class PictureComponent extends BaseStepComponent
       }
     })
   );
+
+  public shouldMirror(orientation) {
+    if (this.deviceType.getPlatformType() === 'Mobile') {
+      // On mobile we only want to disable mirroring on user facing
+      return orientation === 'user' && !this.step.config.disableMirroringMobile;
+    } else {
+      return !this.step.config.disableMirroring;
+    }
+  }
+
+  public shoulFlipImage(orientation) {
+    if (this.deviceType.getPlatformType() === 'Mobile') {
+      // On mobile we only want to disable mirroring on user facing
+      return orientation === 'user' && this.step.config.flipCapturedImageMobile;
+    } else {
+      return this.step.config.flipCapturedImage;
+    }
+  }
 
   private readonly PERMISSION_DENIED = 'NotAllowedError';
 
@@ -139,34 +164,18 @@ export class PictureComponent extends BaseStepComponent
           );
         }),
         switchMap(options => {
-          return this.shouldMirror$.pipe(
-            map(mirror => {
-              return [options, mirror];
-            })
-          );
-        }),
-        switchMap(([options, mirror]) => {
+          const orientation = (options as any).facingMode || 'user';
           return this.cameraService
             .getRenderer(
               this.videoElement.nativeElement,
               options,
-              mirror as boolean
+              this.shouldMirror(orientation),
+              this.shoulFlipImage(orientation)
             )
             .pipe(
               // Permission was denied
               // Retry each second until the user gives access in case of a permission denied error
-              retryWhen(errors => {
-                return errors.pipe(
-                  tap(e => {
-                    if (e.name !== this.PERMISSION_DENIED) {
-                      throw e;
-                    } else {
-                      this.cameraDisabled$.next(true);
-                    }
-                  }),
-                  delay(1000)
-                );
-              }),
+              this.handlePermissionsDenied(),
               tap(() => this.cameraDisabled$.next(false)),
               tap(renderer => renderer.render()),
               tap(() => this.isVideoReady$.next(true)),
@@ -180,7 +189,7 @@ export class PictureComponent extends BaseStepComponent
                 );
               }),
               // We stop the media stream after the picture is taken
-              take(1),
+              first(),
               tap(() => this.isVideoReady$.next(false)),
               catchError(e => {
                 console.error(e);
@@ -216,5 +225,22 @@ export class PictureComponent extends BaseStepComponent
 
   ngOnDestroy(): void {
     this.destroySubject$.next();
+  }
+
+  // tslint:disable-next-line: member-ordering
+  public handlePermissionsDenied(): MonoTypeOperatorFunction<Renderer> {
+    return retryWhen(errors => {
+      return errors.pipe(
+        tap(e => {
+          if (e.name !== this.PERMISSION_DENIED) {
+            throw e;
+          } else {
+            this.cameraDisabled$.next(true);
+          }
+        }),
+        // retry to get the camera each second until the user activate it
+        delay(1000)
+      );
+    });
   }
 }

@@ -11,6 +11,7 @@ import {
   ActionTypes
 } from '../../state/store/actions/steps.actions';
 import { StepState } from '../../types';
+import { environment } from 'projects/iv-widget/src/environments/environment';
 
 @Component({
   selector: 'ivw-step-page',
@@ -49,29 +50,37 @@ export class StepPageComponent implements OnInit {
     );
   }
 
-  public nextStep() {
+  public getNextIncompleteStepIndex(steps: StepState[]) {
     let i = this.currentStepId;
+    let next = steps[i];
+    while (
+      !(i < this.router.config.length - 1) &&
+      oc(next).progress.state() === 'SUCCESS'
+    ) {
+      next = steps[++i];
+    }
+    return i + 2;
+  }
+
+  public nextStep() {
     this.stepState$
       .pipe(
         switchMap(() => this.waitForAction$),
         take(1)
       )
       .subscribe((steps: StepState[]) => {
-        let next = steps[i];
-        while (
-          !(i < this.router.config.length - 1) &&
-          oc(next).progress.state() === 'SUCCESS'
-        ) {
-          next = steps[++i];
-        }
-        this.router.navigate([this.router.config[i + 2].path]);
+        const next = this.getNextIncompleteStepIndex(steps);
+        this.router.navigate([this.router.config[next].path]);
       });
   }
 
   public submitStep(stepPayload) {
-    this.waitForAction$ = this.actions.pipe(
-      ofType(ActionTypes.PROGRESS_UPDATE)
-    );
+    // Allow moving through step with error in development
+    if (environment.production) {
+      this.waitForAction$ = this.actions.pipe(
+        ofType(ActionTypes.PROGRESS_UPDATE)
+      );
+    }
     this.stepState$.pipe(take(1)).subscribe((stepState: StepState) => {
       this.store.dispatch(
         new SubmitStepAction(

@@ -17,19 +17,19 @@ export const createIvWidget = function(
 
     const c = widget.config || {};
 
-    if (c.jwt) {
+    if (!c.jwt) {
       console.warn(
         'IV Widget was initialized without JWT parameter which is required by IV api'
       );
     }
 
-    if (c.submissionId) {
+    if (!c.submissionId) {
       console.warn(
         'IV Widget was initialized without Submission ID parameter which is required by IV api'
       );
     }
 
-    if (c.apiUrl) {
+    if (!c.apiUrl) {
       console.warn(
         'IV Widget was initialized without api url parameter which is required'
       );

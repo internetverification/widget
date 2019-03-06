@@ -10,6 +10,8 @@ export interface PictureStep {
   hideInSummary?: boolean;
   disableMirroring?: boolean;
   disableMirroringMobile?: boolean;
+  flipCapturedImage?: boolean;
+  flipCapturedImageMobile?: boolean;
 }
 
 export interface FileStep {

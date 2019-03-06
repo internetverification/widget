@@ -27,7 +27,7 @@ export default {
       class: 'ivw-button'
     },
     container: {
-      class: 'ivw-button'
+      class: 'ivw-button-container'
     }
   },
   steps: {
