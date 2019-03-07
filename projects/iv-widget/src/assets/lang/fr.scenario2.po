@@ -1,0 +1,147 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Web Translate It <support@webtranslateit.com>\n"
+"Language: en\n"
+"Language-Team: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: WebTranslateIt.com\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+msgid "BTN_AGREE"
+msgstr "J'accepte"
+
+msgid "CAPTURE"
+msgstr "Prendre la photo"
+
+msgid "CONFIRM_SUMMARY"
+msgstr "Je confirme"
+
+msgid "DOWNLOAD_FILE"
+msgstr "Télécharger"
+
+msgid "EMAIL"
+msgstr "Courriel"
+
+msgid "ENTER_YOUR_INFORMATION"
+msgstr "Entrez vos informations"
+
+msgid "ERROR_EMAIL_INVALID"
+msgstr "Entrez un courriel valide"
+
+msgid "ERROR_IS_REQUIRED"
+msgstr "est requis"
+
+msgid "FIRST_NAME"
+msgstr "Prénom"
+
+msgid "INVALID_STEP_TYPE"
+msgstr "Type d'étape invalide"
+
+msgid "LAST_NAME"
+msgstr "Nom"
+
+msgid "NEXT"
+msgstr "Suivant"
+
+msgid "PICTURE_STEP_NEXT"
+msgstr "Soumettre la photo"
+
+msgid "RETAKE_PHOTO"
+msgstr "Reprendre la photo"
+
+msgid "SWITCH_CAMERA"
+msgstr "Changer de camera"
+
+msgid "ENABLE_PERMISSION"
+msgstr "Activez votre camera pour continuer"
+
+msgid "SUMMARY_FOOTER_TEXT"
+msgstr ""
+
+msgid "SUMMARY_HEADER_TEXT"
+msgstr "Nous avons reçu votre demande. Merci!"
+
+msgid "INFORMATION_STEP_TITLE"
+msgstr "Information personnelle"
+
+msgid "ID_PICTURE_STEP_TITLE"
+msgstr "Photo de pièce d'identité"
+
+msgid "FACE_PICTURE_STEP_TITLE"
+msgstr "Photo du visage"
+
+msgid "POA_STEP_TITLE"
+msgstr "Preuve d'adresse"
+
+msgid "ID_PICTURE_SUBTITLE"
+msgstr "Finalement, prenez une photo de votre pièce d'identité"
+
+msgid "SELFIE_PICTURE_SUBTITLE"
+msgstr "Prenez une photo de votre visage"
+
+msgid "ID_PICTURE_CAPTURE"
+msgstr "Prendre la photo"
+
+msgid "SELFIE_PICTURE_CAPTURE"
+msgstr "Prendre la photo"
+
+msgid "DATE_OF_BIRTH"
+msgstr "Date de naissance"
+
+msgid "CIVIC_ADDRESS"
+msgstr "Adresse civique"
+
+msgid "MUNICIPALITY"
+msgstr "Ville"
+
+msgid "ADMINISTRATIVE_AREA"
+msgstr "État / Province"
+
+msgid "SUBADMINISTRATIVE_AREA"
+msgstr "Zone sous-administrative"
+
+msgid "POSTAL_CODE"
+msgstr "Code postal"
+
+msgid "COUNTRY"
+msgstr "Pays"
+
+msgid "ERROR_PATTERN_INVALID"
+msgstr "est invalide"
+
+msgid "LOADING"
+msgstr "chargement..."
+
+msgid "STEP_ERROR"
+msgstr "Une erreur est survenue. Veuillez réessayer."
+
+msgid "YEAR"
+msgstr "aaaa"
+
+msgid "MONTH"
+msgstr "mm"
+
+msgid "DAY"
+msgstr "jj"
+
+msgid "SEFLIE_PRE_TEXT"
+msgstr "<p>Veuillez prendre une photo de votre visage. Cette photo ne servira seulement qu'à titre de comparaison avec votre pièce d'identié.</p>"
+
+msgid "ID_PRE_TEXT"
+msgstr "<p>Veuillez prendre en photo votre pièce d'identité émise par le gouvernement, telle que votre passeport ou votre permis de conduire. Cettre photo ne servira qu'a vérifier votre nom, adresse et votre âge ainsi qu'à titre de comparaison avec la photo de votre visage.</p>"
+
+msgid "GLOBAL_TITLE"
+msgstr "Vérifiez votre âge"
+
+msgid "INTRO_CONTENT"
+msgstr "<p>Afin de vérifier votre âge et votre identité, vous devez nous fournir votre nom complet, date de naissance, une photo de votre carte d'identité émise par le gouvernement et une photo confirmant que vous êtes bien la personne sur cette pièce d'identité. Lorsque vous cliquez sur le bouton ci-dessous on vous demandera d'autoriser l'accès à la caméra de votre appareil.</p><br>"
+
+msgid "GLOBAL_FOOTER_TEXT"
+msgstr "<br><h2 class='text-center'>Pourquoi est-ce requis?</h2><p class='text-justify'>Nous devons vérifier votre âge, votre identité et votre adresse afin de vous vendre des produits interdit aux mineurs. Notre système compare votre pièce d'identité émise par le gouvernement et votre selfie pour établir de manière fiable votre âge et votre identité.</p><p class='text-justify'>Notre processus démontre le plus haut niveau de conformité et de responsabilité sociale vis-à-vis des consommateurs, des parents, des autorités et des organismes de réglementation.</p><br>"
+

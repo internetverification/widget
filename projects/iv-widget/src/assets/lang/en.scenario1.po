@@ -1,0 +1,147 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Web Translate It <support@webtranslateit.com>\n"
+"Language: en\n"
+"Language-Team: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: WebTranslateIt.com\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+msgid "BTN_AGREE"
+msgstr "PROCEED"
+
+msgid "CAPTURE"
+msgstr "Capture"
+
+msgid "CONFIRM_SUMMARY"
+msgstr "Confirm"
+
+msgid "DOWNLOAD_FILE"
+msgstr "Download"
+
+msgid "EMAIL"
+msgstr "Email"
+
+msgid "ENTER_YOUR_INFORMATION"
+msgstr "Enter your information"
+
+msgid "ERROR_EMAIL_INVALID"
+msgstr "Please enter a valid email"
+
+msgid "ERROR_IS_REQUIRED"
+msgstr "is required"
+
+msgid "FIRST_NAME"
+msgstr "First Name"
+
+msgid "INVALID_STEP_TYPE"
+msgstr "Invalid step type"
+
+msgid "LAST_NAME"
+msgstr "Last Name"
+
+msgid "NEXT"
+msgstr "Next"
+
+msgid "PICTURE_STEP_NEXT"
+msgstr "Upload photo"
+
+msgid "RETAKE_PHOTO"
+msgstr "Retake photo"
+
+msgid "SWITCH_CAMERA"
+msgstr "Switch camera"
+
+msgid "ENABLE_PERMISSION"
+msgstr "Please enable your camera"
+
+msgid "SUMMARY_FOOTER_TEXT"
+msgstr ""
+
+msgid "DATE_OF_BIRTH"
+msgstr "Date of Birth"
+
+msgid "CIVIC_ADDRESS"
+msgstr "Civic address"
+
+msgid "MUNICIPALITY"
+msgstr "City"
+
+msgid "ADMINISTRATIVE_AREA"
+msgstr "State / Province"
+
+msgid "SUBADMINISTRATIVE_AREA"
+msgstr "Subadministrative area"
+
+msgid "POSTAL_CODE"
+msgstr "Postal code"
+
+msgid "COUNTRY"
+msgstr "Country"
+
+msgid "ERROR_PATTERN_INVALID"
+msgstr "is invalid"
+
+msgid "INFORMATION_STEP_TITLE"
+msgstr "Personal Information"
+
+msgid "ID_PICTURE_STEP_TITLE"
+msgstr "ID"
+
+msgid "FACE_PICTURE_STEP_TITLE"
+msgstr "Selfie"
+
+msgid "POA_STEP_TITLE"
+msgstr "Proof of address"
+
+msgid "ID_PICTURE_SUBTITLE"
+msgstr "Lastly, take a pic of your Government ID card"
+
+msgid "SELFIE_PICTURE_SUBTITLE"
+msgstr "Take a pic of your face"
+
+msgid "ID_PICTURE_CAPTURE"
+msgstr "Take Id picture"
+
+msgid "SELFIE_PICTURE_CAPTURE"
+msgstr "Take selfie picture"
+
+msgid "LOADING"
+msgstr "loading..."
+
+msgid "STEP_ERROR"
+msgstr "There was an error trying to send your information. Please try again."
+
+msgid "YEAR"
+msgstr "yyyy"
+
+msgid "MONTH"
+msgstr "mm"
+
+msgid "DAY"
+msgstr "dd"
+
+msgid "GLOBAL_TITLE"
+msgstr "Verify your age"
+
+msgid "SEFLIE_PRE_TEXT"
+msgstr "<p>Please take a selfie. This picture will strictly be used to compare to your government-issued ID, for security purposes.</p>"
+
+msgid "ID_PRE_TEXT"
+msgstr "<p>Please take a picture of your government-issued ID, such as your driver's license or passport. This picture will strictly be used verify your name and date of birth and to compare to your selfie, for security purposes.</p>"
+
+msgid "SUMMARY_HEADER_TEXT"
+msgstr "<p>Your verification request has been received. Your application is in review. Thank you!</p>"
+
+msgid "INTRO_CONTENT"
+msgstr "<p>We need to verify your age by taking a photo of you and your government issued ID card. When you click the button below, you will be prompted to grant access to your phone or computer's camera.</p><br>"
+
+msgid "GLOBAL_FOOTER_TEXT"
+msgstr "<br><h2 class='text-center'>Why is this required?</h2><p class='text-justify'>We must verify your age and identity in order to sell you age-restricted products. Our system diligently compares your government-issued ID and your selfie to reliably establish your age and identity.</p><p class='text-justify'>Our diligence demonstrates the highest levels of compliance and social responsibility to consumers, parents, law enforcement agencies, and regulatory bodies.</p>"
+
