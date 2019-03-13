@@ -1,5 +1,11 @@
-<div [innerHTML]="'SUMMARY_HEADER_TEXT' | translate | trustedHtml"></div>
+<div
+  *ngIf="('SUMMARY_HEADER_TEXT' | translate) !== 'SUMMARY_HEADER_TEXT'"
+  [innerHTML]="'SUMMARY_HEADER_TEXT' | translate | trustedHtml"
+></div>
 <div *ngFor="let step of (steps$ | async)">
   <ivw-summary-step [step]="step"></ivw-summary-step>
 </div>
-<div [innerHTML]="'SUMMARY_FOOTER_TEXT' | translate | trustedHtml"></div>
+<div
+  *ngIf="('SUMMARY_FOOTER_TEXT' | translate) !== 'SUMMARY_FOOTER_TEXT'"
+  [innerHTML]="'SUMMARY_FOOTER_TEXT' | translate | trustedHtml"
+></div>
