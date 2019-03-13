@@ -1,7 +1,7 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import fr from './assets/lang/fr';
-import en from './assets/lang/en';
+import fr from './assets/lang/fr/fr';
+import en from './assets/lang/en/en';
 import bootstrap from './assets/themes/defaultTheme';
 import customGreen from './assets/themes/customgreenTheme';
 import niceAdmin from './assets/themes/niceAdminTheme';

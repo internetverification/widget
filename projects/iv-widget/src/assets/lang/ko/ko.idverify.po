@@ -1,0 +1,147 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Web Translate It <support@webtranslateit.com>\n"
+"Language: en\n"
+"Language-Team: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: WebTranslateIt.com\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+msgid "BTN_AGREE"
+msgstr "BTN_AGREE"
+
+msgid "CAPTURE"
+msgstr "캡처"
+
+msgid "CONFIRM_SUMMARY"
+msgstr "CONFIRM_SUMMARY"
+
+msgid "DOWNLOAD_FILE"
+msgstr "DOWNLOAD_FILE"
+
+msgid "EMAIL"
+msgstr "이메일"
+
+msgid "ENTER_YOUR_INFORMATION"
+msgstr "ENTER_YOUR_INFORMATION"
+
+msgid "ERROR_EMAIL_INVALID"
+msgstr "ERROR_EMAIL_INVALID"
+
+msgid "ERROR_IS_REQUIRED"
+msgstr "ERROR_IS_REQUIRED"
+
+msgid "FIRST_NAME"
+msgstr "FIRST_NAME"
+
+msgid "INVALID_STEP_TYPE"
+msgstr "INVALID_STEP_TYPE"
+
+msgid "LAST_NAME"
+msgstr "LAST_NAME"
+
+msgid "NEXT"
+msgstr "다음"
+
+msgid "PICTURE_STEP_NEXT"
+msgstr "PICTURE_STEP_NEXT"
+
+msgid "RETAKE_PHOTO"
+msgstr "RETAKE_PHOTO"
+
+msgid "SWITCH_CAMERA"
+msgstr "SWITCH_CAMERA"
+
+msgid "ENABLE_PERMISSION"
+msgstr "ENABLE_PERMISSION"
+
+msgid "SUMMARY_FOOTER_TEXT"
+msgstr "SUMMARY_FOOTER_TEXT"
+
+msgid "DATE_OF_BIRTH"
+msgstr "DATE_OF_BIRTH"
+
+msgid "CIVIC_ADDRESS"
+msgstr "CIVIC_ADDRESS"
+
+msgid "MUNICIPALITY"
+msgstr "도시"
+
+msgid "ADMINISTRATIVE_AREA"
+msgstr "ADMINISTRATIVE_AREA"
+
+msgid "SUBADMINISTRATIVE_AREA"
+msgstr "SUBADMINISTRATIVE_AREA"
+
+msgid "POSTAL_CODE"
+msgstr "POSTAL_CODE"
+
+msgid "COUNTRY"
+msgstr "국가"
+
+msgid "ERROR_PATTERN_INVALID"
+msgstr "ERROR_PATTERN_INVALID"
+
+msgid "INFORMATION_STEP_TITLE"
+msgstr "INFORMATION_STEP_TITLE"
+
+msgid "ID_PICTURE_STEP_TITLE"
+msgstr "ID_PICTURE_STEP_TITLE"
+
+msgid "FACE_PICTURE_STEP_TITLE"
+msgstr "FACE_PICTURE_STEP_TITLE"
+
+msgid "POA_STEP_TITLE"
+msgstr "POA_STEP_TITLE"
+
+msgid "ID_PICTURE_SUBTITLE"
+msgstr "ID_PICTURE_SUBTITLE"
+
+msgid "SELFIE_PICTURE_SUBTITLE"
+msgstr "SELFIE_PICTURE_SUBTITLE"
+
+msgid "ID_PICTURE_CAPTURE"
+msgstr "ID_PICTURE_CAPTURE"
+
+msgid "SELFIE_PICTURE_CAPTURE"
+msgstr "SELFIE_PICTURE_CAPTURE"
+
+msgid "LOADING"
+msgstr "로딩 중"
+
+msgid "STEP_ERROR"
+msgstr "STEP_ERROR"
+
+msgid "YEAR"
+msgstr "년"
+
+msgid "MONTH"
+msgstr "월"
+
+msgid "DAY"
+msgstr "일"
+
+msgid "GLOBAL_TITLE"
+msgstr "GLOBAL_TITLE"
+
+msgid "SEFLIE_PRE_TEXT"
+msgstr "SEFLIE_PRE_TEXT"
+
+msgid "ID_PRE_TEXT"
+msgstr "ID_PRE_TEXT"
+
+msgid "SUMMARY_HEADER_TEXT"
+msgstr "SUMMARY_HEADER_TEXT"
+
+msgid "INTRO_CONTENT"
+msgstr "INTRO_CONTENT"
+
+msgid "GLOBAL_FOOTER_TEXT"
+msgstr "GLOBAL_FOOTER_TEXT"
+

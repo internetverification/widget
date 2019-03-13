@@ -10,6 +10,8 @@
 bit.json
 index.js
 /public
+/projects/iv-widget/src/assets/lang/**/*.js
+/projects/iv-widget/src/assets/lang/**/*.json
 
 # dependencies
 /node_modules

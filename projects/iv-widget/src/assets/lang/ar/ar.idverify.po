@@ -1,0 +1,147 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Web Translate It <support@webtranslateit.com>\n"
+"Language: en\n"
+"Language-Team: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: WebTranslateIt.com\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+msgid "BTN_AGREE"
+msgstr "المتابعة"
+
+msgid "CAPTURE"
+msgstr "التقاط"
+
+msgid "CONFIRM_SUMMARY"
+msgstr "تأكيد"
+
+msgid "DOWNLOAD_FILE"
+msgstr "تنزيل"
+
+msgid "EMAIL"
+msgstr "البريد الإلكتروني"
+
+msgid "ENTER_YOUR_INFORMATION"
+msgstr "أدخِل بياناتك"
+
+msgid "ERROR_EMAIL_INVALID"
+msgstr "يُرجى إدخال بريد إلكتروني صالح"
+
+msgid "ERROR_IS_REQUIRED"
+msgstr "مطلوب"
+
+msgid "FIRST_NAME"
+msgstr "الاسم الأول"
+
+msgid "INVALID_STEP_TYPE"
+msgstr "نوع خطوة غير صالح"
+
+msgid "LAST_NAME"
+msgstr "الاسم الأخير"
+
+msgid "NEXT"
+msgstr "التالي"
+
+msgid "PICTURE_STEP_NEXT"
+msgstr "تحميل صورة"
+
+msgid "RETAKE_PHOTO"
+msgstr "إعادة التقاط الصورة"
+
+msgid "SWITCH_CAMERA"
+msgstr "تبديل الكاميرا"
+
+msgid "ENABLE_PERMISSION"
+msgstr "يُرجى تمكين الكاميرا الخاصة بك"
+
+msgid "SUMMARY_FOOTER_TEXT"
+msgstr "SUMMARY_FOOTER_TEXT"
+
+msgid "DATE_OF_BIRTH"
+msgstr "تاريخ الميلاد"
+
+msgid "CIVIC_ADDRESS"
+msgstr "العنوان المدني"
+
+msgid "MUNICIPALITY"
+msgstr "المدينة"
+
+msgid "ADMINISTRATIVE_AREA"
+msgstr "الولاية / المقاطعة"
+
+msgid "SUBADMINISTRATIVE_AREA"
+msgstr "المنطقة الإدارية الفرعية"
+
+msgid "POSTAL_CODE"
+msgstr "الرمز البريدي"
+
+msgid "COUNTRY"
+msgstr "البلد"
+
+msgid "ERROR_PATTERN_INVALID"
+msgstr "غير صالح"
+
+msgid "INFORMATION_STEP_TITLE"
+msgstr "البيانات الشخصية"
+
+msgid "ID_PICTURE_STEP_TITLE"
+msgstr "بطاقة التعريف"
+
+msgid "FACE_PICTURE_STEP_TITLE"
+msgstr "صورة سيلفي"
+
+msgid "POA_STEP_TITLE"
+msgstr "إثبات العنوان"
+
+msgid "ID_PICTURE_SUBTITLE"
+msgstr "وأخيرًا، التقط صورة لبطاقة الهوية الحكومية الخاصة بك"
+
+msgid "SELFIE_PICTURE_SUBTITLE"
+msgstr "التقط صورة لوجهك"
+
+msgid "ID_PICTURE_CAPTURE"
+msgstr "التقط صورة لبطاقة التعريف"
+
+msgid "SELFIE_PICTURE_CAPTURE"
+msgstr "التقط صورة سيلفي"
+
+msgid "LOADING"
+msgstr "جارٍ التحميل..."
+
+msgid "STEP_ERROR"
+msgstr "حدث خطأ أثناء محاولة إرسال بياناتك. الرجاء المحاولة مرةً أخرى"
+
+msgid "YEAR"
+msgstr "سنة"
+
+msgid "MONTH"
+msgstr "شهر"
+
+msgid "DAY"
+msgstr "يوم"
+
+msgid "GLOBAL_TITLE"
+msgstr "التحقق من صحة بطاقة تعريفك وعنوانك"
+
+msgid "SEFLIE_PRE_TEXT"
+msgstr "<p>الرجاء التقاط صورة سيلفي. سيتم استخدام هذه الصورة بصرامة وحصرًا لمقارنتها ببطاقة التعريف الخاصة بك الصادرة من الحكومة، لأغراض أمنية.</p>"
+
+msgid "ID_PRE_TEXT"
+msgstr "<p>الرجاء التقاط صورة لبطاقة الهوية الخاصة بك الصادرة من الحكومة، مثل رخصة قيادة خاصة أو جواز السفر. سيتم استخدام هذه الصورة بصرامة وحصرًا للتحقق من اسمك وتاريخ ميلادك ولمقارنتها بصورتك السيلفي، لأغراض أمنية.</p>"
+
+msgid "SUMMARY_HEADER_TEXT"
+msgstr "<p>تم استلام طلب التحقق الخاص بك. طلبك قيد المراجعة. شكرًا لك!</p>"
+
+msgid "INTRO_CONTENT"
+msgstr "<p>نحتاج إلى التحقق من هويتك من خلال التقاط صورة لك ولبطاقة هويتك الصادرة من الحكومة. ونحتاج أيضًا إلى التحقق من عنوانك من خلال إثبات عنوان صالح، مثل فاتورة خدمات. عندما تنقر على الزر أدناه، ستتم مطالبتك بمنح الوصول إلى كاميرا هاتفك أو كاميرا الكمبيوتر.</p><br>"
+
+msgid "GLOBAL_FOOTER_TEXT"
+msgstr "<br><h2 class='text-center'>لماذا هذا مطلوب؟</h2><p class='text-justify'>يلزم أن نتحقق من هويتك وعنوانك حتى نسمح لك باستخدام منتجاتنا. ويقارن نظامنا بكل جدية بطاقة هويتك الصادرة من الحكومة وصورتك السيلقي ومستند إثبات عنوانك لتحديد عمرك بشكل موثوق فيه.</p><p class='text-justify'>تبرهن جديتنا بوضوح على اعتتمادنا على أعلى مستويات الالتزام والمسؤولية الاجتماعية تجاه المستهلكين والآباء ووكالات إنفاذ القانون والهيئات التنظيمية.</p>"
+

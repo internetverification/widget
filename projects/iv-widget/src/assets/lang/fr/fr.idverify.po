@@ -65,7 +65,7 @@ msgid "SUMMARY_FOOTER_TEXT"
 msgstr ""
 
 msgid "SUMMARY_HEADER_TEXT"
-msgstr "Nous avons reçu votre demande. Merci!"
+msgstr "<p>Nous avons reçu votre demande. Merci!</p>"
 
 msgid "INFORMATION_STEP_TITLE"
 msgstr "Information personnelle"
@@ -143,5 +143,5 @@ msgid "INTRO_CONTENT"
 msgstr "<p>Afin de vérifier votre âge et votre identité, vous devez nous fournir votre nom complet, date de naissance, une photo de votre carte d'identité émise par le gouvernement et une photo confirmant que vous êtes bien la personne sur cette pièce d'identité. Lorsque vous cliquez sur le bouton ci-dessous on vous demandera d'autoriser l'accès à la caméra de votre appareil.</p><br>"
 
 msgid "GLOBAL_FOOTER_TEXT"
-msgstr "<br><h2 class='text-center'>Pourquoi est-ce requis?</h2><p class='text-justify'>Nous devons vérifier votre âge, votre identité et votre adresse afin de vous vendre des produits interdit aux mineurs. Notre système compare votre pièce d'identité émise par le gouvernement et votre selfie pour établir de manière fiable votre âge et votre identité.</p><p class='text-justify'>Notre processus démontre le plus haut niveau de conformité et de responsabilité sociale vis-à-vis des consommateurs, des parents, des autorités et des organismes de réglementation.</p><br>"
+msgstr "<br><h2 class='text-center'>Pourquoi est-ce requis?</h2><p class='text-justify'>Nous devons vérifier votre âge et votre identité afin de vous vendre des produits interdit aux mineurs. Notre système compare votre pièce d'identité émise par le gouvernement et votre selfie pour établir de manière fiable votre âge et votre identité.</p><p class='text-justify'>Notre processus démontre le plus haut niveau de conformité et de responsabilité sociale vis-à-vis des consommateurs, des parents, des autorités et des organismes de réglementation.</p><br>"
 
