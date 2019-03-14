@@ -14,109 +14,109 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 msgid "BTN_AGREE"
-msgstr "BTN_AGREE"
+msgstr "진행"
 
 msgid "CAPTURE"
 msgstr "캡처"
 
 msgid "CONFIRM_SUMMARY"
-msgstr "CONFIRM_SUMMARY"
+msgstr "확인"
 
 msgid "DOWNLOAD_FILE"
-msgstr "DOWNLOAD_FILE"
+msgstr "다운로드"
 
 msgid "EMAIL"
 msgstr "이메일"
 
 msgid "ENTER_YOUR_INFORMATION"
-msgstr "ENTER_YOUR_INFORMATION"
+msgstr "귀하의 정보를 입력하세요"
 
 msgid "ERROR_EMAIL_INVALID"
-msgstr "ERROR_EMAIL_INVALID"
+msgstr "유효한 이메일을 입력하세요"
 
 msgid "ERROR_IS_REQUIRED"
-msgstr "ERROR_IS_REQUIRED"
+msgstr "필수 항목"
 
 msgid "FIRST_NAME"
-msgstr "FIRST_NAME"
+msgstr "이름"
 
 msgid "INVALID_STEP_TYPE"
-msgstr "INVALID_STEP_TYPE"
+msgstr "유효하지 않은 단계 유형"
 
 msgid "LAST_NAME"
-msgstr "LAST_NAME"
+msgstr "성"
 
 msgid "NEXT"
 msgstr "다음"
 
 msgid "PICTURE_STEP_NEXT"
-msgstr "PICTURE_STEP_NEXT"
+msgstr "사진 업로드"
 
 msgid "RETAKE_PHOTO"
-msgstr "RETAKE_PHOTO"
+msgstr "사진 재촬영"
 
 msgid "SWITCH_CAMERA"
-msgstr "SWITCH_CAMERA"
+msgstr "카메라 전환"
 
 msgid "ENABLE_PERMISSION"
-msgstr "ENABLE_PERMISSION"
+msgstr "카메라를 활성화하세요"
 
 msgid "SUMMARY_FOOTER_TEXT"
-msgstr "SUMMARY_FOOTER_TEXT"
+msgstr """"
 
 msgid "DATE_OF_BIRTH"
-msgstr "DATE_OF_BIRTH"
+msgstr "생년월일"
 
 msgid "CIVIC_ADDRESS"
-msgstr "CIVIC_ADDRESS"
+msgstr "우편 주소"
 
 msgid "MUNICIPALITY"
 msgstr "도시"
 
 msgid "ADMINISTRATIVE_AREA"
-msgstr "ADMINISTRATIVE_AREA"
+msgstr "주/도"
 
 msgid "SUBADMINISTRATIVE_AREA"
-msgstr "SUBADMINISTRATIVE_AREA"
+msgstr "하위 행정 구역"
 
 msgid "POSTAL_CODE"
-msgstr "POSTAL_CODE"
+msgstr "우편 번호"
 
 msgid "COUNTRY"
 msgstr "국가"
 
 msgid "ERROR_PATTERN_INVALID"
-msgstr "ERROR_PATTERN_INVALID"
+msgstr "유효하지 않음"
 
 msgid "INFORMATION_STEP_TITLE"
-msgstr "INFORMATION_STEP_TITLE"
+msgstr "개인 정보"
 
 msgid "ID_PICTURE_STEP_TITLE"
-msgstr "ID_PICTURE_STEP_TITLE"
+msgstr "ID"
 
 msgid "FACE_PICTURE_STEP_TITLE"
-msgstr "FACE_PICTURE_STEP_TITLE"
+msgstr "셀카"
 
 msgid "POA_STEP_TITLE"
-msgstr "POA_STEP_TITLE"
+msgstr "주소 증명"
 
 msgid "ID_PICTURE_SUBTITLE"
-msgstr "ID_PICTURE_SUBTITLE"
+msgstr "마지막으로, 정부에서 발행한 신분증 사진을 찍으세요"
 
 msgid "SELFIE_PICTURE_SUBTITLE"
-msgstr "SELFIE_PICTURE_SUBTITLE"
+msgstr "얼굴 사진을 찍으세요"
 
 msgid "ID_PICTURE_CAPTURE"
-msgstr "ID_PICTURE_CAPTURE"
+msgstr "신분증 사진 찍기"
 
 msgid "SELFIE_PICTURE_CAPTURE"
-msgstr "SELFIE_PICTURE_CAPTURE"
+msgstr "셀카 사진 찍기"
 
 msgid "LOADING"
-msgstr "로딩 중"
+msgstr "로딩 중..."
 
 msgid "STEP_ERROR"
-msgstr "STEP_ERROR"
+msgstr "정보를 보내려하는 중에 오류가 발생했습니다. 다시 시도하세요."
 
 msgid "YEAR"
 msgstr "년"
@@ -128,20 +128,20 @@ msgid "DAY"
 msgstr "일"
 
 msgid "GLOBAL_TITLE"
-msgstr "GLOBAL_TITLE"
+msgstr "나이 검증하기"
 
 msgid "SEFLIE_PRE_TEXT"
-msgstr "SEFLIE_PRE_TEXT"
+msgstr "<p>셀카를 찍으세요. 이 사진은 보안을 목적으로 정부 발행 신분증과 엄밀히 비교하기 위해 사용됩니다.</p>"
 
 msgid "ID_PRE_TEXT"
-msgstr "ID_PRE_TEXT"
+msgstr "<p>정부 발행 신분증(운전면허증 또는 여권) 사진을 찍으세요. 이 사진은 보안을 목적으로 귀하의 이름과 생년월일을 엄밀히 확인하고 셀카와 비교하기 위해 사용됩니다.</p>"
 
 msgid "SUMMARY_HEADER_TEXT"
-msgstr "SUMMARY_HEADER_TEXT"
+msgstr "<p>검증 요청을 접수했고 신청서를 검토 중입니다. 감사합니다!</p>"
 
 msgid "INTRO_CONTENT"
-msgstr "INTRO_CONTENT"
+msgstr "<p>귀하의 얼굴과 정부 발행 신분증 사진을 찍어 나이를 확인해야 합니다. 아래 버튼을 클릭하면 휴대 전화나 컴퓨터의 카메라에 액세스 권한을 부여하라는 메시지가 표시됩니다.</p><br>"
 
 msgid "GLOBAL_FOOTER_TEXT"
-msgstr "GLOBAL_FOOTER_TEXT"
+msgstr "<br><h2 class='text-center'>이 절차가 필요한 이유는?</h2><p class='text-justify'>나이 제한이 있는 제품을 판매하려면 귀하의 나이와 신원을 확인해야 합니다. 당사 시스템은 귀하의 정부 발행 신분증과 셀카를 비교하여 귀하의 나이와 신원을 확실하게 확인합니다.</p><p class='text-justify'>당사의 노력은 소비자, 부모, 법 집행 기관 및 규제 기관에 대한 최고 수준의 규정 준수 및 사회적 책임을 입증합니다.</p>"
 

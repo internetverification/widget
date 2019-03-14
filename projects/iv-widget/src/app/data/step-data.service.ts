@@ -6,7 +6,7 @@ import { oc } from 'ts-optchain';
 
 interface StepDocument {
   step: string;
-  type: 'jpeg/base64' | 'pdf/base64';
+  type: 'image/jpeg' | 'application/pdf';
   data: string;
 }
 
@@ -51,32 +51,22 @@ export class StepDataService {
     return `${oc(this.config).config.apiUrl() || ''}/submissions/${subId}`;
   }
 
-  submitStep(id: number, type: string, payload: any) {
+  submitStep(stepName: string, type: string, payload: any) {
     switch (type) {
       case 'picture':
         const { image } = payload;
         return this.submitDocument({
           data: image.replace('data:image/jpeg;base64,', ''),
-          type: 'jpeg/base64',
-          step: String(id - 1)
+          type: 'image/jpeg',
+          step: stepName
         });
       case 'file':
         const { file } = payload;
-        if (file.type === 'image/jpeg') {
-          return this.submitDocument({
-            data: file.content,
-            type: 'jpeg/base64',
-            step: String(id - 1)
-          });
-        } else if (file.type === 'application/pdf') {
-          return this.submitDocument({
-            data: file.content,
-            type: 'pdf/base64',
-            step: String(id - 1)
-          });
-        } else {
-          return throwError(new Error('File type not supported'));
-        }
+        return this.submitDocument({
+          data: file.content,
+          type: file.type,
+          step: stepName
+        });
       case 'information':
         return this.submitInformation(payload);
       default:

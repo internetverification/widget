@@ -9,6 +9,7 @@ export interface ValidationPlugin {
 export interface PictureStep {
   nameTranslateKey: string;
   type: 'picture';
+  stepName?: string;
   allow_camera_switch?: string;
   subtitleTranslateKey?: string;
   captureTranslateKey?: string;
@@ -25,6 +26,7 @@ export interface PictureStep {
 
 export interface FileStep {
   nameTranslateKey: string;
+  stepName?: string;
   headerTextTranslateKey?: string;
   footerTextTranslateKey?: string;
   subtitleTranslateKey?: string;
@@ -36,6 +38,7 @@ export interface FileStep {
 export interface InformationStep {
   nameTranslateKey: string;
   headerTextTranslateKey?: string;
+  stepName?: string;
   footerTextTranslateKey?: string;
   subtitleTranslateKey?: string;
   descriptiveTextTranslateKey?: string;

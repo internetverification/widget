@@ -17,6 +17,7 @@
         (previousStep)="previousStep.next($event)"
         (nextStep)="nextStep.next($event)"
         (submitStep)="submitStep.next($event)"
+        (error)="error.next($event)"
         [step]="step"
       ></ivw-picture>
     </ivw-mobile-layout>
@@ -27,6 +28,7 @@
       (previousStep)="previousStep.next($event)"
       (nextStep)="nextStep.next($event)"
       (submitStep)="submitStep.next($event)"
+      (error)="error.next($event)"
     ></ivw-information>
   </div>
   <div *ngSwitchCase="'file'">
@@ -35,6 +37,7 @@
       (previousStep)="previousStep.next($event)"
       (nextStep)="nextStep.next($event)"
       (submitStep)="submitStep.next($event)"
+      (error)="error.next($event)"
     ></ivw-file>
   </div>
   <div *ngSwitchCase="'custom-text'">
@@ -43,6 +46,7 @@
       (previousStep)="previousStep.next($event)"
       (nextStep)="nextStep.next($event)"
       (submitStep)="submitStep.next($event)"
+      (error)="error.next($event)"
     ></ivw-custom-text>
   </div>
   <div *ngSwitchDefault>{{ 'INVALID_STEP_TYPE' | translate }}</div>

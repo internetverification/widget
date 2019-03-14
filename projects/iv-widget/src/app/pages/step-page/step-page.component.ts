@@ -86,6 +86,7 @@ export class StepPageComponent implements OnInit {
       this.store.dispatch(
         new SubmitStepAction(
           this.currentStepId,
+          (oc(stepState.config) as any).stepName(),
           stepState.config.type,
           stepPayload
         )

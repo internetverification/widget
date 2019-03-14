@@ -1,13 +1,14 @@
 export default [
   {
     nameTranslateKey: 'INFORMATION_STEP_TITLE',
-    contentTextTranslateKey: 'ID_VERIFY_CUSTOM_TEXT',
+    contentTextTranslateKey: 'INTRO_CONTENT',
     type: 'custom-text',
     hideInSummary: true
   },
   {
     nameTranslateKey: 'INFORMATION_STEP_TITLE',
     type: 'information',
+    stepName: 'information',
     fields: [
       {
         labelTranslateKey: 'EMAIL',
@@ -56,7 +57,8 @@ export default [
     nameTranslateKey: 'FACE_PICTURE_STEP_TITLE',
     overlay_type: 'face',
     type: 'picture',
-    descriptiveTextTranslateKey: 'SEFLIE_PRE_TEXT'
+    descriptiveTextTranslateKey: 'SEFLIE_PRE_TEXT',
+    stepName: '1'
   },
   {
     nameTranslateKey: 'ID_PICTURE_STEP_TITLE',
@@ -65,10 +67,12 @@ export default [
     type: 'picture',
     allow_camera_switch: true,
     flipCapturedImage: true,
-    flipCapturedImageMobile: true
+    flipCapturedImageMobile: true,
+    stepName: '2'
   },
   {
     nameTranslateKey: 'POA_STEP_TITLE',
-    type: 'file'
+    type: 'file',
+    stepName: '3'
   }
 ];

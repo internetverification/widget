@@ -56,7 +56,7 @@
       var done = false;
       document.addEventListener('readystatechange', function() {
         if (!done) {
-          // IvWidget.config.customGreen[0].plugins = [IvWidget.plugins.face];
+          IvWidget.config.customGreen[0].plugins = [IvWidget.plugins.face];
           done = true;
           var widget = createIvWidget('container', {
             steps: IvWidget.config.customGreen,

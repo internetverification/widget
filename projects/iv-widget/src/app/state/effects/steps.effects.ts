@@ -21,6 +21,7 @@ import {
   SubmitStepErrorAction,
   ErrorHandledAction
 } from '../store/actions/steps.actions';
+import { oc } from 'ts-optchain';
 
 @Injectable()
 export class StepsEffects {
@@ -37,7 +38,11 @@ export class StepsEffects {
     debounceTime(50),
     mergeMap((action: SubmitStepAction) =>
       this.stepData
-        .submitStep(action.stepId, action.stepType, action.payload)
+        .submitStep(
+          oc(action.stepName)(String(action.stepId - 1)),
+          action.stepType,
+          action.payload
+        )
         .pipe(
           map(() => {
             return new ProgressUpdateAction(action.stepId, {

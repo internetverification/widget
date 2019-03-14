@@ -65,7 +65,8 @@ export class CameraService {
     },
     shouldMirror = false,
     flipImage = false,
-    validationPlugins?: ValidationPlugin[]
+    validationPlugins?: ValidationPlugin[],
+    errorObserver?: Observer<Error>
   ) {
     return this.getUserMedia(options).pipe(
       map(mediaStream => {
@@ -74,7 +75,8 @@ export class CameraService {
           mediaStream,
           shouldMirror,
           flipImage,
-          validationPlugins
+          validationPlugins,
+          errorObserver
         );
       })
     );

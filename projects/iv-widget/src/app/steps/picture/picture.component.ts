@@ -113,6 +113,10 @@ export class PictureComponent extends BaseStepComponent
   public isValid$ = this.renderer$.pipe(
     switchMap(renderer => {
       return renderer.isValid$;
+    }),
+    catchError(err => {
+      this.error.next(err);
+      return of(true);
     })
   );
 
@@ -192,7 +196,8 @@ export class PictureComponent extends BaseStepComponent
               options,
               this.shouldMirror(orientation),
               this.shoulFlipImage(orientation),
-              oc(this.step.config.plugins)([])
+              oc(this.step.config.plugins)([]),
+              this.error
             )
             .pipe(
               // Permission was denied
@@ -215,7 +220,6 @@ export class PictureComponent extends BaseStepComponent
               first(),
               tap(() => this.isVideoReady$.next(false)),
               catchError(e => {
-                console.error(e);
                 this.error.next(e);
                 return of({});
               })

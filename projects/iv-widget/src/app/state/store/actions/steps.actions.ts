@@ -15,6 +15,7 @@ export class SubmitStepAction implements Action {
 
   constructor(
     public readonly stepId: number,
+    public readonly stepName: string,
     public stepType: string,
     public readonly payload: any
   ) {}

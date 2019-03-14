@@ -1,12 +1,4 @@
-import {
-  combineLatest,
-  of,
-  Observable,
-  ObservableInput,
-  Subject,
-  BehaviorSubject,
-  timer
-} from 'rxjs';
+import { BehaviorSubject, combineLatest, Observer, timer } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ValidationPlugin } from '../../types';
 
@@ -22,7 +14,8 @@ export class Renderer {
     private mediaStream: MediaStream,
     private mirror = true,
     private flipCapturedImage = false,
-    private validationPlugins: ValidationPlugin[] = []
+    private validationPlugins: ValidationPlugin[] = [],
+    private errorObserver?: Observer<Error>
   ) {}
 
   isValid$ = combineLatest(
@@ -38,7 +31,11 @@ export class Renderer {
   render() {
     this.videoElement.srcObject = this.mediaStream;
     this.validationPlugins.forEach(validator => {
-      validator.init(this.videoElement);
+      try {
+        validator.init(this.videoElement);
+      } catch (ex) {
+        this.emitError(ex);
+      }
     });
     const sub = timer(this.DEFAULT_TIMEOUT).subscribe(() => {
       this.stopPlugins();
@@ -54,8 +51,18 @@ export class Renderer {
 
   private stopPlugins() {
     this.validationPlugins.forEach(plugin => {
-      plugin.stop();
+      try {
+        plugin.stop();
+      } catch (ex) {
+        this.emitError(ex);
+      }
     });
+  }
+
+  private emitError(err: Error) {
+    if (this.errorObserver) {
+      this.errorObserver.next(err);
+    }
   }
 
   private xor(val1, val2) {
