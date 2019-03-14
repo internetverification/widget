@@ -3,12 +3,12 @@
     class="ivw-svg ivw-svg-card"
     viewBox="0 0 86 54"
     *ngSwitchCase="'card'"
-    [innerHTML]="cardTemplate"
+    [innerHTML]="cardTemplate$ | async"
   ></svg>
   <svg
     class="ivw-svg ivw-svg-face"
     *ngSwitchCase="'face'"
     viewBox="0 0 768 1024"
-    [innerHTML]="faceTemplate"
+    [innerHTML]="faceTemplate$ | async"
   ></svg>
 </ng-container>

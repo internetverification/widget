@@ -20,7 +20,7 @@
     <style>
       #container {
         margin: 0 auto;
-        max-width: 500px;
+        max-width: 1500px;
         min-height: 300px;
       }
 
@@ -56,6 +56,7 @@
       var done = false;
       document.addEventListener('readystatechange', function() {
         if (!done) {
+          // IvWidget.config.customGreen[0].plugins = [IvWidget.plugins.face];
           done = true;
           var widget = createIvWidget('container', {
             steps: IvWidget.config.customGreen,
@@ -67,7 +68,8 @@
               apiUrl: '',
               tenantId: 'test',
               serviceId: 'test',
-              submissionId: '0d22c86a-2cbf-4544-81f2-2e0e7021fb4b'
+              submissionId: '0d22c86a-2cbf-4544-81f2-2e0e7021fb4b',
+              onError: console.error
             }
           });
 

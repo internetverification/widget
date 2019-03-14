@@ -8,5 +8,8 @@ export abstract class BaseStepComponent {
   previousStep = new EventEmitter();
 
   @Output()
+  error = new EventEmitter();
+
+  @Output()
   submitStep = new EventEmitter();
 }

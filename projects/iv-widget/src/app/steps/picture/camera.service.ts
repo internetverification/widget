@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { from, Observable, Observer, Subject } from 'rxjs';
 import { finalize, map, tap } from 'rxjs/operators';
+import { Renderer } from './renderer.class';
+import { ValidationPlugin } from '../../types';
 
 @Injectable({
   providedIn: 'root'
@@ -62,55 +64,19 @@ export class CameraService {
       facingMode?: { exact: string };
     },
     shouldMirror = false,
-    flipImage = false
+    flipImage = false,
+    validationPlugins?: ValidationPlugin[]
   ) {
     return this.getUserMedia(options).pipe(
       map(mediaStream => {
-        return new Renderer(videoElement, mediaStream, shouldMirror, flipImage);
+        return new Renderer(
+          videoElement,
+          mediaStream,
+          shouldMirror,
+          flipImage,
+          validationPlugins
+        );
       })
     );
-  }
-}
-
-export class Renderer {
-  constructor(
-    private videoElement: HTMLVideoElement,
-    private mediaStream: MediaStream,
-    private mirror = true,
-    private flipCapturedImage = false
-  ) {}
-
-  render() {
-    this.videoElement.srcObject = this.mediaStream;
-  }
-
-  stop() {
-    this.mediaStream.getTracks().forEach(track => track.stop());
-  }
-
-  private xor(val1, val2) {
-    return (val1 && !val2) || (!val1 && val2);
-  }
-
-  draw(canvasElement?: HTMLCanvasElement) {
-    let canvas = canvasElement;
-    if (!canvasElement) {
-      canvas = document.createElement('canvas');
-    }
-    const ctx = canvas.getContext('2d');
-    canvas.width = this.videoElement.clientWidth;
-    canvas.height = this.videoElement.clientHeight;
-    if (this.xor(this.mirror, this.flipCapturedImage)) {
-      ctx.translate(this.videoElement.clientWidth, 0);
-      ctx.scale(-1, 1);
-    }
-    ctx.drawImage(
-      this.videoElement,
-      0,
-      0,
-      this.videoElement.clientWidth,
-      this.videoElement.clientHeight
-    );
-    return canvas.toDataURL('image/jpeg');
   }
 }

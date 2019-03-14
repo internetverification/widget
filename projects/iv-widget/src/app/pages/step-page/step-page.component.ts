@@ -8,7 +8,8 @@ import { filter, skip, switchMap, take, tap } from 'rxjs/operators';
 import { oc } from 'ts-optchain';
 import {
   SubmitStepAction,
-  ActionTypes
+  ActionTypes,
+  ErrorAction
 } from '../../state/store/actions/steps.actions';
 import { StepState } from '../../types';
 import { environment } from 'projects/iv-widget/src/environments/environment';
@@ -90,5 +91,9 @@ export class StepPageComponent implements OnInit {
         )
       );
     });
+  }
+
+  public onError(error) {
+    this.store.dispatch(new ErrorAction(error));
   }
 }

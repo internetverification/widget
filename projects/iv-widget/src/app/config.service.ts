@@ -11,6 +11,7 @@ import { SummaryPageComponent } from './pages/summary-page/summary-page.componen
 import { isDefined } from './rxjs.utils';
 import { InitStepAction } from './state/store/actions/steps.actions';
 import { IvWidgetConfig, Step } from './types';
+import { oc } from 'ts-optchain';
 
 @Injectable({
   providedIn: 'root'
@@ -170,6 +171,10 @@ export class ConfigService {
     this.steps = config.steps;
     this.theme = config.theme;
     this.lang = config.lang;
+  }
+
+  onError(err: any) {
+    oc(this.config.onError)(() => {})(err);
   }
 
   public destroy() {

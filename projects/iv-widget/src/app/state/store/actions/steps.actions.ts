@@ -5,7 +5,9 @@ export enum ActionTypes {
   SUBMIT_STEP = '[STEPS] Submit step',
   INIT_STEP = '[STEPS] Init steps',
   PROGRESS_UPDATE = '[STEPS] Progress update',
-  SUBMIT_STEP_ERROR = '[STEPS] Submit step errors'
+  SUBMIT_STEP_ERROR = '[STEPS] Submit step errors',
+  GLOBAL_ERROR = '[GLOBAL]  Errors',
+  GLOBAL_ERROR_HANDLED = '[GLOBAL] Errors Handled'
 }
 
 export class SubmitStepAction implements Action {
@@ -36,8 +38,22 @@ export class SubmitStepErrorAction implements Action {
   constructor(public readonly stepId: number, public readonly error: any) {}
 }
 
+export class ErrorAction implements Action {
+  readonly type = ActionTypes.GLOBAL_ERROR;
+
+  constructor(public readonly error: any) {}
+}
+
+export class ErrorHandledAction implements Action {
+  readonly type = ActionTypes.GLOBAL_ERROR_HANDLED;
+
+  constructor(public readonly error: any) {}
+}
+
 export type StepAction =
   | SubmitStepAction
   | InitStepAction
   | ProgressUpdateAction
-  | SubmitStepErrorAction;
+  | SubmitStepErrorAction
+  | ErrorAction
+  | ErrorHandledAction;

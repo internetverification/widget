@@ -9,31 +9,33 @@ import {
 } from '@angular/core';
 import {
   BehaviorSubject,
+  combineLatest,
+  MonoTypeOperatorFunction,
   of,
   ReplaySubject,
-  Subject,
-  MonoTypeOperatorFunction
+  Subject
 } from 'rxjs';
 import {
+  catchError,
   debounceTime,
   delay,
   distinctUntilKeyChanged,
   filter,
+  first,
   map,
   retryWhen,
+  shareReplay,
   startWith,
   switchMap,
-  take,
   takeUntil,
-  tap,
-  catchError,
-  first
+  tap
 } from 'rxjs/operators';
 import { oc } from 'ts-optchain';
 import { DeviceTypeService } from '../../device-type.service';
 import { PictureStepState } from '../../types';
 import { BaseStepComponent } from '../base-step.class';
-import { CameraService, Renderer } from './camera.service';
+import { CameraService } from './camera.service';
+import { Renderer } from './renderer.class';
 
 @Component({
   selector: 'ivw-picture',
@@ -42,6 +44,7 @@ import { CameraService, Renderer } from './camera.service';
 })
 export class PictureComponent extends BaseStepComponent
   implements OnInit, OnDestroy {
+  private readonly PERMISSION_DENIED = 'NotAllowedError';
   public readonly CAPTURE_STATE = 'capture';
   public readonly PREVIEW_STATE = 'preview';
   public state = this.CAPTURE_STATE;
@@ -60,9 +63,9 @@ export class PictureComponent extends BaseStepComponent
   step: PictureStepState;
 
   private _captureSubject = new Subject();
-  private _startSubject = new ReplaySubject();
+  private _startSubject = new ReplaySubject(1);
 
-  public resize = new ReplaySubject<{ width: number; height: number }>();
+  public resize = new ReplaySubject<{ width: number; height: number }>(1);
 
   public isVideoReady$ = new BehaviorSubject(false);
   public cameraDisabled$ = new BehaviorSubject(false);
@@ -89,6 +92,39 @@ export class PictureComponent extends BaseStepComponent
     })
   );
 
+  get image() {
+    const image = oc(this.step).payload.image();
+    if (image) {
+      this.state = this.PREVIEW_STATE;
+      const ctx = this.canvas.nativeElement.getContext('2d');
+      const img = new Image();
+      img.onload = () => {
+        this.canvas.nativeElement.width = img.width;
+        this.canvas.nativeElement.height = img.height;
+        ctx.drawImage(img, 0, 0, img.width, img.height);
+      };
+      img.src = image;
+    }
+    return image;
+  }
+
+  public renderer$ = new ReplaySubject<Renderer>(1);
+
+  public isValid$ = this.renderer$.pipe(
+    switchMap(renderer => {
+      return renderer.isValid$;
+    })
+  );
+
+  public showValidColor$ = this.renderer$.pipe(
+    switchMap(renderer => {
+      return combineLatest(renderer.isTimedout$, renderer.isValid$);
+    }),
+    map(([timedout, valid]) => {
+      return !timedout && valid;
+    })
+  );
+
   public shouldMirror(orientation) {
     if (this.deviceType.getPlatformType() === 'Mobile') {
       // On mobile we only want to disable mirroring on user facing
@@ -107,8 +143,6 @@ export class PictureComponent extends BaseStepComponent
     }
   }
 
-  private readonly PERMISSION_DENIED = 'NotAllowedError';
-
   constructor(
     private cameraService: CameraService,
     private deviceType: DeviceTypeService,
@@ -118,22 +152,9 @@ export class PictureComponent extends BaseStepComponent
   }
 
   ngOnInit() {
-    const image = oc(this.step).payload.image();
-    if (image) {
-      this.state = this.PREVIEW_STATE;
-      const ctx = this.canvas.nativeElement.getContext('2d');
-      const img = new Image();
-      img.onload = () => {
-        this.canvas.nativeElement.width = img.width;
-        this.canvas.nativeElement.height = img.height;
-        ctx.drawImage(img, 0, 0, img.width, img.height);
-      };
-      img.src = image;
-    }
-
     this._startSubject
       .pipe(
-        startWith(!!image),
+        startWith(!!this.image),
         tap(
           hasImage =>
             (this.state = hasImage ? this.PREVIEW_STATE : this.CAPTURE_STATE)
@@ -170,7 +191,8 @@ export class PictureComponent extends BaseStepComponent
               this.videoElement.nativeElement,
               options,
               this.shouldMirror(orientation),
-              this.shoulFlipImage(orientation)
+              this.shoulFlipImage(orientation),
+              oc(this.step.config.plugins)([])
             )
             .pipe(
               // Permission was denied
@@ -181,8 +203,9 @@ export class PictureComponent extends BaseStepComponent
               tap(() => this.isVideoReady$.next(true)),
               tap(() => this._cd.detectChanges()),
               switchMap(renderer => {
+                this.renderer$.next(renderer);
                 return this._captureSubject.pipe(
-                  tap(() => {
+                  map(() => {
                     renderer.draw(this.canvas.nativeElement);
                     this.state = this.PREVIEW_STATE;
                   })
@@ -193,11 +216,13 @@ export class PictureComponent extends BaseStepComponent
               tap(() => this.isVideoReady$.next(false)),
               catchError(e => {
                 console.error(e);
-                return of();
+                this.error.next(e);
+                return of({});
               })
             );
         }),
-        takeUntil(this.destroySubject$)
+        takeUntil(this.destroySubject$),
+        shareReplay(1)
       )
       .subscribe();
   }

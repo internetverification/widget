@@ -1,12 +1,12 @@
-export const svgTemplateCard = () => `
+export const svgTemplateCard = (color = 'rgba(139, 139, 139, 0.7)') => `
       <rect
         width="86"
         height="54"
-        style="fill:rgba(255, 255, 255, 0);stroke-width:5;stroke:rgba(139, 139, 139, 0.7)"
+        style="fill:rgba(255, 255, 255, 0);stroke-width:5;stroke:${color}"
       />
 `;
 
-export const svgTemplateFace = () => `
+export const svgTemplateFace = (color = 'rgba(139, 139, 139, 0.7)') => `
       <g>
         <title>Layer 1</title>
         <path
@@ -16,7 +16,7 @@ export const svgTemplateFace = () => `
           stroke-linejoin="round"
           stroke-linecap="round"
           stroke-width="20"
-          stroke="rgba(139, 139, 139, 0.7)"
+          stroke="${color}"
           fill="none"
         />
       </g>

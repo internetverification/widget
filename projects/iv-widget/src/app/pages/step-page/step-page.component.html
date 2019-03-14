@@ -9,5 +9,6 @@
   (previousStep)="previousStep()"
   (submitStep)="submitStep($event)"
   [step]="stepState$ | async"
+  (error)="onError($event)"
 ></ivw-step>
 <div [innerHTML]="'GLOBAL_FOOTER_TEXT' | translate | trustedHtml"></div>

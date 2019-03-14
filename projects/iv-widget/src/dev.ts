@@ -7,6 +7,7 @@ import customGreen from './assets/themes/customgreenTheme';
 import niceAdmin from './assets/themes/niceAdminTheme';
 
 import { AppModule } from './app/app.module';
+import { FacePlugin } from 'plugins/face-cv/face.plugin';
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch(err => console.error(err));
@@ -23,6 +24,9 @@ const setup = ivWidget => {
       bootstrap,
       customGreen,
       niceAdmin
+    },
+    plugins: {
+      face: new FacePlugin()
     }
   });
 };

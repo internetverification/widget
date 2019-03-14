@@ -1,3 +1,11 @@
+import { Observable } from 'rxjs';
+
+export interface ValidationPlugin {
+  isValid$: Observable<boolean>;
+  init(videoElement: HTMLVideoElement);
+  stop(): void;
+}
+
 export interface PictureStep {
   nameTranslateKey: string;
   type: 'picture';
@@ -12,6 +20,7 @@ export interface PictureStep {
   disableMirroringMobile?: boolean;
   flipCapturedImage?: boolean;
   flipCapturedImageMobile?: boolean;
+  plugins?: ValidationPlugin[];
 }
 
 export interface FileStep {
@@ -63,6 +72,7 @@ export interface IvWidgetConfig {
     apiUrl: string;
     jwt: string;
     submissionId: string;
+    onError?: (err: any) => void;
   };
   theme?: Theme;
   lang?: {

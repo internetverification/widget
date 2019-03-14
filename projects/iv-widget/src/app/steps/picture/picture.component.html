@@ -27,6 +27,7 @@
       class="ivw-svg-overlay"
       [ivwHidden]="state !== CAPTURE_STATE"
       [type]="step?.config?.overlay_type"
+      [color]="(showValidColor$ | async) ? 'green' : 'rgba(139, 139, 139, 0.7)'"
     ></ivw-svg-overlay>
   </div>
   <div class="ivw-picture-overlay">
@@ -57,7 +58,7 @@
     >
       <ivw-button
         [ivwTheme]="'button.container'"
-        [disabled]="!(isVideoReady$ | async)"
+        [disabled]="!(isVideoReady$ | async) || !(isValid$ | async)"
         *ngIf="state === CAPTURE_STATE"
         (click)="capture()"
         >{{

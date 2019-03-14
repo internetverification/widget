@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import { svgTemplateCard, svgTemplateFace } from '../../../svg.templates';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { svgTemplateCard, svgTemplateFace } from '../../../svg.templates';
 
 @Component({
   selector: 'ivw-svg-overlay',
@@ -12,8 +14,28 @@ export class SvgOverlayComponent implements OnInit {
   @Input()
   type: string;
 
-  cardTemplate = this.trust(svgTemplateCard());
-  faceTemplate = this.trust(svgTemplateFace());
+  private color$ = new BehaviorSubject('rgba(139, 139, 139, 0.7)');
+
+  @Input()
+  set color(value) {
+    this.color$.next(value);
+  }
+
+  get color() {
+    return this.color$.value;
+  }
+
+  cardTemplate$ = this.color$.pipe(
+    map(color => {
+      return this.trust(svgTemplateCard(color));
+    })
+  );
+
+  faceTemplate$ = this.color$.pipe(
+    map(color => {
+      return this.trust(svgTemplateFace(color));
+    })
+  );
 
   constructor(private _sanitizer: DomSanitizer) {}
 
